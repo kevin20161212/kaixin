@@ -1,0 +1,34 @@
+.modal-table-layout .layout-left{ border-right:1px solid #e7e7eb; width:150px; height:300px}
+.modal-table-layout .layout-left li{ line-height:32px; text-indent:15px; cursor:pointer}
+.modal-table-layout .layout-left li.active{ background-color:#f4f5f9}
+.modal-table-layout .layout-right-top{ border-bottom:1px solid #f4f5f9 ; text-align:right; padding:8px 18px} 
+.modal-table-layout .layout-right-top .z-uploadbox-tips{ margin-right:15px; color:#888}
+.modal-table-layout .layout-right-top button{ padding-left:20px; padding-right:20px}
+.modal-table-layout .layout-right-bottom { padding:10px 20px 20px 0px;border-top:1px solid #e7e7eb; text-align:right}
+.layout-right-bottom .z-uploadbox-check_count{ float:left; margin-top:10px; color:#777; padding-left:15px}
+.layout-right-bottom .z-uploadbox-page{ float:right}
+
+.z-uploadbox-box{ float:left; margin:3px 6px 3px 0px; width:190px;  position: relative;width:190px; height:130px; overflow:hidden}
+.z-uploadbox-box img{ max-width:100%}
+.z-uploadbox-box a{ display:block; width:190px; height:130px; border:1px dashed #ccc; text-align:center}
+.z-uploadbox-box a:after{ content:'\e661';font-family:ZenIcon; line-height:130px; font-size:30px; color:#999}
+.z-uploadbox-box.limit_1 a:after{content:'\e61a';font-family:ZenIcon; font-size:40px }
+.z-uploadbox-box a:hover{ border:1px dashed #777; text-decoration:none}
+
+.z-uploadbox-box span.delete{ display:none; cursor:pointer; text-align:center}
+.z-uploadbox-box span.delete:after{ content:'\e614';font-family:ZenIcon;  font-size:20px; color:#999; color:#fff}
+.z-uploadbox-box:hover span.delete{ display:block; background-color:rgba(0,0,0,.7); width:100%; padding:1px; position:absolute; bottom:0px;left:0px}
+
+.z-uploadbox-html{ height:369px; overflow:auto}
+.z-uploadbox-wrap .z-uploadbox-item{ cursor:move; text-align:center; border:1px dashed #ccc; background-color:#ededed}
+.z-uploadbox-wrap .z-uploadbox-item:hover{ border:1px dashed #777;}
+.z-uploadbox-html ul{ padding:5px; height:100%}
+.z-uploadbox-html ul .text-center{ padding-top:150px; font-size:20px}
+.z-uploadbox-html li{ display: inline-block; width:130px; height:166px; border:1px solid #e7e7eb; margin:7px; position:relative}
+.z-uploadbox-html li label{ width:100%}
+.z-uploadbox-html li label input{ display:none}
+.z-uploadbox-html li img{ width:100%; height:130px}
+.z-uploadbox-html li span{ display:block; border-top:1px solid #e7e7eb;white-space:nowrap;text-overflow:ellipsis; width:130px;overflow:hidden; padding:0 10px;top:0px; left:0px}
+.z-uploadbox-html li label.active .box-check{ width:100%; height:130px; display:block; position:absolute; z-index:99;background-color:rgba(0,0,0,.6); text-align:center}
+.z-uploadbox-html li label.active .box-check:before{ content:'\e60d'; color:#fff; font-size:50px; line-height:130px; font-family:ZenIcon }
+.z-uploadbox-html li .box-check{ display:none}

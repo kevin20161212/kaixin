@@ -1,0 +1,10 @@
+.tj_dateselect{ background: #fff; padding:10px 10px 10px 10px; overflow:hidden; border-bottom:1px solid #ddd}
+.tj_dateselect .active{ color:#2699ED ;}
+    	.tj_dateselect div:first-child{float:left;}
+    	.tj_dateselect div:first-child a{ display: inline-block;; margin-left: 10px; font-size: 16px;;}
+    	
+    	/*.tj_dateselect div:first-child a:first-child{ color: green;;}*/
+    	.tj_dateselect div:last-child{float:right; position: relative;}
+    	.tj_dateselect div:last-child input{ position: absolute;top:0px; left: 0px;opacity: 0; border: 1px solid green;; width:150px; height: 30px; line-height: 30px; font-size: 16px; text-align: center;}
+        .tj_dateselect div:last-child  img{ width:25px;}
+        

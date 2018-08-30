@@ -1,0 +1,41 @@
+
+			.datetime_top{ text-align: center; height: 50px; line-height: 50px; font-size: 16px; font-weight: 600;}
+   	   	.datetime_top span:first-child{ display: inline-block;; float:left; color: gray; margin-left: 10px;}
+   	   	.datetime_top span:last-child{ display: inline-block;; float:right; color: gray; margin-right: 10px;}
+   	   	.week table,.week table tr{ width:100%}
+   	   	.week table tr{ display: flex; display:-webkit-flex; flex-flow:row nowrap; align-items: center; justify-content: center;}
+   	   	.week table tr td{ flex:auto; text-align: center;; font-size: 14px;}
+   	   	
+   	   	.content{ width:100%;}
+   	   	.content ul{ margin: 0; padding: 0; overflow: hidden;}
+   	   	.content ul li{ position: relative; width:14.2%; float:left; text-align: center; overflow: hidden; min-height: 1px; padding: 5px 0px;}
+   	   	.datetime_total{ font-size: 12px; color:#ff2d4b; height: 15px; line-height: 15px;}
+   	   	.datetime_zt{ font-size: 12px; color: #fff; height: 15px; line-height: 15px;}
+   	   	.err .datetime_zt { color: silver; font-size: 16px;}
+   	   	.glsucc .datetime_total{  font-size: 16px; color: #ff2d4b;}
+   	   	.glsucc  .datetime_zt{ color: #303030;}
+   	   	.glactive{background: #ff2d4b;}
+   	   	.glactive .datetime_zt{ color: #fff; font-size: 12px;}
+   	   	.glactive .datetime_total{ color: #fff ;}
+   	   	.active2{ background: rgba(0,0,0,0.2);}
+   	   	
+   	   	.datetime_lock{ position:absolute; right:10px; top:10px; width:15px; height: auto; display: none;}
+   	   	.lock .datetime_lock{ display: block;}
+		
+		
+		
+	   .set{width:50%; height: auto; border-left: 1px solid #ddd; padding: 10px 10px; min-width: 300px;}
+	   .setTime_row{ padding: 10PX 0PX; color: gray;}
+	   .setLock{ padding: 5px 0px;}
+	   .setLock input{ margin-right: 10px;}
+	   .setTotal{ text-align: ce11nter; }
+	   .setTotal input{ border:1px  solid dodgerblue;width:60%; height: 35px; line-height: 35px; text-align: center; font-size: 14px; margin-right: 10px;}
+	   
+	   .setLock a,.setTotal a,.setTime a,.setTime_row a{ border-radius:5px; font-size: 14px; display: inline-block; background: dodgerblue;color: #fff; height: 35px; line-height: 35px; padding: 0px 20px; margin-right:10px;}
+	   .set .setTime select{ width:80px; height: 35px; line-height: 35px; text-align: center; }
+	   .set .setTime span{ display: inline-block;; margin: 0px 10px;;}
+	    .set .setTime input{ width:35px; height: 30px; line-height: 30px; margin:0px 10px; text-align: center;}
+	    
+	    
+	    
+	    
