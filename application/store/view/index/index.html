@@ -156,12 +156,12 @@
                         <li><a target="_blank" href="__ROOT__/"><i class="fa fa-external-link"></i> 打开前台</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user"></i> {$_user_auth.username} <b class="caret"></b>
+                                <i class="fa fa-user"></i> {$_merch_auth.username} <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a target="_blank" href="__ROOT__/"><i class="fa fa-external-link"></i> 打开前台</a></li>
                                 <li><a href="{:U('Admin/Index/removeRuntime')}" style="border: 0;text-align: left" class="btn ajax-get no-refresh"><i class="fa fa-trash"></i> 清空缓存</a></li>
-                                <li><a href="{:U('Admin/Login/logout')}" class="ajax-get"><i class="fa fa-sign-out"></i> 退出</a></li>
+                                <li><a href="{:U('Store/Login/logout')}" class="ajax-get"><i class="fa fa-sign-out"></i> 退出</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -26,7 +26,7 @@ class Login extends Controller
      * @author <youfai@youfai.cn>
      */
     public function login()
-    {
+    {   
         if (is_login()) {
             $this->redirect('Store/Index/index');
         }
@@ -42,20 +42,27 @@ class Login extends Controller
             }
 
             // 验证管理员表里是否有该用户
-            $account_object = D('Store/Access');
-            $where['uid']   = $user_info['id'];
-            $account_info   = $account_object->where($where)->find();
-            if (!$account_info) {
-                $this->error('该用户没有管理员权限' . $account_object->getError());
-            }
+            // $account_object = D('Store/Access');
+            // $where['uid']   = $user_info['id'];
+            // $account_info   = $account_object->where($where)->find();
+            // if (!$account_info) {
+            //     $this->error('该用户没有管理员权限' . $account_object->getError());
+            // }
 
             // 设置登录状态
             $uid = $user_object->auto_login($user_info);
 
             // 跳转
-            if (0 < $account_info['uid'] && $account_info['uid'] === $uid) {
-                $this->success('登录成功！', U('Store/Index/index'));
+            // if (0 < $account_info['uid'] && $account_info['uid'] === $uid) {
+            //     $this->success('登录成功！', U('Store/Index/index'));
+            // } else {
+            //     $this->logout();
+            // }
+            if (0 < $uid) {
+                //dump(21432);exit;
+                $this->success('登录成功！', url('Store/Index/index'));
             } else {
+                dump(422);exit;
                 $this->logout();
             }
         } else {
@@ -71,8 +78,8 @@ class Login extends Controller
      */
     public function logout()
     {
-        session('user_auth', null);
-        session('user_auth_sign', null);
+        session('merch_auth', null);
+        session('merch_auth_sign', null);
         $this->success('退出成功！', U('login'));
     }
 

@@ -11,7 +11,7 @@
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.youfai.cn
 // +----------------------------------------------------------------------
 
-namespace app\Cms\store;
+namespace app\Course\store;
 use app\admin\controller\Admin;
 use yfthink\Page;
 
@@ -27,6 +27,7 @@ class Index extends Admin {
     public function index() {
         // 获取列表
         // 
+        dump(2134214);exit;
         $map = array();
         $keyword         = I('keyword', '', 'string');
         $map['id|title']       = array('like', '%' . $keyword . '%');

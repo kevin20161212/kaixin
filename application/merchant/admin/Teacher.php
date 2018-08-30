@@ -68,8 +68,8 @@ class Teacher extends Admin {
     public function add(){
         if (request()->isPost()) {
             $data = D("merchant_teacher")->create();
-            dump(session('user_auth'));
-            dump($data);exit;
+            // dump(session('user_auth'));
+            // dump($data);exit;
             if ($data) {
                 if (D("merchant_teacher")->add($data)) {
                     $this->success('新增成功', U('index'));

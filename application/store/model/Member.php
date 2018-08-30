@@ -53,4 +53,91 @@ class Member extends Model {
         array('create_time', 'time', self::MODEL_INSERT, 'function'),
     );
 
+
+     /**
+     * 用户登录
+     * @author <youfai@youfai.cn>
+     */
+    public function login($username, $password, $map = null)
+    {
+        //去除前后空格
+        $username = trim($username);
+
+        //匹配登录方式
+        if (preg_match("/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/", $username)) {
+            //$map['email'] = array('eq', $username); // 邮箱登陆
+        } elseif (preg_match("/^1\d{10}$/", $username)) {
+            //$map['mobile'] = array('eq', $username); // 手机号登陆
+        } else {
+            $map['merch_name'] = array('eq', $username); // 用户名登陆
+        }
+
+        $map['status'] = array('eq', 1);
+        $user_info     = $this->where($map)->find(); //查找用户
+        if (!$user_info) {
+            $this->error = '用户不存在或被禁用！';
+        } else {
+            if (user_md5($password) !== $user_info['merch_password']) {
+                $this->error = '密码错误！';
+            } else {
+                return $user_info;
+            }
+        }
+        return false;
+    }
+
+     /**
+     * 设置登录状态
+     * @author <youfai@youfai.cn>
+     */
+    public function auto_login($user)
+    {
+        // 记录登录SESSION和COOKIES
+        $auth = array(
+            'uid'      => $user['id'],
+            'username' => $user['merch_name'],
+            'nickname' => $user['merch_name'],
+            'avatar'   => $user['logo'],
+        );
+        session('merch_auth', $auth);
+        session('merch_auth_sign', $this->data_auth_sign($auth));
+        return $this->is_login();
+    }
+
+    /**
+     * 检测用户是否登录
+     * @return integer 0-未登录，大于0-当前登录用户ID
+     * @author <youfai@youfai.cn>
+     */
+    public function is_login()
+    {
+        $user = session('merch_auth');
+        if (empty($user)) {
+            return 0;
+        } else {
+            if (session('merch_auth_sign') == $this->data_auth_sign($user)) {
+                return $user['uid'];
+            } else {
+                return 0;
+            }
+        }
+    }
+
+     /**
+     * 数据签名认证
+     * @param  array  $data 被认证的数据
+     * @return string       签名
+     * @author <youfai@youfai.cn>
+     */
+    public function data_auth_sign($data)
+    {
+        // 数据类型检测
+        if (!is_array($data)) {
+            $data = (array) $data;
+        }
+        ksort($data); //排序
+        $code = http_build_query($data); // url编码并生成query字符串
+        $sign = sha1($code); // 生成签名
+        return $sign;
+    }
 }

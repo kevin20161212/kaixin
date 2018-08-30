@@ -11,7 +11,7 @@
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.youfai.cn
 // +----------------------------------------------------------------------
 
-namespace app\Cms\store;
+namespace app\Merchant\store;
 use app\admin\controller\Admin;
 use yfthink\Page;
 
@@ -19,14 +19,14 @@ use yfthink\Page;
  * 默认控制器
  * @author youfai.cn <280962430@qq.com>
  */
-class Index extends Admin {
+class User extends Admin {
     /**
      * 默认方法
      * @author youfai.cn <280962430@qq.com>
      */
     public function index() {
         // 获取列表
-        // 
+        dump(214);exit;
         $map = array();
         $keyword         = I('keyword', '', 'string');
         $map['id|title']       = array('like', '%' . $keyword . '%');

@@ -233,6 +233,10 @@ function is_logins()
     return D('Home/User')->is_logins();
 }
 
+function is_login11()
+{   
+    return D('Store/member')->is_login();
+}
 
 /**
  * 检测用户是否VIP

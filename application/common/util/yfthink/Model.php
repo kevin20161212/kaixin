@@ -1256,6 +1256,7 @@ class Model
             'integer'  => '/^[-\+]?\d+$/',
             'double'   => '/^[-\+]?\d+(\.\d+)?$/',
             'english'  => '/^[A-Za-z]+$/',
+            'mobile'  => '/^1[34578]\d{9}$/',
         );
         // 检查是否有内置的正则表达式
         if (isset($validate[strtolower($rule)])) {

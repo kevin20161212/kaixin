@@ -64,6 +64,7 @@ class Controller extends \think\Controller
         $this->assign('meta_keywords', C('WEB_SITE_KEYWORD'));
         $this->assign('meta_description', C('WEB_SITE_DESCRIPTION'));
         $this->assign('_new_message', cookie('_new_message')); // 获取用户未读消息数量
+        $this->assign('_merch_auth', session('merch_auth')); // 用户登录信息
         $this->assign('_user_auth', session('user_auth')); // 用户登录信息
         $this->assign('_user_nav_main', $_user_nav_main); // 用户导航信息
         $this->assign('_user_center_side', C('USER_CENTER_SIDE')); // 用户中心侧边

@@ -39,7 +39,6 @@ class Admin extends Controller
         // dump(12345);exit;
         $module = request()->module();
         $mokuainames = MODULE_MARK == 'Admin'?'admin_menu':'role_menu';
-
         if (!is_login()) {
             //还没登录跳转到登录页面
             $this->redirect($module.'/Login/login');
@@ -99,7 +98,7 @@ class Admin extends Controller
      * @author <youfai@youfai.cn>
      */
     protected function is_login()
-    {
+    {  
         //用户登录检测
         $uid = is_login();
         if ($uid) {

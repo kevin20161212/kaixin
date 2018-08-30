@@ -32,10 +32,11 @@ class AppUser extends Model {
      * @author youfai.cn <280962430@qq.com>
      */
     protected $_validate = array(
-        array('user_name', 'require', '用户名不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
-        array('password', 'require', '密码不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
-        array('mobile', 'require', '电话不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
-        array('email', 'require', '邮箱不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('teach_name', 'require', '教师名不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
+        // array('password', 'require', '密码不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('mobile', 'mobile', '手机格式不正确', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
+        // array('email', 'email', '邮箱格式不正确', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
+        // array('mobile', 'checkUser', '该用户不存在', self::MUST_VALIDATE, 'callback', self::MODEL_BOTH),
     );
    
     /**
@@ -46,4 +47,13 @@ class AppUser extends Model {
         array('create_time', 'time', self::MODEL_INSERT, 'function'),
     );
 
+    public function checkUser($mobile){
+        $info = db('app_user')->where(['mobile'=>$mobile])->find();
+        if($info){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
 }

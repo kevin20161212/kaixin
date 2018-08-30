@@ -24,17 +24,19 @@ use yfthink\Page;
  * @author <youfai@youfai.cn>
  */
 class Store extends Controller
-{
+{   
+    public $merch_id;
     /**
      * 初始化方法
      * @author <youfai@youfai.cn>
      */
     protected function _initialize()
     {
-
+        $merch_id = session('merch_auth')['uid'];
+        $this->merch_id = $merch_id;
         $module = request()->module();
         $mokuainames = MODULE_MARK == 'Admin'?'admin_menu':'role_menu';
-        if (!is_login()) {
+        if (!is_login11()) {
             //还没登录跳转到登录页面
             $this->redirect($module.'/Login/login');
         }

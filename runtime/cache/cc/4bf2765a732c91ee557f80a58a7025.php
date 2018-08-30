@@ -1,0 +1,4 @@
+<?php
+//000000000000
+ exit();?>
+a:20:{i:0;s:2:"id";i:1;s:9:"user_name";i:2;s:8:"password";i:3;s:6:"avatar";i:4;s:7:"nikname";i:5;s:6:"mobile";i:6;s:8:"bank_num";i:7;s:9:"bank_name";i:8;s:8:"province";i:9;s:4:"city";i:10;s:8:"district";i:11;s:5:"email";i:12;s:5:"token";i:13;s:5:"score";i:14;s:5:"level";i:15;s:4:"rand";i:16;s:6:"status";i:17;s:11:"create_time";s:3:"_pk";s:2:"id";s:5:"_type";a:18:{s:2:"id";s:7:"int(11)";s:9:"user_name";s:12:"varchar(255)";s:8:"password";s:12:"varchar(255)";s:6:"avatar";s:7:"int(11)";s:7:"nikname";s:11:"varchar(20)";s:6:"mobile";s:11:"varchar(20)";s:8:"bank_num";s:11:"varchar(20)";s:9:"bank_name";s:11:"varchar(20)";s:8:"province";s:7:"int(11)";s:4:"city";s:7:"int(11)";s:8:"district";s:7:"int(11)";s:5:"email";s:11:"varchar(20)";s:5:"token";s:11:"varchar(30)";s:5:"score";s:13:"decimal(10,2)";s:5:"level";s:7:"int(11)";s:4:"rand";s:11:"varchar(12)";s:6:"status";s:6:"int(1)";s:11:"create_time";s:11:"varchar(20)";}}
