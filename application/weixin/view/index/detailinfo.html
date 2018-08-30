@@ -1,0 +1,103 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/basicserver.css"/>
+</block>	
+
+<block name="main">
+	<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>服务与介绍</span>
+		</div>
+
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div style="background: #fff;" id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1mobile">房屋介绍</a>
+					<a class="mui-control-item" href="#item2mobile">服务与设施</a>
+				</div>
+				<div style="background: none;" id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6">
+					<div style="width:100px; margin: 0 auto; background: red; height: 100%;"></div>
+				</div>
+				
+				
+				
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll" style="overflow-y: scroll;">
+								 <div class="jieshao">
+								 	<p class="jieshao_title"><span></span>房屋亮点</p>
+								    <div class="jieshao_content">
+								    	{$info.brightspot}
+								    </div>
+								 </div>
+								 
+							<!-- 	 <div class="jieshao">
+								 	<p class="jieshao_title"><span></span>详细介绍</p>
+								    <div class="jieshao_content">
+								    	房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点
+								    	房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点
+								    	房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点
+								    	房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点
+								    	房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点
+								    	房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点
+								    	房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点房屋亮点
+								    </div>
+								 </div> -->
+								
+								
+							</div>
+						</div>
+					</div>
+					
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+							     <div class="jieshao ">
+								 	<p class="jieshao_title"><span></span>入住服务</p>
+								 	<ul>
+								 		<foreach name="service" item="vo">
+								 		<li class="<php>if(in_array($vo['id'],explode(',',$info['service']))){echo 'flex-flow';}else{echo 'flex-flow no';}</php>">
+								 			<img src="{$vo.thumb}">
+								 			<label>{$vo.title}</label>
+								 		</li>
+								 		</foreach>
+								 		<!-- <li class="flex-flow no">
+								 			<img src="/application/weixin/view/public/images/basicserver/hour.png">
+								 			<label>24小时入住</label>
+								 		</li> -->
+								 	</ul>
+								 </div>
+								 
+								 <div class="jieshao ">
+								 	<p class="jieshao_title"><span></span>基础设施</p>
+								 	<ul>
+								 		<foreach name="facilities" item="vo">
+								 		<p  >{$vo.title}</p>
+								 			<foreach name="vo.zz" item="vos">
+										 		<li class="<php>if(in_array($vos['id'],$info['facilities'])){echo 'flex-flow';}else{echo 'flex-flow no';}</php>">
+										 			<img src="{$vos.thumb}">
+										 			<label>{$vos.title}</label>
+										 		</li>
+								 			</foreach>
+								 		</foreach>
+								 	</ul>
+								 </div>
+ 
+							</div>
+						</div>
+
+					</div>
+						    
+				</div>
+				
+				
+			</div>
+		</div>
+			
+</block>
+
+<block name="script">
+
+</block>

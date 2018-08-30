@@ -1,0 +1,38 @@
+<case value="huxing">
+	<style>
+		.eeee{line-height: 34px;}
+	</style>
+
+
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+            <!-- <input type="text" class="form-control input text" name="{$[type]form.name}" value="{$[type]form.value|default=''}" placeholder="{$[type]form.tip|default=''}" {$[type]form.extra.attr|default=''}> -->
+        	<div class="row">
+        		<div class="col-xs-1">
+			    <input type="text" class="form-control col-xs-8"  name="ping" value="{$[type]form.value.ping}"><span class="col-xs-4 eeee">平</span>
+			  </div>
+			  <div class="col-xs-1">
+			    <input type="text" class="form-control col-xs-8"  name="room" value="{$[type]form.value.room}"><span class="col-xs-4 eeee">室</span>
+			  </div>
+			  <div class="col-xs-1">
+			    <input type="text" class="form-control col-xs-8"  name="office" value="{$[type]form.value.office}"><span class="col-xs-4 eeee">厅</span>
+			  </div>
+			  <div class="col-xs-1">
+			    <input type="text" class="form-control col-xs-8"  name="guard" value="{$[type]form.value.guard}"><span class="col-xs-4 eeee">卫</span>
+			  </div>
+			  <div class="col-xs-1">
+			    <input type="text" class="form-control col-xs-8"  name="kitchen" value="{$[type]form.value.kitchen}"><span class="col-xs-4 eeee">厨</span>
+			  </div>
+			   <div class="col-xs-2">
+			    <span class="col-xs-4 eeee" style="text-align: right;">可住</span><input type="text" class="form-control col-xs-4"  name="canlive" value="{$[type]form.value.canlive}"><span class="col-xs-2 eeee">人</span>
+			  </div>
+			  <div class="col-xs-2">
+			    <span class="col-xs-2 eeee" >共</span><input type="text" class="form-control col-xs-4"  name="bed" value="{$[type]form.value.bed}"><span class="col-xs-4 eeee">张床</span>
+			  </div>
+
+
+			</div>
+        </div>
+    </div>
+</case>

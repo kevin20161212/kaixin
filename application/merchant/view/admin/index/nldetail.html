@@ -1,0 +1,241 @@
+<extend name="$_home_public_layout"/>
+
+
+<block name="style">
+       <style>
+       .modal-dialog{width:80% !important;}
+       .modal-content{height:auto !important;}
+       .juzhong{display: none;}
+      .mingxing{width:100%;margin-top:4%;}
+    .mingxing td{width:16%;padding:1%;}
+    .zhuzhang{display:flex;width:14%;border-radius:10px;overflow: hidden;border:1px solid #EEE;}
+    .zhuzhang>div{width:50%; display: flex;
+  justify-content: center;
+  align-items: center;cursor:pointer;}
+ .zhuzhang>.zhezhu{background-color:#eee;padding:3% 0;}
+ .xiabaihau{ display: flex;
+  justify-content: space-between;align-items: center;margin-top:5%;}
+  .xiabaihau a{background-color:#2A70C3;color:#fff; display: flex;
+  justify-content: center;
+  align-items: center;width:10%;padding:0.5% 0;border-radius:10px;}
+
+  .lbutom{margin-top:3%;}
+   .kanyuanma{  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.xinbei{display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;}
+  .zilaip{padding-top:1%;}
+   </style>
+
+</block>
+
+
+
+<block name="breadcrumb"></block>
+
+<block name="main">
+
+<!--  <button id="btnSave">转换成图片</button> -->
+  
+  <div class="beijig" id="contents">
+  <img src="__HOME_CSS__/img/qingcao.png" class="beijgi">
+  <div class="zilaip xiamiandian" id="cantoimg">
+    <div class="xinbei"><a class="uploadimg layui-btn layui-btn-normal layui-btn-radius" style="margin-top:2%;">下载结果</a></div>
+    <div class="kanyuanma"><img src="__HOME_CSS__/img/kaiwdop.png"></div>
+    
+
+    <table class="mingxing" border="1">
+      <tr>
+        <td>编号</td>
+        <td>{$data.title}</td>
+        <td>姓名</td>
+        <td>{$data.username}</td>
+        <td>性别</td>
+        <td>{$data.sex}</td>
+      </tr>
+      <tr>
+        <td>出生日期</td>
+        <td>{$data.riqi}</td>
+        <td>大中小班/年级</td>
+        <td>{$data.youxiao}</td>
+        <td>测量人</td>
+        <td>{$data.celiangren}</td>
+      </tr>
+      <tr>
+        <td>监护人</td>
+        <td>{$data.jianhuren}</td>
+        <td>关系</td>
+        <td>{$data.guanxi}</td>
+        <td>测量日期</td>
+        <td>{$data.create_time|date="Y-m-d H:i",###}</td>
+      </tr>
+      <tr>
+        <td>家庭住址</td>
+        <td colspan="3">{$data.lianxidizhi}</td>
+        <td>电话</td>
+        <td>{$data.lianxidianhua}</td>
+      </tr>
+    </table>
+    <div class="yuanshi"><img src="__HOME_CSS__/img/shiling.png"></div>
+    <table class="mingxing" border="1">
+      <tr>
+        <td>项目</td>
+        <td>得分</td>
+        <td>标准分</td>
+      
+      
+      </tr>
+      <foreach name="list" item="vo" >
+      <tr>
+        <td>{$vo.name}</td>
+        <td>{$vo.value}</td>
+        <td>{$vo.value2}</td>
+        
+      
+      </tr>
+    </foreach>
+
+    </table>
+      <div class="xiabaihau">
+      <div class="zhuzhang">
+        <div class="zhezhu">柱状图</div>
+        <div>雷达图</div>
+      </div>
+     
+  </div>
+      <div>
+        
+        <div class="kjdwiudawdwad" style="">
+              <div id="can1"   data-data='{$info.info}'data-barWidth="10" data-title="年纪标准与实际测评双线对比统计" data-color1="red"  data-color2="#63B8FF" data-type="double_line_bar2" data-type1="bar" data-type2="bar" data-sort="['年龄标准','实际评测']" class=" echarts" style="height:500px;"></div>
+</div>
+        <div class="kjdwiudawdwad" id="dawu" style="height:600px;">
+            <div id="can2"  data-indicator='{$leidas.zb}'   data-data='{$leidas.si}'    data-title="年纪标准与实际测评雷达对比统计" data-type="radar" data-sort="小明"  class="echarts kio" style="height:500px;z-index:999999999999999;"></div>
+          </div>
+        </div>
+          <div class="lbutom">
+  <div>
+    <foreach name="list" item="vos" >
+      {$vos.content}<br><br>
+    </foreach>
+  </div>
+</div>
+
+  </div>
+
+</div>
+
+</block>
+ 
+<block name="script">
+     <script src="__HOME_CSS__/js/echarts.js"></script>
+   <script src="__HOME_CSS__/js/tj_module.js"></script>
+   <script type="text/javascript" src="__HOME_CSS__/js/html2canvas.min.js"></script>
+   <!-- <script type="text/javascript" src="__HOME_CSS__/js/canvashtml.js"></script> -->
+<script>
+
+var qbl={
+    can:"can1",//当前数据图ID，
+    imgUpload:false,//图片上传状态
+  }
+
+  setTimeout(function(){
+    $("#dawu").css("display","none")
+  },5)
+
+$(".zhuzhang>div").click(function(){
+  this.innerHTML=="雷达图"?qbl.can="can2":qbl.can="can1";
+  $(this).addClass('zhezhu').siblings().removeClass('zhezhu')
+  var index=$(this).index()
+
+  $(".kjdwiudawdwad").eq(index).css("display","block").siblings().css("display","none")
+   b()
+    
+})
+$(".uploadimg").click(function(){
+  var ops={}
+  var id = '{$id}';
+
+
+  // if(!qbl.imgUpload)
+  // {
+    var can1=$("#can1").children().eq(0).children("canvas")[0];
+    str1=can1.toDataURL("image/png")
+    // ops. str1=can1.toDataURL("image/png")
+
+    // var can2=$("#can2").children().eq(0).children("canvas")[0];
+    // ops.str2=can1.toDataURL("image/png")
+    
+  // }
+  
+    $.ajax({
+      url:"/index.php/home/pdf/uploads",
+      type:"post",
+      data:{'file':str1,'id':id},
+      success:function(res){
+        if(res.status == 1){
+          location.href="/index.php/home/pdf/getlipdf?id="+id;
+          // window.open("/index.php/home/pdf/getlipdf?id="+id,"_blank");
+        }else{
+          layer.alert('下载失败，请稍后重试！',{
+                'title':'提示信息'
+              })
+        }
+      },
+      error:function(){}
+    });
+  
+})
+layui.use(['form','layedit','laydate'],function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+});
+</script>
+  <script>
+        $(function(){
+           
+        $(".beijig").css("height",($(".zilaip").height()-200)+"px")
+        })
+       
+       
+      </script>
+</block>

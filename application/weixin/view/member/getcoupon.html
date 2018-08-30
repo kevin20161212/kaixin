@@ -1,0 +1,80 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/quanList.css"/>
+<style type="text/css">
+	html,body{ height: 100%;}
+	.none{ display: none;}
+  .getQuan{ background: #fff;;}
+  .getQuan a{ flex:none; background: url(/application/weixin/view/public/images/bj.jpg); color: #fff; margin-right: 1rem; line-height: 1.5rem;; padding: 0.5rem 1rem; font-size: 1.2rem ;border-radius:5px;}
+</style>
+</block>
+
+<block name="main">
+<!--top-->
+		<div class="pageTop">
+			<a href="/index.php/weixin/index/index#/my"><img src="/application/weixin/view/public/images/back.png"/></a>
+			<span>领取优惠券</span>
+		</div>
+		<div class="none"><img src="/application/weixin/view/public/images/none.png"/></div>
+		<!--LIST-->
+		<div class="quan_list">
+			<ul>
+				<foreach name="list" item="vo">
+				<li>
+					<div class="quan_list_left">
+						<span>优惠券</span>
+						<if condition="$vo.type eq 1">
+						<span>￥{$vo.mj_hui}</span>
+						<else/>
+						<span>{$vo.zhekou}折</span>
+						</if>
+						<div>
+							</a><a></a><a></a><a></a><a></a><a></a><a>
+							<a></a><a></a><a></a><a></a><a></a><a></a>
+						</div>
+					</div>
+					<div class="quan_list_right">
+						<div class="quan_list_right_top">
+							<p>{$vo.title}</p>
+							<if condition="$vo.type eq 1">
+								<p>消费满{$vo.mj_price}元减{$vo.mj_hui}元</p>
+							<else/>
+								<p>消费尊享{$vo.zhekou}折</p>
+							</if>
+							
+						</div>
+						<div class="quan_list_right_bottom">
+							<p>开始时间：{$vo.create_time|date="Y-m-d H:i",###}</p>
+							<p>到期时间：{$vo.datetime|date="Y-m-d H:i",###}</p>
+						</div>
+					</div>
+					<div class="getQuan flex-flow ajax-post2" data-url="{:U('weixin/member/getcoupon')}" data-params="{'id':{$vo.id}}" data-succ="gQcb">
+						<a>立即<br>领取</a>
+					</div>
+				</li>
+			</foreach>
+			</ul>
+		</div>
+</block>
+
+<block name="script">
+<script>
+function gQcb(res){
+	if(res.status == 1){
+		layer.msg(res.info)
+		setTimeout(function(){
+			location.reload() 
+		},1500)
+	}else{
+		layer.alert(res.info)
+	}
+}
+$(function(){
+	if($(".quan_list ul li").size()==0)
+	{
+		$(".none").show();
+	}
+})
+</script>
+</block>

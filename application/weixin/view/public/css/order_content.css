@@ -1,0 +1,37 @@
+html,body{ background: #fff;}
+	 	/*main*/
+	 	.main{ padding: 0rem 1rem 1rem 1rem; border-bottom: 1px solid #f6f6f6;}
+	 	.main img{ width:100%; height: auto;}
+	 	.main_title{ font-size: 1.4rem; padding-top:1rem; line-height: 1.6rem;}
+	 	.main_content{ font-size: 1.0rem; padding-top:1rem; color: gray; line-height: 1.2rem;}
+	 	.main_content label{ margin: 0 0.5rem;}
+	 	.xq_title{font-size: 1.4rem;}
+	 	/*map*/
+	 	.housePos{ padding: 0rem 1rem;}
+	 	.xq_title{ line-height: 1.4rem; padding-bottom: 0.7rem !important;text-align: left; color: #303030;}
+	 	.houseAddress{font-size: 1.0rem;  margin-bottom: 0.5rem;  color: gray; height: 1.5rem ;line-height: 1.5rem;}
+	 	/*zuozhe*/
+	 	
+.zuozhe{ margin: 1rem 0rem; border-bottom: 1px solid #f6f6f6;  padding: 1rem 1rem; border-top:1px solid #f6f6f6; margin-bottom: 0rem !important;}
+	   	.zuozhe_tx{ flex:none; width:7rem; height: 7rem; border-radius:50%;}
+	   	.zuozhe_xinxi{ flex:auto; margin-left: 0.5rem;
+	   	 display: flex; display:-webkit-flex; flex-flow:column; 
+	   	height: 8rem;
+	   	 align-content:space-between ;
+	   	}
+	   	.zuozhe_xinxi p{ flex:auto;justify-content: flex-start;}
+	   	.zuozhe_xinxi p span{ font-size: 1rem; color: #303030;}
+	   	.zuozhe_xinxi p img{ width:1.5rem ;height: auto; margin-left: 0.5rem;}
+	   	.zuozhe_xinxi p:last-child{ overflow: hidden; font-size: 1rem;}
+	   	
+	   	.zuozhe_house{flex:none; padding: 0rem 1rem;}
+	   	.zuozhe_house ul{ margin: 0; padding: 0; position: relative; width:7rem; height: 7rem;}
+	   	.zuozhe_house ul a{ position:absolute;; right:0px; top:-1rem; font-size: 1.0rem; color: #FF414F;}
+	   .zuozhe_house ul li{flex:auto;}	
+	   .zuozhe_house ul li:first-child{ border-right: 1px solid #ddd;}
+	   .zuozhe_house ul li span{ display: block; text-align: center; font-size: 1.0rem; color: gray;}
+	   .zuozhe_house ul li label{ display: block;text-align: center;font-size: 1rem; color: #303030; margin-top: 0.5rem;}
+	   
+
+.tongzhi{ padding: 0rem 1rem;}
+	  	.tongzhi_content{ margin-top: 0.7rem;; font-size: 1rem; color: gray; line-height: 1.4rem;}

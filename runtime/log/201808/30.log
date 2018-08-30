@@ -1,0 +1,146 @@
+---------------------------------------------------------------
+[ 2018-08-30T10:01:20+08:00 ] ::1 ::1 GET /kaixni11/admin.php/admin
+[ info ] localhost:88/kaixni11/admin.php/admin [运行时间：0.231000s][吞吐率：4.33req/s] [内存消耗：9,619.53kb] [文件加载：98]
+[ error ] [8]Undefined index: LY_DEV_MODE[E:\anzhuan\object\kaixni11\data\db.php:20]
+[ error ] [2]Invalid argument supplied for foreach()[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:60]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Undefined index: WAP_MODE[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:164]
+[ error ] [8]Undefined index: default_module[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:198]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\common\behavior\InitModule @app_init [ RunTime:0.045000s ]
+[ info ] [ BEHAVIOR ] Run app\common\behavior\InitHook @app_init [ RunTime:0.015000s ]
+[ info ] [ BEHAVIOR ] Run app\common\behavior\InitConfig @app_init [ RunTime:0.009000s ]
+[ info ] [ LANG ] E:\anzhuan\object\kaixni11\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:88',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '_ga=GA1.1.697268035.1534380726; PHPSESSID=ra0hbj6up3bpfvepq6ugce2tq6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'yfthink',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[  ] SHOW COLUMNS FROM `yf_admin_config` [ RunTime:0.005000s ]
+[  ] SELECT `name`,`value`,`type` FROM `yf_admin_config` WHERE `status` = 1  [ RunTime:0.000000s ]
+[  ] SHOW COLUMNS FROM `yf_admin_module` [ RunTime:0.005000s ]
+[  ] SELECT `name` FROM `yf_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.000000s ]
+[  ] SHOW COLUMNS FROM `yf_admin_hook` [ RunTime:0.005000s ]
+[  ] SELECT `name`,`addons` FROM `yf_admin_hook`  [ RunTime:0.000000s ]
+[  ] SELECT `id`,`name` FROM `yf_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.001000s ]
+[  ] SELECT `id`,`name` FROM `yf_admin_addon` WHERE `status` = 1 AND `name` IN ('Frog','RocketToTop')  [ RunTime:0.000000s ]
+[  ] SELECT `name`,`value`,`type` FROM `yf_admin_config` WHERE `status` = 1  [ RunTime:0.001000s ]
+[  ] SELECT * FROM `yf_admin_module` WHERE `status` = 1  [ RunTime:0.000000s ]
+[  ] SELECT * FROM `yf_admin_addon` WHERE `status` = '1'  [ RunTime:0.000000s ]
+[  ] SELECT `addons` FROM `yf_admin_hook` WHERE `name` = 'FormBuilderExtend' LIMIT 1   [ RunTime:0.000000s ]
+[  ] SELECT `config` FROM `yf_admin_addon` WHERE `name` = '' LIMIT 1   [ RunTime:0.000000s ]
+[  ] SHOW COLUMNS FROM `yf_admin_user` [ RunTime:0.006000s ]
+---------------------------------------------------------------
+[ 2018-08-30T10:01:20+08:00 ] ::1 ::1 GET /kaixni11/admin.php/admin/login/login.html
+[ info ] localhost:88/kaixni11/admin.php/admin/login/login.html [运行时间：0.178000s][吞吐率：5.62req/s] [内存消耗：9,864.52kb] [文件加载：103]
+[ error ] [8]Undefined index: LY_DEV_MODE[E:\anzhuan\object\kaixni11\data\db.php:20]
+[ error ] [2]Invalid argument supplied for foreach()[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:60]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [2]Illegal string offset 'type'[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Uninitialized string offset: 0[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:61]
+[ error ] [8]Undefined index: WAP_MODE[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:164]
+[ error ] [8]Undefined index: default_module[E:\anzhuan\object\kaixni11\application\common\behavior\InitConfig.php:198]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run app\common\behavior\InitModule @app_init [ RunTime:0.025000s ]
+[ info ] [ BEHAVIOR ] Run app\common\behavior\InitHook @app_init [ RunTime:0.007000s ]
+[ info ] [ BEHAVIOR ] Run app\common\behavior\InitConfig @app_init [ RunTime:0.005000s ]
+[ info ] [ LANG ] E:\anzhuan\object\kaixni11\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost:88',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '_ga=GA1.1.697268035.1534380726; PHPSESSID=ra0hbj6up3bpfvepq6ugce2tq6',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Login->login[ E:\anzhuan\object\kaixni11\application\admin\controller\Login.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'yfthink',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] E:\anzhuan\object\kaixni11/application/admin\view\login\login.html [ array (
+  0 => 'meta_title',
+  1 => 'meta_keywords',
+  2 => 'meta_description',
+  3 => '_new_message',
+  4 => '_user_auth',
+  5 => '_user_nav_main',
+  6 => '_user_center_side',
+  7 => '_user_center_info',
+  8 => '_admin_public_layout',
+  9 => '_home_public_layout',
+  10 => '_home_public_modal',
+  11 => '_listbuilder_layout',
+  12 => '_formbuilder_layout',
+  13 => '_page_name',
+  14 => '_current_module',
+) ]
+[ info ] [ LOG ] INIT File
+[  ] SELECT `name`,`value`,`type` FROM `yf_admin_config` WHERE `status` = 1  [ RunTime:0.001000s ]
+[  ] SELECT `name` FROM `yf_admin_module` WHERE `status` = 1 AND `is_system` = 0  [ RunTime:0.001000s ]
+[  ] SELECT `name`,`addons` FROM `yf_admin_hook`  [ RunTime:0.000000s ]
+[  ] SELECT `id`,`name` FROM `yf_admin_addon` WHERE `status` = 1 AND `name` IN ('后台首页小工具')  [ RunTime:0.000000s ]
+[  ] SELECT `id`,`name` FROM `yf_admin_addon` WHERE `status` = 1 AND `name` IN ('Frog','RocketToTop')  [ RunTime:0.000000s ]
+[  ] SELECT `name`,`value`,`type` FROM `yf_admin_config` WHERE `status` = 1  [ RunTime:0.000000s ]
+[  ] SELECT * FROM `yf_admin_module` WHERE `status` = 1  [ RunTime:0.000000s ]
+[  ] SELECT * FROM `yf_admin_addon` WHERE `status` = '1'  [ RunTime:0.001000s ]
+[  ] SELECT `addons` FROM `yf_admin_hook` WHERE `name` = 'FormBuilderExtend' LIMIT 1   [ RunTime:0.000000s ]
+[  ] SELECT `config` FROM `yf_admin_addon` WHERE `name` = '' LIMIT 1   [ RunTime:0.000000s ]
+[  ] SELECT `user_nav` FROM `yf_admin_module` WHERE `status` = 1  [ RunTime:0.000000s ]
+[  ] SELECT `title` FROM `yf_admin_module` WHERE `name` = 'admin' LIMIT 1   [ RunTime:0.000000s ]
+[  ] SHOW COLUMNS FROM `yf_admin_upload` [ RunTime:0.005000s ]
+[  ] SELECT * FROM `yf_admin_upload` WHERE `id` = 24 LIMIT 1   [ RunTime:0.001000s ]

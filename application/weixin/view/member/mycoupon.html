@@ -1,0 +1,93 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/quanList.css"/>
+<style type="text/css">
+		html,body{ height: 100%;}
+		.none{ display: none;}
+	</style>
+</block>
+
+<block name="main">
+<!--top-->
+		<div class="pageTop">
+			<a href="/index.php/weixin/index/index#/my"><img src="/application/weixin/view/public/images/back.png"/></a>
+			<span>优惠券</span>
+		</div>
+		<div class="none"><img src="/application/weixin/view/public/images/none.png"/></div>
+		<!--LIST-->
+		<div class="quan_list">
+			<ul>
+				<foreach name="list" item="vo">
+					<li>
+						<div class="quan_list_left <if condition="$vo.status eq 2"><elseif condition="$time gt $vo.zz.datetime">quanactive</if>">
+							<span>优惠券</span>
+							<if condition="$vo.zz.type eq 1">
+							<span>￥{$vo.zz.mj_hui}</span>
+							<else/>
+							<span>{$vo.zz.zhekou}折</span>
+							</if>
+							<div>
+								</a><a></a><a></a><a></a><a></a><a></a><a>
+								<a></a><a></a><a></a><a></a><a></a><a></a>
+							</div>
+						</div>
+						<div class="quan_list_right">
+							<div class="quan_list_right_top">
+								<p>{$vo.zz.title}</p>
+								<if condition="$vo.zz.type eq 1">
+									<p>消费满{$vo.zz.mj_price}元减{$vo.zz.mj_hui}元</p>
+								<else/>
+									<p>消费尊享{$vo.zz.zhekou}折</p>
+								</if>
+							</div>
+							<div class="quan_list_right_bottom">
+								<p>领取时间：{$vo.create_time|date="Y-m-d H:i",###}</p>
+								<p>到期时间：{$vo.zz.datetime|date="Y-m-d H:i",###}</p>
+							</div>
+						</div>
+
+						<if condition="$vo.status eq 2">
+							<img src="/application/weixin/view/public/images/use.png" class="zt"/>
+						<elseif condition="$time gt $vo.zz.datetime">
+							<img src="/application/weixin/view/public/images/guoqi.png" class="zt"/>
+						<else/>
+						</if>
+					</li>
+				</foreach>
+			<!-- 	<li>
+					<div class="quan_list_left">
+						<span>优惠券</span>
+						<span>￥50</span>
+						<div>
+							</a><a></a><a></a><a></a><a></a><a></a><a>
+							<a></a><a></a><a></a><a></a><a></a><a></a>
+						</div>
+					</div>
+					<div class="quan_list_right">
+						<div class="quan_list_right_top">
+							<p>新用户注册红包</p>
+							<p>可用满200</p>
+						</div>
+						<div class="quan_list_right_bottom">
+							<p>开始时间：2019-05-25 11：00</p>
+							<p>开始时间：2019-05-25 11：00</p>
+						</div>
+					</div>
+					<img src="/application/weixin/view/public/images/use.png" class="zt"/>
+				</li> -->
+			</ul>
+		
+		</div>
+</block>
+
+<block name="script">
+<script>
+	$(function(){
+	if($(".quan_list ul li").size()==0)
+	{
+		$(".none").show();
+	}
+})
+</script>
+</block>

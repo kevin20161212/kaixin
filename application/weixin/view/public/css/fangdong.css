@@ -1,0 +1,11 @@
+.pageMain_top{ width:100%; height: auto;}
+			.pageMain .formk{ padding: 0rem 1rem; background: #fff; margin: 0; ;}
+			.pageMain .flex-flow{ padding: 1rem 0rem; border-bottom: 1px solid #f6f6f6;}
+			.pageMain .flex-flow span{ flex:none; font-size: 1.2rem;}
+			.pageMain .flex-flow input{ flex:auto; border: none;font-size: 1.2rem; margin:0 1rem; text-align: right;;}
+		    .require{ background: #fff; padding: 0rem 2rem; padding-bottom: 2rem;}
+		    	.require div .flex-flow{ padding: 1rem 0rem;}
+		    	.require div .flex-flow span{ color: #303030;}
+		    	.require div p{ padding: 0.2rem 0rem; }
+		    	.require div p img{ flex:none; width:1.5rem; }
+		    	.require div p span{ flex:auto; color: gray;; font-size: 12.rem; margin-left: 1rem;}

@@ -1,0 +1,284 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_foot.css"/>
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/nav.css"/>
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/gunali_jindu2.css"/>
+	<script type="text/javascript" src="/application/weixin/view/public/js/iscrollall.js"></script>
+	<script type="text/javascript" src="/application/weixin/view/public/js/jQscroll.js"></script>
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/JQscroll.css"/>
+</block>
+<block name="main">
+	
+			
+		<!--top-->
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>伤务进度</span>
+		</div>
+		<!--nav-->
+		<div class="nav-top" data-callback="callCB">
+			<ul>
+				<li class="active">未完成</li>
+			    <li>已完成</li>
+			</ul>
+			<label></label>
+		</div>
+        <!--content-->
+      
+       	<div class="pageMain wrapper module one1" id="scrollmain">
+            <div class="one">
+				<div class="scrollmainbody">
+
+					<ul >
+						<!--<li>
+							<a class="">
+								<div class="li_left">
+									<img src="/application/weixin/view/public/images/xq/top.png"/>
+								</div>
+								<div class="li_right">
+									<p class="mc flex-flow"><span>名称名称名称名称名称名称名称名称名称名称</span><label>保洁</label></p>
+								
+									<p class="time"><span>保洁人员：高亮</span></p>
+								
+								</div>
+							</a>
+							<a href="" class="module">
+										<p class="time" ><span>任务时间：2015-060-25</span></p>
+									<div class="content s_over s_over1">任务描述：任务描述任务描述任务描述任务描述任务描述任务描述任务描述任务描述任务描述任务描述</div>
+							       	
+							       	<p class="xq flex-flow"><span>详情</span><img src="/application/weixin/view/public/images/guanli/yjt.png"/></p>
+
+							</a>
+						</li>-->
+					  
+					  
+					
+					</ul>
+				</div>
+				 <div class="gif"><img src="/application/weixin/view/public/images/wait2.gif"></div>	   
+			</div>
+		</div>
+		
+		
+		<div class="pageMain wrapper module two1" id="scrollmain2">
+            <div class="one">
+				<div class="scrollmainbody">
+
+					<ul >
+						<!--<li>
+							<a class="">
+								<div class="li_left">
+									<img src="/application/weixin/view/public/images/xq/top.png"/>
+								</div>
+								<div class="li_right">
+									<p class="mc flex-flow"><span>名称名称名称名称名称名称名称名称名称名称</span><label>保洁</label></p>
+								
+									<p class="time"><span>保洁人员：高亮</span></p>
+								
+								</div>
+							</a>
+							<a href="" class="module">
+										<p class="time" ><span>任务时间：2015-060-25</span></p>
+									<div class="content s_over s_over1">任务描述：任务描述任务描述任务描述任务描述任务描述任务描述任务描述任务描述任务描述任务描述</div>
+							       	
+							       	<p class="xq flex-flow"><span>详情</span><img src="/application/weixin/view/public/images/guanli/yjt.png"/></p>
+
+							</a>
+						</li>-->
+					  
+					</ul>
+				</div>
+				 <div class="gif"><img src="/application/weixin/view/public/images/wait2.gif"></div>	   
+			</div>
+		</div>
+		
+	<div class="foot">
+		<ul>
+			<li>
+				<a href="{:U('weixin/manage/renwu')}" class="">
+					<img src="/application/weixin/view/public/images/guanli/renwu.png">
+					<p class="">任务</p>
+		        </a>
+			</li>
+			<li>
+				<a href="{:U('weixin/manage/jindu')}" class="">
+					<img src="/application/weixin/view/public/images/guanli/xingchengr.png">
+					<p class="footactive">进度</p>
+		        </a>
+			</li>
+			<li>
+				<a href="{:U('weixin/manage/member')}" class="">
+					<img src="/application/weixin/view/public/images/guanli/foot4.png">
+					<p class="">我的</p>
+		        </a>
+			</li>
+			
+		</ul>
+	</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+$("#scrollmain").css("height",(  $("body").height()-$(".foot").height()-$(".nav-top").height()  )+"px")
+
+$("#scrollmain2").css("height",(  $("body").height()-$(".foot").height()-$(".nav-top").height()  )+"px")
+
+
+var qbl={
+	scroll1:"",
+	scroll2:"",
+}
+qbl.scroll1=$("body").jQscroll({
+	      
+	        con:'scrollmain',// 父容器
+		    url:"{:U('weixin/manage/jindu')}",//翻页地址
+		    params:{page:1,status:1},
+		    auto:true,//是否自动请求第一页
+		    move:function(){},//滚动中
+			moveCB:function(res){
+				var list=res.list
+				var str="";
+				for(var i=0;i<list.length;i++)
+				{
+					var sf="";
+					list[i].renwu.type=="1" ? sf="保洁"  : sf="维修" ;
+					
+					
+					var s=`
+                      <li>
+							<a href="{:U('weixin/manage/redetails')}?id=`+list[i].renwu.id+`&username=`+list[i].username+`&status=`+list[i].status+`">
+								<div class="li_left">
+									<img src="`+list[i].renwu.picture+`"/>
+								</div>
+								<div class="li_right">
+									<p class="mc flex-flow"><span>`+list[i].renwu.title+`</span><label>`+sf+`</label></p>
+								
+									<p class="time"><span>保洁人员：`+list[i].username+`</span></p>
+								
+								</div>
+							</a>
+							<a href="{:U('weixin/manage/redetails')}?id=`+list[i].renwu.id+`&username=`+list[i].username+`" class="module">
+										<p class="time" ><span>任务时间：`+list[i].renwu.create_time+"&nbsp;&nbsp;"+list[i].renwu.start+":00"+"&nbsp;-&nbsp;"+list[i].renwu.end+":00"+`</span></p>
+									<div class="content s_over s_over1">任务描述：`+list[i].renwu.content+`</div>
+							       	
+							       	<p class="xq flex-flow"><span>详情</span><img src="/application/weixin/view/public/images/guanli/yjt.png"/></p>
+
+							</a>
+						</li>					
+					
+					`
+					str=str+s;
+					
+				}
+				
+				var oldHtrml=$("#"+this.con).find(".scrollmainbody ul").html();
+				$("#"+this.con).find(".scrollmainbody ul").html(oldHtrml+str);
+			},
+		    
+		    wait:function(){
+		    	$("#"+this.con).find(".gif").show();
+		    },
+		    cancelWait:function(){
+		    	$("#"+this.con).find(".gif").hide();
+		    },
+			none:function(){
+				$("#"+this.con).find(".scrollmainbody ul").html(`
+				  <div class="none"><img src="/application/weixin/view/public/images/none.png" style="top:35vh" /></div>	
+				`)
+			},//无数据回调函数
+			over:function(){
+				var $o=$("#"+this.con).find(".gif")
+				$o.html('<div class="over"><label></label><span>我是有底线的！</span><label></label></div>')
+				$o.show();
+			},//有数据到底了回调
+})
+
+qbl.scroll2=$(".foot").jQscroll({
+
+	       con:'scrollmain2',// 父容器
+		    url:"{:U('weixin/manage/jindu')}",//翻页地址
+		     params:{page:1,status:2},
+		    auto:true,//是否自动请求第一页
+		    move:function(){},//滚动中
+			moveCB:function(res){
+				var list=res.list
+				var str="";
+				for(var i=0;i<list.length;i++)
+				{
+					var sf="";
+					list[i].renwu.type=="1" ? sf="保洁"  : sf="维修" ;
+					
+					
+					var s=`
+                      <li>
+							<a href="{:U('weixin/manage/redetails')}?id=`+list[i].renwu.id+`&username=`+list[i].username+`&status=`+list[i].status+`">
+								<div class="li_left">
+									<img src="`+list[i].renwu.picture+`"/>
+								</div>
+								<div class="li_right">
+									<p class="mc flex-flow"><span>`+list[i].renwu.title+`</span><label>`+sf+`</label></p>
+								
+									<p class="time"><span>保洁人员：`+list[i].username+`</span></p>
+								
+								</div>
+							</a>
+							<a href="{:U('weixin/manage/redetails')}?id=`+list[i].renwu.id+`&username=`+list[i].username+`" class="module">
+										<p class="time" ><span>任务时间：`+list[i].renwu.create_time+"&nbsp;&nbsp;"+list[i].renwu.start+":00"+"&nbsp;-&nbsp;"+list[i].renwu.end+":00"+`</span></p>
+									<div class="content s_over s_over1">任务描述：`+list[i].renwu.content+`</div>
+							       	
+							       	<p class="xq flex-flow"><span>详情</span><img src="/application/weixin/view/public/images/guanli/yjt.png"/></p>
+
+							</a>
+						</li>					
+					
+					`
+					str=str+s;
+					
+				}
+				
+				var oldHtrml=$("#"+this.con).find(".scrollmainbody ul").html();
+				$("#"+this.con).find(".scrollmainbody ul").html(oldHtrml+str);
+			},
+		    
+		    wait:function(){
+		    	$("#"+this.con).find(".gif").show();
+		    },
+		    cancelWait:function(){
+		    	$("#"+this.con).find(".gif").hide();
+		    },
+			none:function(){
+				
+				
+				$("#"+this.con).find(".scrollmainbody ul").html(`
+				  <div class="none"><img src="/application/weixin/view/public/images/none.png" style="top:35vh" /></div>	
+				`)
+			},//无数据回调函数
+			over:function(){
+				var $o=$("#"+this.con).find(".gif")
+				$o.html('<div class="over"><label></label><span>我是有底线的！</span><label></label></div>')
+				$o.show();
+			},//有数据到底了回调
+})
+
+gl.nav_top_Init("nav-top",1)
+
+function callCB(i){
+	$(".pageMain").hide();
+	if(i==1)
+	{
+		$(".one1").show()
+		qbl.scroll1.scrollTo(0,0)
+	
+	}
+	if(i==2)
+	{
+		$(".two1").show()
+		qbl.scroll2.scrollTo(0,0)
+	
+	}
+}
+
+
+</script>
+
+</block>

@@ -1,0 +1,129 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/order_content.css"/>
+	<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=ASOBZ-U2RK6-PZQSM-ESQWD-7XO3J-TAFF3"></script>
+	<style type="text/css">
+		.zt{ font-size: 1.6rem; color: #FF414F; padding: 0.7rem 0rem;}
+		.mainpre{ justify-content: flex-start; padding: 1rem 1rem; margin-bottom: 1rem; border-bottom: 1px solid #f6f6f6;}
+	    .mainpre div{ flex: auto;}
+	    .total{ text-align: right; font-size: 1.6rem;}
+	    body{padding-bottom: 0px;}
+	    .xq_title{ padding-top: 1rem;}
+	</style>
+</block>	
+
+<block name="main">
+
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>订单详情</span>
+		</div>
+		<div class="mainpre flex-flow">
+			<div>
+				<p class="zt">
+				<if condition="$order.status eq 1">
+				待支付
+				<elseif condition="$order.status eq 2">
+					<if condition="$order.is_live eq 1">
+						待入住
+					<elseif condition="$order.is_live eq 2">
+						已入住
+					<elseif condition="$order.is_live eq 3">
+						待评价
+					<elseif condition="$order.is_live eq 4">
+						已完成
+					</if>
+				</if>
+
+			</p>
+				<div class="main_content">
+					<span>{$order.live_time}</span><label>|</label>
+					<span>{$order.night}晚</span><label>|</label>
+					<span>{$order.ren}人</span>
+				</div>
+			</div>
+			<div class="total">&yen;{$order.su_total}</div>
+		</div>
+		<!--main-->
+		<div class="main">
+			<img src="{$info.picture}"/>
+			<div class="main_title">{$info.title}</div>
+			<div class="main_content">
+				<span>整套房子</span><label>|</label>
+				<span>{$info.room}室{$info.office}厅{$info.guard}卫{$info.kitchen}厨</span><label>|</label>
+				<span>可住{$info.canlive}人</span><label>|</label>
+				<span>{$info.bed}张床</span>
+			</div>
+		</div>
+		<!--map-->
+	   <div class="housePos"  >
+	   	  <div class="xq_title" style="">房屋位置</div>
+	   	  <div class="houseAddress" >{$info.address}</div>
+	   	  <div class="houseMap" id="container" style="width:100%; height: 300px;"></div>
+	   </div>
+	 
+	   <!--zuozhe-->
+	   <div class="zuozhe flex-flow">
+	   	   <img src="{$member.headimgurl}" class="zuozhe_tx"/>
+	   	   <div class="zuozhe_xinxi">
+	   	   	   <p class="flex-flow"><span>{$member.nickname}</span><img src="/application/weixin/view/public/images/renzheng.png"/></p>
+	   	   	   <p>{$member.about}</p>
+	   	   </div>
+	   	   <div class="zuozhe_house">
+	   	   	   <ul class="flex-flow">
+	   	   	   	    <li><span>房源</span><label>{$member.fycount}</label></li>
+	   	   	   	     <li><span>评价</span><label>{$member.pjcount}</label></li>
+	   	   	   	     <a href="{:U('weixin/member/housedetail',array('id'=>$member['id']))}">查看房东详情</a>
+	   	   	   </ul>
+	   	   </div>
+	   </div>
+	  <!--客人须知-->
+	
+	  <div class="tongzhi">
+	  	  <div class="xq_title">客人须知</div>
+	  	  <div class="tongzhi_content">{$member.content}</div>
+	  </div>
+
+	  <if condition="$order.status eq 1">
+			<div class="tj-block" style="width:95%; margin: 2rem auto; border-radius:5px">去支付</div>
+		<elseif condition="$order.status eq 2">
+			<if condition="$order.is_live eq 1">
+				<div class="tj-block" style="width:95%; margin: 2rem auto; border-radius:5px">取消订单</div>
+			<elseif condition="$order.is_live eq 2">
+				<div class="tj-block" style="width:95%; margin: 2rem auto; border-radius:5px">退款</div>
+			<elseif condition="$order.is_live eq 3">
+				<div class="tj-block" style="width:95%; margin: 2rem auto; border-radius:5px">去评价</div>
+			<elseif condition="$order.is_live eq 4">
+				<div class="tj-block" style="width:95%; margin: 2rem auto; border-radius:5px">已完成</div>
+			</if>
+		</if>
+
+
+	  
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	
+	//地图
+	var mymap={
+		map:'',
+		markerArray:[],
+		lat:{$info.latitude},//初始纬度
+		lng:{$info.longitude},//初始经度
+		conId:"container",
+		jsonArr:[ /*{id:1,lat:39.914850,lng:116.403765}*/],
+		latVal:"lat",//点击地图后存放纬度INPUT的ID
+		lngVal:"lng",//点击地图后存放经度INPUT的ID
+		zoom:12//地图初始缩放比例
+	}
+	
+	
+
+
+
+
+</script>
+<script src="/application/weixin/view/public/js/myqqmap.js" type="text/javascript" ></script>
+</block>

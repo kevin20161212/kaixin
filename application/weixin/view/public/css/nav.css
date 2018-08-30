@@ -1,0 +1,46 @@
+body{
+	margin:0px auto;
+	background: #f6f6f6;
+}
+.nav-top{
+		background: #fff;
+		padding:5px 0px;
+		margin-bottom:10px;
+		position: relative;
+		border-bottom:1px solid #ddd;
+	}
+	.nav-top ul{
+		 display: flex;
+		 display: -webkit-flex;
+		 flex-flow: row nowrap;
+		 justify-content: space-around;
+		 
+		 align-items: center;
+		 padding: 0px;
+	}
+	.nav-top li{
+		list-style-type: none;
+		color: #303030;
+		 font-size: 1.2rem !important;
+		
+		 flex:auto;
+		  text-align: center;
+	}
+	.nav-top .active{
+		  color: red;
+	}
+	.nav-top label{
+		height: 1px; width:10%;
+		border-bottom: 2px solid red;
+		position: absolute;
+		bottom:0px;
+	}
+	
+
+.nav-top-more{display: flex; display: -webkit-flex; flex-flow: row nowrap; align-items: center; position: relative;}
+			.nav-top-more .nav-top-more_oneul{flex:auto}
+			.nav-top-more_jiantou{border-left:1px solid #eee;}
+			.nav-top-more_jiantou i{font-size: 2rem; margin: 0px 5px; color: #999;}
+			.nav-top-more .more{ display:none; background: #fff; position: absolute; left: 0px; top:100%; width:100%; padding-top: 1rem;; border-top:1px solid #eee}
+			.more li{ font-size: 1rem; border-radius:5px; width:6rem; height: 2.5rem ;line-height: 2.5rem; margin-left: 1rem; margin-bottom: 1rem; border: 1px solid #ddd; float:left;;}
+		    .moreactive{background: #ff2d4b; color: #fff !important; border: 1px solid #ff2d4b;}

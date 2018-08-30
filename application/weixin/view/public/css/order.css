@@ -1,0 +1,44 @@
+body{ padding-bottom: 10rem;}
+		.silde_right{ height: 100%; background: #eee; z-index: 20; }
+		.silde_right ul{ overflow-y: scroll; height: 100%;}
+		/*pageMain*/
+		
+		.pageMain img{ width:100%; height: auto;;}
+		.pageMain_top div{ padding: 1rem 1rem; background: #fff;}
+		.pageMain_top div:nth-child(2){ font-size: 1.4rem;}
+		.pageMain_top div:last-child{ font-size: 1.0rem; padding-top: 0rem; color: dimgray;}
+		.pageMain_top div:last-child span{ display: inline-block; margin-right: 1rem;}
+		
+		.pageMain_data{ background: #fff; margin-top: 7px; padding: 0rem 1rem;}
+		.pageMain_data .flex-flow{ padding: 0.5rem 0rem;}
+		.pageMain_data .pageMain_data_list{ border-bottom: 1px solid #f6f6f6;}
+		.pageMain_data .flex-flow span{ flex:none; font-size: 1.2rem;}
+		.pageMain_data .flex-flow div{ flex:auto; justify-content: flex-end}
+		.pageMain_data .flex-flow div img{ width:1.8rem}
+		.pageMain_data .flex-flow div input{ border: none; font-size: 1.4rem; width:2.5rem; margin: 0; padding: 0; text-align: center;; color: #303030;}
+		
+		.flex-flow .yjt{ flex:none; }
+		
+		
+		.pageMain_data .pageMain_data_list2{ border-bottom: 1px solid #f6f6f6; }
+	    .pageMain_data_list2 input{ border: none; margin: 0; margin-left: 1rem; font-size: 1.2rem;}
+	    .pageMain_data_list2 img{ height: 20px;  margin: 10px 0rem; width:auto; flex:none; }
+	    .pageMain_data_list2 span label{ color: #FF414F; font-size: 1.0rem; display: inline-block;; margin-left: 1.5rem;}
+	   
+	   /*xieyi*/
+	  .xieyi{ padding: 1rem 1rem;}
+				.xieyi div{flex:none; width:1.5rem ;height: 1.5rem; border: 1px solid #ddd; border-radius:50%}
+				.xieyi div img{ display: none; width:1rem ;height: auto; margin: 0.25rem 0.25rem;}
+				.xieyi span{ flex:auto; margin-left: 1rem; font-size: 1rem;}
+				.xieyiActive div{ background: url(../images/bj.jpg); border: none;}
+			    .xieyiActive div img{ display: block;}
+	    /*pageFoot*/
+	   .pageFoot{
+			
+				 position: fixed; left: 0px; right: 0px; bottom:0px; margin: auto; height: 4rem; background: #fff;;
+				  border-top:1px solid #f6f6f6; z-index: 10; padding-left: 1rem;
+			}
+			.pageFoot .pageFoot_total{ flex:auto}
+			.pageFoot .pageFoot_tj{ background: url(../images/bj.jpg); color: #fff; font-size: 1.4rem; flex:none; height: 4rem; line-height: 4rem; padding: 0rem 3rem;}
+		   .pageFoot_total span{ font-size: 1.6rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;  }
+		   .pageFoot_total i{ font-style: normal; font-size: 0.8rem;}

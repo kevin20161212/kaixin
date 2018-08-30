@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript" src="/application/weixin/view/public/js/mui.js"></script>
+		<script type="text/javascript" src="/application/weixin/view/public/js/rem.js"></script>
+		<!-- <script type="text/javascript" src="/application/weixin/view/public/js/layer.js"></script> -->
+		<!-- <script type="text/javascript" src="/application/weixin/view/public/js/module.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/pagetop.css"/>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/style.css"/>
+		<script type="text/javascript" src="/application/workman/view/public/js/swfobject.js"></script>
+	  	<script type="text/javascript" src="/application/workman/view/public/js/web_socket.js"></script>
+	  	<script type="text/javascript" src="/application/workman/view/public/js/jquery.min.js"></script>
+	    <script type="text/javascript" src="/application/workman/view/public/js/jquery-sinaEmotion-2.1.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/dialog.css"/>
+		<title>宫其逡的城堡</title>
+		<script>
+			if (typeof console == "undefined") {
+			    this.console = { log: function (msg) {  } };
+			    
+			}
+			WEB_SOCKET_SWF_LOCATION = "/application/workman/view/public/swf/WebSocketMain.swf";
+			WEB_SOCKET_DEBUG = true;
+			var ws, name, client_list={};
+			function connect() {
+		       	// 创建websocket
+		       	ws = new WebSocket("ws://"+document.domain+":2345");
+		       	
+		       	// 当socket连接打开时，输入用户名
+		       	ws.onopen = onopen;
+
+		       	// console.log(onopen)
+		       	// 当有消息时根据消息类型显示不同信息
+		       	ws.onmessage = onmessage; 
+		       
+
+		       	ws.onclose = function() {
+		    	  	console.log("连接关闭，定时重连");
+		          	connect();
+		       	};
+		       	ws.onerror = function() {
+		     	  	console.log("出现错误");
+		       	};
+		    }
+
+		     // 连接建立时发送登录信息
+		    function onopen()
+		    {
+		        // if(!name)
+		        // {
+		        //     show_prompt();
+		        // }
+		        // 登录
+		        var login_data = '{"type":"init","client_name":'+"{$member.nickname}".replace(/"/g, '\\"')+'","uid":"{$member.id}","avatar":"{$member.avatar}"}';
+		        console.log("websocket握手成功，发送登录数据:"+login_data);
+		        ws.send(login_data);
+		        // alert(login_data);
+		    }
+
+		     // 输入姓名
+		    function show_prompt(){  
+		        name ='{$member.nickname}';
+		    }
+
+
+
+		     // 服务端发来消息时
+		    function onmessage(e)
+		    {
+		        console.log(e)
+		      
+		        var data = JSON.parse(e.data);
+		       
+		        switch(data['type']){
+		            // 服务端ping客户端
+		            case 'ping':
+		                ws.send('{"type":"pong"}');
+		                break;;
+		            // 登录 更新用户列表
+		            case 'login':
+		                //{"type":"login","client_id":xxx,"client_name":"xxx","client_list":"[...]","time":"xxx"}
+		                say(data['client_id'], data['client_name'],  data['client_name']+' 加入了聊天室', data['time']);
+		                if(data['client_list'])
+		                {
+		                    client_list = data['client_list'];
+		                }
+		                else
+		                {
+		                    client_list[data['client_id']] = data['client_name']; 
+		                }
+		                // flush_client_list();
+		                console.log(data['client_name']+"登录成功");
+		                break;
+		            // 发言
+		            case 'say':
+		                //{"type":"say","from_client_id":xxx,"to_client_id":"all/client_id","content":"xxx","time":"xxx"}
+		                say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
+		                break;
+		            // 用户退出 更新用户列表
+		            case 'logout':
+		                //{"type":"logout","client_id":xxx,"time":"xxx"}
+		                say(data['from_client_id'], data['from_client_name'], data['from_client_name']+' 退出了', data['time']);
+		                delete client_list[data['from_client_id']];
+		                // flush_client_list();
+		        }
+		    }
+
+		      // 提交对话
+		    function onSubmit() {
+		      	var input = document.getElementById("textarea");
+		      	ws.send('{"type":"say","nickname":"{$member.nickname}","headimgurl":"{$member.headimgurl}","uid":"{$member.id}","content":"'+input.value.replace(/"/g, '\\"').replace(/\n/g,'\\n').replace(/\r/g, '\\r')+'"}');
+		      	input.value = "";
+		      	input.focus();
+		        // alert(to_client_name);
+		     
+		    }
+
+		     function say(from_client_id, from_client_name, content, time){
+		        //解析新浪微博图片
+		        content = content.replace(/(http|https):\/\/[\w]+.sinaimg.cn[\S]+(jpg|png|gif)/gi, function(img){
+		            return "<a target='_blank' href='"+img+"'>"+"<img src='"+img+"'>"+"</a>";}
+		        );
+
+		        //解析url
+		        content = content.replace(/(http|https):\/\/[\S]+/gi, function(url){
+		            if(url.indexOf(".sinaimg.cn/") < 0)
+		                return "<a target='_blank' href='"+url+"'>"+url+"</a>";
+		            else
+		                return url;
+		        }
+		        );
+
+		        $(".dialog_main").append('<div class="dialog_item_right"><span>'+time+'</span><div class="dialog_item_content "><div><i></i>'+content+'</div><img src="{$member.headimgurl}"/></div></div>').parseEmotion();
+		    	// $("#dialog").append('<div class="speech_item"><img src="http://lorempixel.com/38/38/?'+from_client_id+'" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
+		    }
+		</script>
+	</head>
+	
+	<body  onload="connect();">
+		<!--top-->
+		<div class="pageTop" style="background: #fff !important; border-bottom: 2px solid #ddd; position: fixed; z-index: 50; top:0px; left: 0px; width:100%;display:block;">
+			<img src="/application/weixin/view/public/images/back2.png"/>
+			<span  style="color: #303030;">宫其逡的城堡</span>
+		</div>
+		<div class="dialog_main">
+			<!-- <div class="dialog_item_left">
+				<span>06-20   25:30</span>
+				<div class="dialog_item_content ">
+					<img src="/application/weixin/view/public/images/tx1.png"/>
+					<div><i></i>宫其逡的城堡宫其逡的城堡</div>
+				</div>
+			</div>
+			
+			<div class="dialog_item_right">
+				<span>06-20   25:30</span>
+				<div class="dialog_item_content ">
+					
+					<div><i></i>宫其逡的城堡宫其逡的城堡</div>
+					<img src="/application/weixin/view/public/images/tx1.png"/>
+				</div>
+			</div> -->
+			
+			
+			<!-- <div class="dialog_item_left">
+				<span>06-20   25:30</span>
+				<div class="dialog_item_content ">
+					<img src="/application/weixin/view/public/images/tx1.png"/>
+					<div><i></i>宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡</div>
+				</div>
+			</div> -->
+			<!-- <div class="dialog_item_left">
+				<span>06-20   25:30</span>
+				<div class="dialog_item_content ">
+					<img src="/application/weixin/view/public/images/tx1.png"/>
+					<div><i></i>宫其逡的城堡宫其逡的城堡</div>
+				</div>
+			</div> -->
+			
+			<!-- <div class="dialog_item_right">
+				<span>06-20   25:30</span>
+				<div class="dialog_item_content ">
+					
+					<div><i></i>宫其逡的城堡宫其逡的城堡</div>
+					<img src="/application/weixin/view/public/images/tx1.png"/>
+				</div>
+			</div> -->
+			
+			
+			<!-- <div class="dialog_item_left">
+				<span>06-20   25:30</span>
+				<div class="dialog_item_content ">
+					<img src="/application/weixin/view/public/images/tx1.png"/>
+					<div><i></i>宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡宫其逡的城堡</div>
+				</div>
+			</div> -->
+		</div>
+		<div class="dialog_send flex-flow">
+			<img src="/application/weixin/view/public/images/logoarc.png"/>
+			<input type="text" id="textarea" placeholder="撰写消息..." />
+			<span class="tj" onclick="onSubmit();">发送</span>
+		</div>
+	</body>
+	<style type="text/css">
+		
+	</style>
+</html>
+<script type="text/javascript">
+	mui.init();
+$(function(){
+	if($(".quan_list ul li").size()==0)
+	{
+		$(".none").show();
+	}
+})
+mui("dialog_send").on("tap",".tj",function(){
+	gl.sendAjax("url","post","data",function(res){
+		
+	})
+})
+</script>

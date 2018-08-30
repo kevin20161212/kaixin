@@ -1,0 +1,82 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+<style type="text/css">
+		
+		.flex-flow{display: flex; display: -webkit-flex; flex-flow: row nowrap; justify-content: center; align-items: center;}
+		.pageMain{ padding: 0rem 1rem; background: #fff;}
+		.pageMain .flex-flow{border-bottom: 1px solid #f6f6f6; padding: 1.5rem 0rem;}
+		.pageMain .flex-flow span{ flex:none; width:5rem; font-size: 1.2rem; text-align: right;}
+		.pageMain .flex-flow input{ font-size: 1.2rem;  border: none; line-height: 100%; height: 100%; margin: 0; padding: 0;margin-left: 1rem;}
+	    .flex-flow  div{ flex:auto; margin-left: 1rem; text-align: right;}
+	   .flex-flow  div img{ width:3rem; height: 3rem; border-radius:50%; margin-right: 2rem;}
+	</style>
+</block>
+
+<block name="main">
+	<div class="pageTop">
+			<a href="/index.php/weixin/index/index#/my"><img src="/application/weixin/view/public/images/back.png"/></a>
+			<span>我的资料</span>
+		</div>
+		
+		<!--MAIN-->
+		 <form action="{:U('weixin/member/mydata')}" method="post">
+		<div class="pageMain">
+				<div class="flex-flow pageMain_change" style="padding: 0.7rem 0rem !important;">
+					<span>微信头像</span>
+					<div><img src="{$res.headimgurl}"/></div>
+				</div>
+				
+				<div class="flex-flow">
+					<span>昵&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;称</span>
+					<input data-mess="昵称" class="notEmpty" type="text" name="nickname" value="{$res.nickname}" placeholder="请输入昵称">
+				</div>
+				
+				<div class="flex-flow">
+					<span>手机号码</span>
+					<input data-mess="手机号码" class="tel" type="tel" name="mobile" value="{$res.mobile}" placeholder="请输入手机号码">
+				</div>
+				
+				<div class="flex-flow">
+					<span>真实姓名</span>
+					<input data-mess="真实姓名" class="notEmpty" type="text" name="username" value="{$res.username}" placeholder="请输入真实姓名">
+				</div>
+				
+				<div class="flex-flow">
+					<span>身份证号</span>
+					<input type="text" name="cardid" value="{$res.cardid}" placeholder="请输入身份证号">
+				</div>
+				
+				<div class="flex-flow city-picker  second" data-showdom="showdz">
+					<span>所在城市</span>
+					<input placeholder="选择所在城市" name="location" type="text" value="{$res.location}" class="showdz" onfocus="javascript:$(this).blur()">	
+				</div>
+				<div class="flex-flow">
+					<span>个性签名</span>
+					<textarea  name="about" style="border:0">{$res.about}</textarea>
+					<!-- <input data-mess="真实姓名" class="notEmpty" type="text" name="username" value="{$res.username}" placeholder="请输入真实姓名"> -->
+				</div>
+				<input type="hidden" name="id" value="{$res.id}">
+		</div>
+        <a class="tj ajax-post" style="margin-top: 2rem;" data-succ="successs">提交资料</a>
+       	</form>
+       
+</block>
+
+<block name="script">
+       <script>
+       	function successs(res){
+       		
+       		if(res.status == 1){
+       			layer.msg(res.info)
+       		}else{
+       			layer.alert(res.info);
+       		}
+       		
+
+
+
+       	}
+       </script>
+       
+</block>

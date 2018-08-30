@@ -1,0 +1,111 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	<script type="text/javascript" src="/application/weixin/view/public/js/my_picker.js"></script>
+	<link rel="stylesheet" href="/application/weixin/view/public/css/mypicker2.css" />
+	 <style type="text/css">
+	 	html,body{ height: 100%;}
+	.mypicker{ height: 150px; overflow: hidden;border-bottom:1px solid #ddd; }
+	textarea{ margin-bottom: 0; font-size:1.2rem; border: none; border-bottom:1px solid #ddd;}
+	
+	 .tj{ margin-top: 1rem;}
+	 </style>
+</block>	
+
+<block name="main">
+	<div class="pageTop">
+		<img src="/application/weixin/view/public/images/back.png"/>
+		<span>申请维修</span>
+	</div>
+	<div class="pageMain ">
+		<form action="{:U('weixin/order/applyrepair')}" method="post">
+			<div class="s_title">请输入您的需求</div>
+			<div class="">
+				<textarea  placeholder="您有什么需要维修的？" name="content" rows="5" cols=""></textarea>
+			</div>
+			<div class="s_title">请选择维修时间段</div>
+			<div class="mypicker"></div>
+			<input type="hidden" name="start" id="start" value="1" />
+			<input type="hidden" name="end" id="end" value="24" />
+			<input type="hidden" name="id" id="id" value="{$id}" />
+			<a class="tj ajax-post" data-succ="tjfh">提交</a>
+		</form>
+	</div>
+	  
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$("body").my_picker({
+	con:document.querySelector(".mypicker"),//容器PICKER，需定义CSS样式高度。
+	data://数据
+	[
+		 [
+		   	{value:1,text:"1  ：00"},
+		   	{value:2,text:"2  ：00"},
+		   	{value:3,text:"3  ：00"},
+		   	{value:4,text:"4  ：00"},
+		   	{value:5,text:"5  ：00"},
+		   	{value:6,text:"6  ：00"},
+		   	{value:7,text:"7  ：00"},
+		   	{value:8,text:"8  ：00"},
+		   	{value:9,text:"9  ：00"},
+		   	{value:10,text:"10  ：00"},
+		   	{value:11,text:"11  ：00"},
+		   	{value:12,text:"12  ：00"},
+		    {value:13,text:"13 ：00"},
+		    {value:14,text:"14  ：00"},
+		    {value:15,text:"15  ：00"},
+		    {value:16,text:"16  ：00"},
+		    {value:17,text:"17  ：00"},
+		    {value:18,text:"18  ：00"},
+		    {value:19,text:"19  ：00"},
+		    {value:20,text:"20  ：00"},
+		    {value:21,text:"21  ：00"},
+		    {value:22,text:"22  ：00"},
+		    {value:23,text:"23  ：00"},
+		    {value:24,text:"24  ：00"},
+		 ],
+		 [
+		   	{value:1,text:"1  ：00"},
+		   	{value:2,text:"2  ：00"},
+		   	{value:3,text:"3  ：00"},
+		   	{value:4,text:"4  ：00"},
+		   	{value:5,text:"5  ：00"},
+		   	{value:6,text:"6  ：00"},
+		   	{value:7,text:"7  ：00"},
+		   	{value:8,text:"8  ：00"},
+		   	{value:9,text:"9  ：00"},
+		   	{value:10,text:"10  ：00"},
+		   	{value:11,text:"11  ：00"},
+		   	{value:12,text:"12  ：00"},
+		    {value:13,text:"13 ：00"},
+		    {value:14,text:"14  ：00"},
+		    {value:15,text:"15  ：00"},
+		    {value:16,text:"16  ：00"},
+		    {value:17,text:"17  ：00"},
+		    {value:18,text:"18  ：00"},
+		    {value:19,text:"19  ：00"},
+		    {value:20,text:"20  ：00"},
+		    {value:21,text:"21  ：00"},
+		    {value:22,text:"22  ：00"},
+		    {value:23,text:"23  ：00"},
+		    {value:24,text:"24  ：00"},
+		 ]
+	],
+	fun:function(res){
+		//回调函数，参数为返回选中的值，如果数组有三组，则返回RES的数组长度也为3
+		//alert(res[0]+"----------------"+res[1])
+		$("#start").val(res[0])
+		$("#end").val(res[1])
+	}
+})
+function tjfh(res){
+	if(res.status == 1){
+		layer.msg(res.msg)
+	}else{
+		layer.alert(res.msg)
+	}
+}
+</script>
+</block>

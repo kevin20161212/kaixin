@@ -1,0 +1,60 @@
+<case value="coupon">
+    <!--
+        如果选项的值是自定义数组(必须定义key为title的元素)需要解析，如果选项的值是常规字符串直接显示
+        此处主要是用来给option定义更多的属性，比如data-ia=1，那么option应为
+        $option = array('title' => 标题, 'data-id' => 1);
+    -->
+
+ 
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+            <foreach name="[type]form.options" item="option" key="option_key">
+                <div class="radio-inline lyui-control lyui-radio">
+                    <label for="{$[type]form.name}{$option_key}">
+                        <php>if(is_array($option)):</php>
+                            <input type="radio"  onclick="changein('{$option_key}')" id="{$[type]form.name}{$option_key}" class="radio" name="type" value="{$option_key}" <?php if($[type]form['value']['type'] == $option_key) echo 'checked';?> {$[type]form.extra.attr|default=''}
+                                <foreach name="option" item="option2" key="option_key2">
+                                    {$option_key2}="{$option2}"
+                                </foreach>>
+                            <span class="lyui-control-indicator"></span>
+                            <span>{$option.title}</span>
+                        <php>else:</php>
+                            <input type="radio" onclick="changein('{$option_key}')" id="{$[type]form.name}{$option_key}" class="radio" name="type" value="{$option_key}" <?php if($[type]form['value']['type'] == $option_key) echo 'checked';?> {$[type]form.extra.attr|default=''}> 
+                            <span class="lyui-control-indicator"></span>
+                            <span>{$option}</span>
+                        <php>endif;</php>
+                    </label>
+                    <div>
+                    </div>
+                </div>
+            </foreach>
+        </div>
+    </div>
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">优惠内容：</label>
+        <div class="right">
+            <div class="" id="yhcon" style="width:100%;">
+              <span style="line-height: 34px;">请先选择优惠券类型</span>
+            </div>
+        </div>
+    </div>
+    <script>
+    	if('{$[type]form.value.type}'){
+    		changein('{$[type]form.value.type}')
+    	}
+
+    	function changein(id) {
+    	
+        var youhui1 = ' <span style="float:left;line-height:34px;padding-right:10px;">满</span> <input type="text" style="width:10%;float:left;" class="text input-2 form-control" name="mj_price" value="{$[type]form.value.mj_price}"> <span style="float:left;line-height: 34px;padding:0 10px;">减</span><input type="text" style="width:10%;float:left;" class="text input-2 form-control" name="mj_hui" value="{$[type]form.value.mj_hui}">';
+        var youhui2 = '<input type="text" style="width:10%;float: left;" class="text input-2 form-control" name="zhekou" value="{$[type]form.value.zhekou}"> <span  style="float:left;line-height:34px;padding-left:10px;">折</span>';
+        if (id == 1) {
+          document.getElementById("yhcon").innerHTML='';
+          document.getElementById("yhcon").innerHTML=youhui1;
+        }else if (id == 2) {
+          document.getElementById("yhcon").innerHTML='';
+          document.getElementById("yhcon").innerHTML=youhui2;
+        }
+      }
+    </script>
+</case>

@@ -1,0 +1,14 @@
+<extend name="$_admin_public_layout"/>
+
+<block name="style">
+    <include file="./application/common/util/yfthink/builder/style.html" />
+</block>
+<block name="main">
+    <div class="panel-body">
+        <include file="$_listbuilder_layout" builderpath="./application/common/util/yfthink/builder" />
+    </div>
+</block>
+
+<block name="script">
+    <include file="./application/common/util/yfthink/builder/javascript.html" />
+</block>

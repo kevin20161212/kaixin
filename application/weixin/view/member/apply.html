@@ -1,0 +1,47 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong.css"/>
+</block>
+
+<block name="main">
+	<div class="pageTop">
+			<a href="/index.php/weixin/index/index#/my"><img src="/application/weixin/view/public/images/back.png"/></a>
+			<span>成为房东</span>
+		</div>
+		<!--LIST-->
+		<form method="post" action="vvv.php">
+		<div class="pageMain">
+			<img src="/application/weixin/view/public/images/fangdong.jpg" class="pageMain_top"/>
+			<div class="formk">
+					<div class="flex-flow">
+						<span>业主姓名</span>
+						<input data-mess="业主姓名" class="notEmpty" type="text" name="username" id="" value="" placeholder="请输入业主姓名" />
+					</div>
+					<div class="flex-flow">
+						<span>手机号码</span>
+						<input data-mess="手机号码" class="tel" type="tel" name="phone" id="" value="" placeholder="请输入手机号码" />
+					</div>
+		   </div>
+		</div>
+		<div class="require">
+		    	   <div>
+		    	   	  <p class="flex-flow"><img src="/application/weixin/view/public/images/warning.png"/><span>民宿房源要求</span></p>
+		    	   	  <p><span>—市中心，交通和生活便利</span></p>
+		    	   	  <p><span>—家庭住宅，有地方生活气息的小区</span></p>
+		    	   	  <p><span>—管理规范的高品质小区或当地人文特色建筑</span></p>
+		    	   </div>
+		    	   <div>
+		    	   	  <p class="flex-flow"><img src="/application/weixin/view/public/images/warning.png"/><span>三不要</span></p>
+		    	   	  <p><span>—酒店 /酒店式公寓NO，单间NO，郊区NO</span></p>
+		    	   </div>
+		</div>
+		<div class="tj-block ajax-post">
+			申请成为房东
+		</div>
+		</form>	
+</block>
+
+<block name="script">
+
+</block>

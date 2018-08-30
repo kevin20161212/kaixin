@@ -1,0 +1,30 @@
+html,body{ min-height: 100%;}
+		.none{ display: none;}
+		.dialog_main{ height: 100%; background: #fff; margin-top: 4.1rem; padding-bottom: 5rem;}
+		.dialog_item_left,.dialog_item_right{ padding: 1rem 1rem; display: flex;display: -webkit-flex; flex-flow:column; justify-content: center; }
+	    .dialog_item_left img,.dialog_item_right img{ width:4rem; height: 4rem; border: 1px solid #ddd; border-radius:50%;;}
+	    .dialog_item_left .dialog_item_content{ display: flex; display: -webkit-flex; flex-flow: row nowrap; justify-content: flex-start;
+	     align-items: center; position: relative;}
+	     .dialog_item_right .dialog_item_content{ display: flex; display: -webkit-flex; flex-flow: row nowrap; justify-content: flex-end;
+	     align-items: center; position: relative;}
+	     
+	   
+	
+	    .dialog_item_left span:first-child{ text-align: center; color: gray; padding: 1rem 0rem;}
+	     .dialog_item_left .dialog_item_content div{position: relative; background: url(../images/bj.jpg);   letter-spacing: 0.1rem;;  
+	     color: #fff; font-size: 1.2rem; padding: 1rem 1rem; margin-left: 1rem; border-radius:5px}
+	     .dialog_item_left .dialog_item_content div i{ position: absolute;; left: -0.4rem; top:50%; width:1rem; height: 1rem; 
+	     background: url(../images/bj.jpg);transform: translateY(-50%) rotate(-45deg);-webkit-transform: translateY(-50%) rotate(-45deg)
+	     }
+	     
+	     .dialog_item_right span:first-child{ text-align: center; color: gray; padding: 1rem 0rem;}
+	     .dialog_item_right .dialog_item_content div{position: relative; background: url(../images/bj.jpg);   letter-spacing: 0.1rem;;  
+	     color: #fff; font-size: 1.2rem; padding: 1rem 1rem; margin-right: 1rem; border-radius:5px}
+	     .dialog_item_right .dialog_item_content div i{ position: absolute;; right: -0.4rem; top:50%; width:1rem; height: 1rem; 
+	     background: url(../images/bj.jpg);transform: translateY(-50%) rotate(-45deg);-webkit-transform: translateY(-50%) rotate(-45deg)
+	     }
+	     
+	     
+	     .dialog_send{background: #fff; position:fixed; left: 0px; right: 0px; width:100%; bottom:0px; height: 4rem; border-top:1px solid #ddd; padding: 0rem 1rem;}
+	    .dialog_send img{ height: 3rem; width:auto;}
+	    .dialog_send input{ margin:0; border: none;}

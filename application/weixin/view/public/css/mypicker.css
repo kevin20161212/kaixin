@@ -1,0 +1,39 @@
+.jiange{ width:90%; margin: 0px auto;  overflow: hidden;;  }
+   	 
+   	 .datetime_btn{    padding: 10px 10px 0rem 10px; background: #fff; display: flex; display: -webkit-flex;  justify-content: space-between; align-items: center; flex-flow:row nowrap}
+   	 .datetime_btn span{  text-align: center; font-size: 14px;}
+   	 
+   	 .datetime_show{ border-bottom: 1px solid #ddd; padding: 10px 0rem ; background: #fff; display: flex; display: -webkit-flex;  justify-content: space-around; align-items: center; flex-flow:row nowrap}
+   	 .datetime_show span:nth-child(1){ margin-left: 15px; font-size: 14px;}
+   	 .datetime_show span:nth-child(2){ flex:auto; text-align: center; font-size: 16px;}
+   	  .datetime_show span:nth-child(3){ margin-right: 15px; font-size: 14px;}
+   	 
+   	 .datetime_main{ width:100%; overflow: hidden;background: #fff; padding: 10px 0rem 15px 0rem ; border-radius: 0px 0px 10px 10px;}
+   	 .datetime_top{ text-align: center; font-size: 14px; padding: 10px 0rem;}
+   	 .datetime_top .prev{ display: inline-block; margin-right: 20px; width:20px}
+   	 .datetime_top .next{ display: inline-block; margin-left: 20px; width:20px}
+   	 
+   	 .datetime_week{ }
+   	 .datetime_week table{width:100%}
+   	 .datetime_week table tr{ width:100%;display: flex;  display: -webkit-flex;flex-flow:row nowrap; align-items: center;;justify-content: center;}
+     .datetime_week table tr td{ flex:auto; text-align: center; padding: 7px 0rem; color: gray;}
+     
+     .datetime_content{ width:100%;}
+   	 .datetime_content ul{ margin: 0; padding: 0; overflow: hidden;}
+   	 .datetime_content ul li{ width:14.2%; float:left; text-align: center; overflow: hidden; min-height: 1px;  margin-bottom: 1px;}
+     .datetime_date{ font-size: 14px; line-height: 16px; height: 16px;}
+     .datetime_total{ font-size:10px; color: #FF414F; height: 13px; line-height: 13px;}
+     .err  .datetime_date{ color: gray;}
+     .err .datetime_total{ color: gray;}
+     .datetime_content .active{background: #FF414F;  overflow: hidden;;}
+     .datetime_content .active .datetime_date{ color: #fff;}
+     .datetime_content .active .datetime_total{ color: #fff;}
+     
+     
+     .datetime_content .startactive{ background:#FF414F ;border-radius:40px 0 0 40px}
+     .datetime_content .endactive{ background:#FF414F ;border-radius:0 40px 40px 0}
+     .datetime_content .lyactive{background:#FF414F;}
+     
+     .datatime_ts{ font-size: 10px; color: #fff; height: 12px; line-height: 12px;}
+     
+.dateshow{ top:0px !important;}

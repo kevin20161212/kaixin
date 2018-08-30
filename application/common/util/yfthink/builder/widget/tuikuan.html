@@ -1,0 +1,54 @@
+<case value="tuikuan">
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+            <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
+                <label style="position: relative;">
+                    <input id="[type]{$group_k|default=''}_date_{$[type]k}" type="checkbox" name="checkout" <?php if($[type]form['value']['checkout'] == 1) { echo 'checked="checked"'; } ?> >
+                    <span>{$[type]form.tip|default=''}</span>
+                    <input id="[type]{$group_k|default=''}_date_{$[type]k}_input" type="hidden" name="checkout" value="{$[type]form['value']['checkout']|default=''}">
+                </label>
+            </div><br><br>
+            <div id="dsgj" style="display:none;color:#888;">入住 
+                    <select name="day" id="" style="color:red;border:0px;">
+                        <option value="1" <if condition="$[type]form.value.day eq 1">selected</if>>前1天</option>
+                        <option value="3" <if condition="$[type]form.value.day eq 3">selected</if>>前3天</option>
+                        <option value="7" <if condition="$[type]form.value.day eq 7">selected</if>>前7天</option>
+                        <option value="15" <if condition="$[type]form.value.day eq 15">selected</if>>前15天</option>
+                        <option value="30" <if condition="$[type]form.value.day eq 30">selected</if>>前30天</option>
+                    </select>
+            12点前取消订单，房费可全额退还；<br><br>之后取消订单，收取未住房费的
+                    <select name="percent" id="" style="color:red;border:0px;">
+                        <option value="10" <if condition="$[type]form.value.percent eq 10">selected</if>>10%</option>
+                        <option value="20" <if condition="$[type]form.value.percent eq 20">selected</if>>20%</option>
+                        <option value="30" <if condition="$[type]form.value.percent eq 30">selected</if>>30%</option>
+                        <option value="40" <if condition="$[type]form.value.percent eq 40">selected</if>>40%</option>
+                        <option value="50" <if condition="$[type]form.value.percent eq 50">selected</if>>50%</option>
+                        <option value="60" <if condition="$[type]form.value.percent eq 60">selected</if>>60%</option>
+                        <option value="70" <if condition="$[type]form.value.percent eq 70">selected</if>>70%</option>
+                        <option value="80" <if condition="$[type]form.value.percent eq 80">selected</if>>80%</option>
+                        <option value="90" <if condition="$[type]form.value.percent eq 90">selected</if>>90%</option>
+                        <option value="100" <if condition="$[type]form.value.percent eq 100">selected</if>>100%</option>
+                    </select>作为违约金支付给房东。（包含未入住和提现离店）</div>
+           
+            <a href="tuikuan.html"></a>
+            <script type="text/javascript">
+                if('{$[type]form.value.checkout}' == 1){
+                    $('#dsgj').show();
+                }
+                $(function(){
+                    $(document).on('click', '#[type]{$group_k|default=''}_date_{$[type]k}', function() {
+                        var ch = $(this).is(':checked');
+                        if (ch == true) {
+                            $('#[type]{$group_k|default=''}_date_{$[type]k}_input').val('1');
+                            $('#dsgj').show();
+                        } else {
+                            $('#[type]{$group_k|default=''}_date_{$[type]k}_input').val('0');
+                             $('#dsgj').hide();
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</case>

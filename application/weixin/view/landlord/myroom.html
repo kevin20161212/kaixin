@@ -1,0 +1,66 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_foot.css"/>
+	 <style type="text/css">
+	 	html,body{ height: 100%;}
+		
+		.pageMain_list{ padding-bottom: 7rem;}
+		.pageMain_list ul a li{ background: #fff; margin-top: 0.5rem;}
+		.pageMain_list ul a li  img{ width:100%;}
+		.pageMain_list ul a li  p{ color: #303030; margin-left: 0.5rem; padding: 0.7rem 0rem; font-size:1.2rem; line-height: 1.4rem;}
+	 </style>
+</block>
+<block name="main">
+	<!--top-->
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>我的房屋</span>
+		</div>
+		<empty name="list">
+			<div class="none"><img src="/application/weixin/view/public/images/none.png"/></div>
+		<else/>
+			<div class="pageMain_list module">
+				
+				
+					<ul>
+						<foreach name="list" item="vo">
+							<a href="{:U('weixin/index/detail',array('id'=>$vo['id']))}">
+								<li>
+									 <img src="{$vo.picture}"/>
+									 <p>{$vo.title}</p>
+								</li>
+							</a>
+						</foreach>
+
+					</ul>
+			
+			</div>
+		</empty>
+	<div class="foot">
+		<ul>
+			<li>
+				<a href="{:U('weixin/landlord/myroom')}" class="">
+					<img src="/application/weixin/view/public/images/fangdong/house2.png">
+					<p class="footactive">房屋</p>
+				</a>
+			</li>
+			<li>
+				<a href="{:U('weixin/landlord/statistics')}" class="">
+					<img src="/application/weixin/view/public/images/fangdong/shouyi.png">
+					<p class="">收益</p>
+				</a>
+			</li>
+			<li>
+				<a href="{:U('weixin/landlord/member')}" class="">
+					<img src="/application/weixin/view/public/images/fangdong/foot4.png">
+					<p class="">我的</p>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+</block>
+<block name="script">
+
+</block>

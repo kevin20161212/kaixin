@@ -1,0 +1,160 @@
+<case value="timeprice">
+	<script src="__PUBLIC__/libs/datetime/dateTime2.js" type="text/javascript" defer="defer"></script>
+   <link rel="stylesheet" type="text/css" href="__PUBLIC__/libs/datetime/dateTime2.css"/>
+    <style type="text/css">
+		.dateTime{ position:relative; width:100%; border: 1px solid #ddd; overflow: hidden;}
+	</style>
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+           <div class="dateTime">
+    	
+		   	    <div id="con" style="width:60%; float:left; overflow: hidden; min-width: 400px;"></div>
+			   	<div class="set" style="width:30%; float:left; overflow: hidden;">
+			   		<div class="setLock">
+			   			<div class="setTime_row">锁房设置：</div>
+			   			<input type="checkbox"  name="" id="lock" value="" />锁房
+			   			
+			   		</div>
+			   		<div class="setTime">
+			   			<div class="setTime_row">时段设置：</div>
+			   			<div class="setTime_row">
+			   				
+				   		    <select name="s1s" id="s1s" >
+				   		    	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <span>至</span>
+				   		     <select name="s1e" id="s1e">
+				   		     	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <input type="text" value="" id="s1t">%
+				   		   
+				   		</div>
+				   		<div class="setTime_row">
+				   		    <select name="s2s" id="s2s">
+				   		    	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <span>至</span>
+				   		     <select name="s2e" id="s2e">
+				   		     	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <input type="text" value="" id="s2t">%
+				   		    
+				   		</div>
+				   		<div class="setTime_row">
+				   		    <select name="s3s" id="s3s">
+				   		    	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <span>至</span>
+				   		     <select name="s3e" id="s3e">
+				   		     	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <input type="text" value="" id="s3t">%
+				   		    
+				   		</div>
+				   		
+				   		<div class="setTime_row">
+				   		    <select name="s4s" id="s4s">
+				   		    	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <span>至</span>
+				   		     <select name="s4e" id="s4e">
+				   		     	<option value="">请选择</option>
+				   		    	<option value="1">1点</option><option value="2">2点</option><option value="3">3点</option>
+				   		    	<option value="4">4点</option><option value="5">5点</option><option value="6">6点</option>
+				   		    	<option value="7">7点</option><option value="8">8点</option><option value="9">9点</option>
+				   		    	<option value="10">10点</option><option value="11">11点</option><option value="12">12点</option>
+				   		    	<option value="13">13点</option><option value="14">14点</option><option value="15">15点</option>
+				   		    	<option value="16">16点</option><option value="17">17点</option><option value="18">18点</option>
+				   		    	<option value="19">19点</option><option value="20">20点</option><option value="21">21点</option>
+				   		    	<option value="22">22点</option><option value="23">23点</option><option value="24">24点</option>
+				   		    </select>
+				   		    <input type="text" value="" id="s4t">%
+				   		</div>
+				   		
+				   		
+				   		
+			   		</div>
+			   		<div class="setTotal">
+			   			<div class="setTime_row">房价设置：</div>
+			   		    <input type="text" id="total" placeholder="请输入价格">元
+			   		</div>
+			   		<div class="setTime_row"><a onclick="cz.tj()">设置</a></div>
+			   	</div>
+		   	</div>
+        </div>
+    </div>
+    <input type="hidden" name="{$[type]form.name}" id="dateprice" value='{$[type]form.value|default=''}'>
+    <script>
+	layui.use(['form', 'layedit', 'laydate'], function(){
+ 
+  
+  
+});
+		var mydate={
+			  hdinput:"{$[type]form.name}",
+			  con:"con",
+		      picker:"",//V-HTML
+		      startDate:"",//开始日期
+		      endDate:"",// 结束日期
+		     startObj:"",//开始LI对象
+		      endObj:"",//结束LI对象
+		}
+	</script>	
+</case>

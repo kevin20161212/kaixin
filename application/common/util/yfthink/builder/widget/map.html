@@ -1,0 +1,28 @@
+<case value="map">
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=ASOBZ-U2RK6-PZQSM-ESQWD-7XO3J-TAFF3"></script>
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+            <!-- <input type="text" class="form-control input text" name="{$[type]form.name}" value="{$[type]form.value|default=''}" placeholder="{$[type]form.tip|default=''}" {$[type]form.extra.attr|default=''}> -->
+        	<input type="hidden" name="latitude" id="latitude" value="{$[type]form.value.latitude}">
+			<input type="hidden" name="longitude" id="longitude" value="{$[type]form.value.longitude}">
+			<div id="container" style="height: 500px; width:70%;"></div>
+
+        </div>
+    </div>
+   
+    <script>
+    	var mymap={
+			map:'',
+			markerArray:[],
+			lat:"{$[type]form.value.latitude|default='39.908859'}",//初始纬度
+			lng:"{$[type]form.value.longitude|default='116.397392'}",//初始经度
+			conId:"container",
+			jsonArr:[],
+			latVal:"latitude",//点击地图后存放纬度INPUT的ID
+			lngVal:"longitude",//点击地图后存放经度INPUT的ID
+			zoom:12//地图初始缩放比例
+		}
+    </script>
+     <script src="/public/zhuzhuangtu/myqqmap.js"></script>
+</case>

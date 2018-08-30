@@ -1,0 +1,85 @@
+<case value="choices">
+	<style>	
+.kdwoa td{text-align: center;}
+.warp-wai{padding:2% 4%; }
+   </style>
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right" style="width:77%;">
+            <input type="text" style="float:left" readonly="readonly"  class="form-control input text mingzi" value="{$[type]form.value.nickname}" placeholder="{$[type]form.tip|default=''}" {$[type]form.extra.attr|default=''}>
+            <input type="hidden" name="uid" value="{$[type]form.value.uid}" class="idid">
+            <a  style="float:left;width:10%;max-width:10%;"  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">选择人员</a>
+         </div>
+    </div>
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+           <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="gridSystemModalLabel">选择人员</h4>
+          </div>
+          <div class="modal-body">
+          	<div class="row">
+          		 <div class="col-md-1"></div>
+              <div class="col-md-9" style="padding-right:0;"><input type="text" id="keywordssdf"  class="form-control input text" value="" placeholder="请输入微信昵称/真实姓名/手机号" style="width:100%;"></div>
+              <div class="col-md-1 "><a type="button" id="fehbkj" class="btn btn-primary" >搜索</a></div>
+              <div class="col-md-1"></div>
+            </div>
+           <div class="row" style="margin-top:2%;">
+           	<div class="col-md-1"></div>
+    	<div class="col-md-10" id="dhwsj">
+    			
+    </div>
+
+			<div class="col-md-1"></div>
+       	</div>	
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+       
+        <button type="button" class="btn btn-primary" data-dismiss="modal">点击关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+	<script>
+		$('#fehbkj').click(function(){
+
+      keywords = $('#keywordssdf').val();
+      if(!keywords){
+        alert('请输入搜索条件')
+        return;
+      }
+         $.ajax({
+            url:"{:U('room/index/getmembers')}",
+            type:"post",
+            data:{'keywords':keywords},
+            dataType:'JSON',
+            success:function(res){
+             if(res.status == 1){
+                info ='<table class="table kdwoa"><tr><td>头像</td><td>昵称</td><td>真实姓名</td><td>手机号</td><td>操作</td></tr>'
+                for(var i=0;i<res.info.length;i++)
+                {
+                   nickname = !res.info[i].nickname?"":res.info[i].nickname
+                   username = !res.info[i].username?"":res.info[i].username
+                   mobile = !res.info[i].mobile?"":res.info[i].mobile
+                  info+='<tr><td><img width="30px" src="'+res.info[i].headimgurl+'" alt=""></td><td>'+nickname+'</td><td>'+username+'</td><td>'+mobile+'</td><td><a style="color:red;" class="xuanze" mingzi="'+nickname+'" data-id="'+res.info[i].id+'">选择</a></td></tr>'
+                }
+                info += '</table>';
+             }else{
+                info = '<div style="text-align:center;">暂无此房东</div>';
+             }
+             $('#dhwsj').html(info);
+            }
+          })
+    })
+     $("body").on("click",".xuanze",function(){
+          // $(this).attr("data-id")
+          // $(this).attr("mingzi")
+          // alert($(this).attr("mingzi"))
+          $(".mingzi").val($(this).attr("mingzi"))
+           $(".idid").val($(this).attr("data-id"))
+           $(".fade").trigger("click")
+     })
+	</script>
+
+</case>

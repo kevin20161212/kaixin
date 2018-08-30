@@ -1,0 +1,208 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	  <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
+	  <style type="text/css">
+		.pinglun_content textarea{ width:100%; height: 200px; border-radius:5px; margin-top: 1rem; border: 1px solid #eee; font-size: 1.2rem; line-height: 2rem;}
+	    .pinglun_img_item{ width:30%; float:left; margin-left: 1.6%; margin-right: 1.7%; margin-top: 1rem;position: relative;}
+	     .pinglun_img_item{ ;}
+	     .pinglun_img_item img{ width:100%; height: auto; }
+	     .add:last-child .img{ width:60% ; margin-left: 1.5%; height: auto;}
+	     .pinglun_img_item .close{ position: absolute; right:-7px; top:-7px; width:20px; height: 20px; ;}
+	     .pinglun_star{ clear: both;}
+	     .pinglun_star ul li{ justify-content: flex-start; padding-top: 2rem;}
+	     .pinglun_star ul li span{ font-size: 1.2rem; margin-right: 0.5rem; color: #646464;}
+	     .pinglun_star ul li p img{ width:2rem; margin-left: 0.5rem;}
+	     .tj-block{ border-radius:5px; margin: 2rem 0rem; font-family: "微软雅黑";}
+	</style>
+</block>	
+
+<block name="main">
+	<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>评论</span>
+		</div>
+		<div class="pageMain module">
+			<form action="/index.php/weixin/order/evaluate" method="post" >
+				<div class="pinglun_content">
+					<textarea name="pinglun"  class="notEmpty" data-mess="您的意见" rows="" cols="" placeholder="请输入您的意见"></textarea>
+				</div>
+				<div class="pinglun_img">
+					<div class="pinglun_imgk">
+						
+					</div>
+					<div class="pinglun_img_item add" onclick="pageFun.addImg()">
+						<img src="/application/weixin/view/public/images/order/adding.png" class="img"/>
+					</div>
+				</div>
+				<div class="pinglun_star" style="padding-left:10px;">
+					  <ul>
+					  	<li class="flex-flow">
+					  		<span>装潢设施：</span>
+					  		<p data-id="sheshi">
+					  			<img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		</p>
+					  	</li>
+					  	
+					  	<li class="flex-flow">
+					  		<span>环境卫生：</span>
+					  		<p data-id="weisheng">
+					  			<img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		</p>
+					  	</li>
+					  	<li class="flex-flow">
+					  		<span>服务态度：</span>
+					  		<p data-id="taidu">
+					  			<img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		</p>
+					  	</li>
+					  	
+					  	<li class="flex-flow">
+					  		<span style="">照片真实：</span>
+					  		<p data-id="zhenshi">
+					  			<img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		    <img src="/application/weixin/view/public/images/order/star.png"/>
+					  		</p>
+					  	</li>
+					  </ul>
+				</div>
+			
+				<input type="hidden" name="sheshi" id="sheshi" value="5" />
+				<input type="hidden" name="weisheng" id="weisheng" value="5" />
+				<input type="hidden" name="taidu" id="taidu" value="5" />
+				<input type="hidden" name="zhenshi" id="zhenshi" value="5" />
+				<input type="hidden" name="imglist" id="imglist" value='' />
+				<input type="hidden" name="id" id="id" value='{$id}' />
+				<div class="tj-block ajax-post" data-succ="tjb" >提交</div>
+			</form>
+		</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+function tjb(res){
+	layer.alert(res.msg,function(index){
+		location.href="/index.php/weixin/index/index#/xingcheng"
+	})
+}
+/*微信注册*/
+gl.debug=false;
+wx.config({
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: '{$config.appId}', // 必填，企业号的唯一标识，此处填写企业号corpid
+    timestamp:'{$config.timestamp}', // 必填，生成签名的时间戳
+    nonceStr: '{$config.nonceStr}', // 必填，生成签名的随机串
+    signature: '{$config.signature}',// 必填，签名，见附录1
+    jsApiList: ['chooseImage','previewImage','uploadImage','downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+/*星星点击*/
+mui('.pinglun_star').on('tap',"img",function(){
+	pageFun.chageSrc(this)
+})
+var pageFun={
+	/*评分改变及赋值*/
+	chageSrc(o){
+		var num=$(o).index()+1;
+		var $p=$(o).parent();
+		var iid=$p.attr("data-id")
+		for(var i=1;i<6;i++)
+		{
+			if((i)>num)
+			{
+				$p.children().eq(i-1).attr("src","/application/weixin/view/public/images/order/stat2.png")
+			}
+			else{
+				$p.children().eq(i-1).attr("src","/application/weixin/view/public/images/order/star.png")
+			}
+		}
+		$("#"+iid).val(num)
+	},
+	/*微信上传图片事件*/
+	addImg(){
+		wx.chooseImage({
+		    count: 9, // 默认9
+		    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+		    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+		    success: function (res) {
+		        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+
+		        pageFun.upload(localIds)
+		    }
+		});
+	},
+	/*插入图片*/
+	insertImg(os){
+
+		 wx.uploadImage({
+								    localId: os,
+								    isShowProgressTips:1,
+								    success: function (re) {
+								      	var $domm=$('<div class="pinglun_img_item" data-id="'+re.serverId+'"><img src="'+os+'" class="img"/><img src="/application/weixin/view/public/images/order/close.png" class="close" onclick="pageFun.delImg(this)"/></div>')
+				               $domm.appendTo($(".pinglun_imgk"))
+				               pageFun.getImgData();
+								    }
+								});
+	},
+	upload(localIds){
+		var i=0;i<localIds.length;
+		function upload2() {
+
+      wx.uploadImage({
+        localId: localIds[i],
+        success: function (res) {
+          i++;
+          var $domm=$('<div class="pinglun_img_item" data-id="'+res.serverId+'"><img src="'+localIds[i-1]+'" class="img"/><img src="/application/weixin/view/public/images/order/close.png" class="close" onclick="pageFun.delImg(this)"/></div>')
+				  $domm.appendTo($(".pinglun_imgk"))
+          pageFun.getImgData();
+
+         if (i <localIds.length) {
+
+           upload2();
+          }
+        },
+        fail: function (res) {
+
+        }
+      });
+    };
+    upload2();
+	},
+	/*删除图片*/
+	delImg(o){
+		$(o).parent().remove();
+		pageFun.getImgData();
+	},
+	getImgData(){
+		var os=$(".pinglun_img_item");
+		var arr="";
+		for(var i=0;i<os.size();i++)
+		{
+			var str=$(os[i]).attr("data-id");
+			if(str)
+			{
+				arr=="" ? arr=str : arr= arr+","+str;
+			}
+		}
+		$("#imglist").val(arr)
+	}
+	
+}
+
+
+</script>
+</block>

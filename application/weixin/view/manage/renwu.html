@@ -1,0 +1,73 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_foot.css"/>
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/guanli_renwu.css"/>
+</block>
+<block name="main">
+	<!--top-->
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>任务列表</span>
+		</div>
+		<div class="pageMain wrapper module">
+			<empty name="data">
+				<div class="none" style="margin-top:60%;"><img src="/application/weixin/view/public/images/none.png"/></div>
+			<else/>
+				<ul>
+					<foreach name="data" item="vo">
+						<foreach name="vo" item="vos">
+							<li>
+								<a href="{:U('weixin/manage/rwdetail',array('id'=>$vos['id']))}">
+									<div class="li_left">
+										<img src="{$vos.picture}"/>
+									</div>
+									<div class="li_right">
+										<p class="mc flex-flow"><span>{$vos.title}</span><label><if condition="$vos.type eq 1">保洁<else if condition="$vos.type eq 2">维修</if></label></p>
+										<p class="time" style="font-size:1rem;">任务时间：<span>{$vos.create_time}&nbsp;{$vos.start}:00 - {$vos.end}:00</span></p>
+										
+									</div>
+								</a>
+								<a href="{:U('weixin/manage/rwdetail',array('id'=>$vos['id']))}">
+									<div class="li_right">
+									 <!--  <div class="content s_over s_over1">任务时间：{$vos.create_time}&nbsp;{$vos.start}:00 - {$vos.end}:00</div> -->
+									  <div class="content s_over s_over1">任务描述：{$vos.content}</div>
+									  <p class="xq flex-flow"><span>详情</span><img src="/application/weixin/view/public/images/guanli/yjt.png"/></p>
+								   </div>
+								</a>
+							</li>
+						</foreach>
+					</foreach>
+				</ul>
+			</empty>
+			
+		</div>
+
+	<div class="foot">
+		<ul>
+			<li>
+				<a href="{:U('weixin/manage/renwu')}" class="">
+					<img src="/application/weixin/view/public/images/guanli/renwur.png">
+					<p class="footactive">任务</p>
+		        </a>
+			</li>
+			<li>
+				<a href="{:U('weixin/manage/jindu')}" class="">
+					<img src="/application/weixin/view/public/images/guanli/xingcheng.png">
+					<p class="">进度</p>
+		        </a>
+			</li>
+			<li>
+				<a href="{:U('weixin/manage/member')}" class="">
+					<img src="/application/weixin/view/public/images/guanli/foot4.png">
+					<p class="">我的</p>
+		        </a>
+			</li>
+			
+		</ul>
+	</div>
+</block>
+<block name="script">
+
+</block>

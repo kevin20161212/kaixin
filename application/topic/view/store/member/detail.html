@@ -1,0 +1,488 @@
+<extend name="$_admin_public_layout"/>
+
+<block name="title"><title>{:C('WEB_SITE_TITLE')}－{:C('WEB_SITE_SLOGAN')}</title></block>
+
+<block name="style">
+      <link rel="stylesheet" href="__HOME_CSS__/layui-v2.2.6/layui/css/layui.css">
+    <link rel="stylesheet" href="__HOME_CSS__/css.css">
+    <script src="__HOME_CSS__/layui-v2.2.6/layui/layui.js"></script>
+    <style type="text/css">
+        .layui-input, .layui-textarea{height:20px;}
+        .layui-input-block{min-height:20px;}
+.bkaiw{display: flex;
+  justify-content: center;
+  align-items: flex-end;}
+  .bianhaos{padding-bottom:0;padding-right:0;}
+  .jiaos{width:25%;}
+  .bingliebei{width:100%;justify-content: space-between;}
+.jibing{width:14.7%;}
+.yangyv{width:8%;}
+.chengdu{width:13%;}
+.goutong{width:17%;}
+.zhaungtai{width:40%;}
+.yisyba{width:89%;}
+  @media screen and (min-width:1403px) {
+ .suibianss{width:37%;}
+ .guanrong{width:26%;}
+ .ndawii{width:25%;padding-left:0;}
+.qiandjin{margin-left:-5%;}
+.diaoyong{width:60%;}
+.kaiwudo{width:115%;}
+.wushiwu{width:28%;padding-left:0;}
+.heheda{margin-left:-5%;}
+.sanshier{width:20%;}
+.shumawo{width:47%;}
+.nadja{width:80%;}
+.dawikxx{width:100%;}
+.dduik{width:100%;}
+.zhuyaowenti{width:9.5%;}
+.wanglizou>div{width:50%;}
+.jiaos .sxiners{width:18%;}
+.jibing{width:16%;}
+.yangyv{width:13%;}
+.chengdu{width:18%;}
+.goutong{width:23%;}
+.dazhognxiaop{width:72%;}
+.yunqi{width:10%!important;margin-top:-0.5%;}
+.zhaungkaugn{width:24%;}
+}
+.zilaip{
+  left: 12%;
+    width: 80%;
+}
+
+ @media screen and (max-width:1300px) {
+.zilaip{width:90%;left:5%;}
+.suibianss{width:40%;}
+.guanrong{width:22%;}
+.jianhuren{width:63%;}
+.heheda{width:16%;margin-left:-9%;}
+.zhiye{width:68%;}
+.lingnain{margin-left:-9%;}
+.zhyezhi{margin-left:-10%;}
+.dunadins{width:100%;}
+.sanshier{width:46%;}
+.mymp{width:43%;}
+.shoadinay{width:63%;}
+.yisyba{width:100%;}
+.dkawdaw{width:48.5%;}
+.zhemzhongy{width:51%;}
+.xiangzuo{text-align: right!important;}
+.yunqi{width:10%!important;}
+.dazhognxiaop{width:76%;}
+ }
+  @media screen and (min-width:1400px) {
+      .suibianss{width:28%;}
+  .guanrong{width:17%;}
+  .jianhuren{width:61%;}
+.sanshier{width:15%;}
+.zhuyaowenti{width:7%;}
+.mymp{width:28%;}
+.dazhognxiaop{width:39%;}
+.yisyba{width:85%;}
+.qvwo{width:91%;}
+.yangyv{width:8%;}
+.chengdu{width:14%;}
+.goutong{width:18%;}
+.dahuwiowa{width:10%;}
+.lingebei,.wanglizou{padding-left:3%;}
+.laingduan{padding-left:3%;}
+  .jiaos .sxiners{width:14%;}
+  .zhaungtai{width:36%;}
+  .jibing{width:15%;}
+  .qingaide{margin-left:1.5%!important;}
+  }
+    </style>
+</block>
+<block name="breadcrumb"></block>
+<block name="main">
+  <div class="beijig">
+  <img src="__HOME_CSS__/img/dati.png" class="beijgi">
+  <div class="zilaip xiamiandian">
+    <div class="ganjue ">感觉综合基础资料表</div>
+    <form class="layui-form" action="">
+      <div class="qisu">
+        <div class="layui-form-item bkaiw">
+    <label class="layui-form-label bianhaos">编号：&nbsp;</label>
+    <div class="layui-input-block diaoyong">
+      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input woqv qvwo" value="{$info.title}">
+    </div>
+  </div>      
+      </div>
+      <div class="bingliebei">
+        <div class="layui-form-item jiaos" style="margin-top:1.8%;">
+    <label class="layui-form-label suibianss guanrong" style="text-align: left;" >姓名：&nbsp;</label>
+    <div class="layui-input-block diaoyong">
+      <input type="text" name="username" lay-verify="username" autocomplete="off" placeholder="" class="layui-input woqv" value="{$info.username}">
+    </div>
+    </div>
+ <div class="layui-form-item  jiaos xingbei tuiyitui ndawii">
+    <label class="layui-form-label  wushiwuyebuxing" style="width:36%;padding-right:0;padding-left:0;margin-left:-14%;">性别:&nbsp;</label>
+    <div class="layui-input-block jinanjiu">
+      <input type="radio" name="sex" <if condition="$info.sex eq 男">checked</if> value="男" title="男">
+      <input type="radio" name="sex" <if condition="$info.sex eq 女">checked</if> value="女" title="女">
+    </div>
+  </div>
+     <div class="layui-form-item jiaos qiandjin"  style="margin-top:2.6%;">
+    <label class="layui-form-label shoadinay  xiangzuo suibianss" >出生日期：&nbsp;</label>
+    <div class="layui-input-block diaoyong">
+      <!-- <input type="text" name="riqi" lay-verify="riqi" autocomplete="off" placeholder="" class="layui-input woqv dunadin"> -->
+      <input type="text" name="riqi" id="riqi" autocomplete="off" value="{$info.riqi}" class="layui-inpu woqv dunadin">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos"  style="margin-top:3%;">
+    <label class="layui-form-label shoadinay xiangzuo suibianss">核对日期：&nbsp;</label>
+    <div class="layui-input-block diaoyong">
+      <!-- <input type="text" name="hedui" lay-verify="hedui" autocomplete="off" placeholder="" class="layui-input woqv dunadin"> -->
+       <input type="text" name="hedui" id="hedui" autocomplete="off" value="{$info.hedui}" class="layui-inpu woqv dunadin">
+    </div>
+    </div>    
+    </div>    
+    <div  class="bingliebei">
+      <div class="layui-form-item jiaos">
+    <label class="layui-form-label shoadinay jianhuren" style="border:0;">监护人姓名：&nbsp;</label>
+    <div class="layui-input-block diaoyong kaiwudo">
+      <input type="text" name="jianhuren" lay-verify="jianhuren" autocomplete="off" value="{$info.jianhuren}" placeholder="" class="layui-input woqv">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos lingnain">
+    <label class="layui-form-label shoadinay wushiwu">年龄：&nbsp;</label>
+    <div class="layui-input-block diaoyong">
+      <input type="text" name="nianling" lay-verify="nianling" autocomplete="off" value="{$info.nianling}" placeholder="" class="layui-input woqv qiaoqi">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos heheda">
+    <label class="layui-form-label shoadinay zhiye">关系：&nbsp;</label>
+    <div class="layui-input-block diaoyong">
+      <input type="text" name="guanxi" lay-verify="guanxi" autocomplete="off" value="{$info.guanxi}" placeholder="" class="layui-input woqv dunadins">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos zhyezhi">
+    <label class="layui-form-label shoadinay zhiye">职业：&nbsp;</label>
+    <div class="layui-input-block diaoyong">
+      <input type="text" name="zhiye" lay-verify="zhiye" autocomplete="off" placeholder="" value="{$info.zhiye}" class="layui-input woqv dunadins">
+    </div>
+    </div>
+    </div>  
+        <div class="bingliebei">
+          <div class="layui-form-item jiaos shumawo ">
+    <label class="layui-form-label shoadinay sanshier dkawdaw">联系地址：&nbsp;</label>
+    <div class="layui-input-block diaoyong jinlai nadja">
+      <input type="text" name="lianxidizhi" lay-verify="lianxidizhi" autocomplete="off" value="{$info.lianxidizhi}" placeholder="" class="layui-input woqv jiushiyi dawikxx" style="margin:0;">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos">
+    <label class="layui-form-label shoadinay mymp">联系电话：&nbsp;</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="lianxidianhua" lay-verify="lianxidianhua" autocomplete="off" value="{$info.lianxidianhua}" placeholder="" class="layui-input woqv liushiqi">
+    </div>
+    </div>
+     <div class="layui-form-item jiaos">
+    <label class="layui-form-label shoadinay dadwaf dazhognxiaop">大中小班/年级：&nbsp;</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="youxiao" lay-verify="youxiao" autocomplete="off" placeholder="" value="{$info.youxiao}" class="layui-input woqv liushiqi yisyba" >
+    </div>
+    </div>
+        </div>
+         <div class="layui-form-item jiaos dduik">
+    <label class="layui-form-label shoadinay zhuyaowenti zhemzhongy">主要问题：&nbsp;</label>
+    <div class="layui-input-block diaoyong jiushishijiu">
+      <input type="text" name="zhuyaowenti" lay-verify="zhuyaowenti" autocomplete="off" placeholder="" value="{$info.zhuyaowenti}" class="layui-input woqv">
+    </div>
+    </div>
+    <div>
+      <div>一、母孕期情况：</div>
+      <div class="bingliebei wanglizou">
+        <div class="yunqi">孕&nbsp;&nbsp;&nbsp;&nbsp;期：</div>
+      <div class="layui-form-item jiaos ershias">
+    <label class="layui-form-label shoadinay zhaungkaugn">服用药物</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="fuyong" lay-verify="fuyong" autocomplete="off" placeholder="" value="{$info.fuyong}" class="layui-input woqv">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos ershias">
+    <label class="layui-form-label shoadinay zhaungkaugn">被动吸烟</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="beidong" lay-verify="beidong" autocomplete="off" placeholder="" value="{$info.beidong}" class="layui-input woqv">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos ershias">
+    <label class="layui-form-label shoadinay zhaungkaugn">营养状况</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="yingyang" lay-verify="yingyang" autocomplete="off" placeholder="" value="{$info.yingyang}" class="layui-input woqv">
+    </div>
+    </div>
+    </div>
+    <form class="layui-form" action="">
+      <div class="layui-form-item">
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="zaochan" <if condition="$info.zaochan eq 早产">checked</if> value="早产" title="早产">
+      <input type="radio" name="zaochan" <if condition="$info.zaochan eq 足月">checked</if> value="足月" title="足月">
+      <input type="radio" name="zaochan" <if condition="$info.zaochan eq 过产期">checked</if> value="过产期" title="过产期">
+      <input type="radio" name="zaochan" <if condition="$info.zaochan eq 自然产">checked</if> value="自然产" title="自然产">
+    </div>
+  </div>
+  <div class="layui-form-item">
+
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="zhixi" <if condition="$info.zhixi eq 产钳">checked</if> value="产钳" title="产钳" >
+      <input type="radio" name="zhixi" <if condition="$info.zhixi eq 台吸">checked</if> value="台吸" title="台吸">
+      <input type="radio" name="zhixi" <if condition="$info.zhixi eq 窒息">checked</if> value="窒息" title="窒息">
+      <input type="radio" name="zhixi" <if condition="$info.zhixi eq 剥腹产">checked</if> value="剥腹产" title="剥腹产">
+    </div>
+  </div>
+  <div class="layui-form-item" style="padding-left:2%;margin:0;margin-top:-1%;">
+  <label class="layui-form-label">胎&nbsp;&nbsp;&nbsp;&nbsp;位：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="taiwei" value="头位" <if condition="$info.taiwei eq 头位">checked</if> title="头位" >
+      <input type="radio" name="taiwei" value="臀位" <if condition="$info.taiwei eq 臀位">checked</if> title="臀位">
+      <input type="radio" name="taiwei" value="横位" <if condition="$info.taiwei eq 横位">checked</if> title="横位">
+
+   </div>
+  </div>
+     <div class="bingliebei wanglizou" style="margin-top:0.8%;">
+      <div class="layui-form-item jiaos sishi">
+    <label class="layui-form-label shoadinay wushijiu sxiners">出生体重：</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="tizhong" lay-verify="tizhong" autocomplete="off" value="{$info.tizhong}" placeholder="" class="layui-input woqv">
+    </div>
+    </div>
+    <div class="layui-form-item jiaos sishi">
+    <label class="layui-form-label shoadinay wushijiu sxiner xiangyou">新生儿评分：</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="pingfen" lay-verify="pingfen" autocomplete="off" placeholder="" value="{$info.pingfen}" class="layui-input woqv">
+    </div>
+    </div>
+     </div>
+     <div class="laingduan">
+     <div class="shengchan">
+      <div>父母生产时年龄：</div>
+      <div>父</div>
+      <input type="number" name="fusui" lay-verify="fusui" autocomplete="off" placeholder="" value="{$info.fusui}"  class="congzhege">
+      <div>岁</div>
+     </div>
+     <div class="shengchan nuonuo">
+
+      <div>母</div>
+      <input type="number" name="musui" lay-verify="musui" autocomplete="off" placeholder=""  value="{$info.musui}"  class="congzhege">
+      <div>岁</div>
+     </div>
+    </div>
+ </div>
+ <div style="margin-top:2%;">二、生长发育史</div>
+ <div class="yioumiw">
+  
+  <div class="layui-form-item" style="width:35%;margin-top:1.5%;padding-left:2.5%;">
+
+    <div class="layui-input-block lingebei" >
+      <input type="radio" name="duanru" value="母乳" <if condition="$info.duanru eq 母乳">checked</if> title="母乳" >
+      <input type="radio" name="duanru" value="人工" <if condition="$info.duanru eq 人工">checked</if> title="人工">
+<input type="radio" name="duanru" value="混合" <if condition="$info.duanru eq 混合">checked</if> title="混合">
+   </div>
+   
+  </div>
+    <div class="layui-form-item jiaos ershias">
+    <label class="layui-form-label shoadinay wushijiu duanrushiaji" style="width:45%;text-align:right;">断乳时间：</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="duanrutime" lay-verify="duanrutime" autocomplete="off" value="{$info.duanrutime}" placeholder="" class="layui-input woqv">
+    </div>
+    </div>
+ </div>
+<div class="yioumiw" style="padding-left:4%;">
+  <div class="layui-form-item jiaos ershias">
+   
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="taitou" lay-verify="taitou" autocomplete="off" placeholder="" value="{$info.taitou}" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会抬头</label>
+    </div>
+    <div class="layui-form-item jiaos ershias">
+   
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="fanshen" lay-verify="fanshen" value="{$info.fanshen}" autocomplete="off" placeholder="" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会翻身</label>
+    </div>
+    <div class="layui-form-item jiaos ershias">
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="huipa" lay-verify="huipa" value="{$info.huipa}" autocomplete="off" placeholder="" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会爬</label>
+    </div>
+     <div class="layui-form-item jiaos ershias">
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="huizuo" lay-verify="huizuo" value="{$info.huizuo}" autocomplete="off" placeholder="" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会坐</label>
+    </div>
+    <div class="layui-form-item jiaos ershias">
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="huizou" lay-verify="huizou" value="{$info.huizou}" autocomplete="off" placeholder="" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会走</label>
+    </div>
+ </div>
+ <div class="yioumiw"  style="padding-left:4%;">
+  <div class="layui-form-item jiaos ershias">
+   
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="huixiao" lay-verify="huixiao" value="{$info.huixiao}" autocomplete="off" placeholder="" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会笑</label>
+    </div>
+    <div class="layui-form-item jiaos ershias">
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="jiaomam" lay-verify="jiaomam" value="{$info.jiaomam}" autocomplete="off" placeholder="" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会叫妈妈</label>
+    </div>
+    <div class="layui-form-item jiaos ershias">
+    <div class="layui-input-block diaoyong " style="width:30%;">
+      <input type="text" name="huishuohua" lay-verify="huishuohua" value="{$info.huishuohua}" autocomplete="off" placeholder="" class="layui-input woqv" style="margin:0;">
+    </div>
+     <label class="layui-form-label shoadinay wushijiu" style="width:85%;">个月会说话</label>
+    </div>
+ </div>
+  <div style="margin-top:2%;">三、疾病史</div>
+ <div class="yioumiw" style="margin-top:1%;">
+  <div class="layui-form-item jiaos ershias"  style="margin:0;margin-top:-2%;">
+    <label class="layui-form-label shoadinay wushijiu xiangyou zhaungtai" style=" text-align:right;">健康状态：</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="jiankang" lay-verify="jiankang" autocomplete="off" value="{$info.jiankang}" placeholder="" class="layui-input woqv wxa-mar">
+    </div>
+    </div>
+  <div class="layui-form-item" style="width:35%;margin-top:3%;">
+    <div class="layui-input-block lingebei" style="margin-top:-8%;min-height:38px;">
+      <input type="radio" name="hunhe" value="抽风史" <if condition="$info.hunhe eq 抽风史">checked</if> title="抽风史">
+      <input type="radio" name="hunhe" value="脑外科伤史" <if condition="$info.hunhe eq 脑外科伤史">checked</if> title="脑外科伤史">
+      
+   </div>
+   
+  </div>
+ </div>
+ <div class="layui-form-item jiaos ershias"  style="width:70%;margin:0;">
+    <label class="layui-form-label shoadinay wushijiu xiangyou jibing">其他疾病史：</label>
+    <div class="layui-input-block diaoyong ">
+      <input type="text" name="jibing" lay-verify="jibing" autocomplete="off" value="{$info.jibing}" placeholder="" class="layui-input woqv">
+    </div>
+    </div>
+      <div style="margin-top:2%;margin-bottom:2%;">二、生活环境</div>
+      <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo yangyv">养育者：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="fumu" value="父母" <if condition="$info.fumu eq 父母">checked</if> title="父母">
+      <input type="radio" name="fumu" value="祖（外祖）父母" <if condition="$info.fumu eq 祖（外祖）父母">checked</if> title="祖（外祖）父母">
+<input type="radio" name="fumu" value="外人" <if condition="$info.fumu eq 外人">checked</if> title="外人">
+<input type="radio" name="fumu" value="其他" <if condition="$info.fumu eq 其他">checked</if> title="其他">
+    </div>
+  </div>
+   <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo chengdu">养育者文化程度：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="boshi" value="博士" <if condition="$info.boshi eq 博士">checked</if> title="博士">
+      <input type="radio" name="boshi" value="硕士" <if condition="$info.boshi eq 硕士">checked</if> title="硕士">
+<input type="radio" name="boshi" value="中专" <if condition="$info.boshi eq 中专">checked</if> title="中专">
+<input type="radio" name="boshi" value="其他" <if condition="$info.boshi eq 其他">checked</if> title="其他">
+    </div>
+  </div>
+ <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo yangyv" style=";padding-right:0;">养育方法：</label>
+    <label class="layui-form-label" style="padding-left:0;width:4%;">父：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="fu" value="宽" <if condition="$info.mu eq 宽">checked</if> title="宽">
+      <input type="radio" name="fu" value="严" <if condition="$info.mu eq 严">checked</if> title="严">
+<input type="radio" name="fu" value="放任" <if condition="$info.mu eq 放任">checked</if> title="放任">
+<input type="radio" name="fu" value="普通" <if condition="$info.fu eq 普通">checked</if> title="普通">
+<input type="radio" name="fu" value="不管" <if condition="$info.fu eq 不管">checked</if> title="不管">
+    </div>
+  </div>
+  <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo yangyv" style="padding-right:0;"></label>
+    <label class="layui-form-label xiangzuo" style="padding-left:0;width:4%;">母：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="mu" value="宽" <if condition="$info.mu eq 宽">checked</if> title="宽" >
+      <input type="radio" name="mu" value="严" <if condition="$info.mu eq 严">checked</if> title="严">
+<input type="radio" name="mu" value="放任" <if condition="$info.mu eq 放任">checked</if> title="放任">
+<input type="radio" name="mu" value="普通" <if condition="$info.mu eq 普通">checked</if> title="普通">
+<input type="radio" name="mu" value="不管" <if condition="$info.mu eq 不管">checked</if> title="不管">
+    </div>
+  </div>
+    <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo goutong">养育者与儿童沟通时间：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="time" value="长" title="长" <if condition="$info.time eq 长">checked</if> >
+      <input type="radio" name="time" value="短" <if condition="$info.time eq 短">checked</if> title="短">
+<input type="radio" name="time" value="没有" title="没有">
+
+    </div>
+  </div>
+     <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo yangyv miqie dahuwiowa" >密切程度：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="miqie" value="很密切" <if condition="$info.miqie eq 很密切">checked</if> title="很密切">
+      <input type="radio" name="miqie" value="密切" <if condition="$info.miqie eq 密切">checked</if> title="密切">
+<input type="radio" name="miqie" value="一般" <if condition="$info.miqie eq 一般">checked</if> title="一般">
+<input type="radio" name="miqie" value="不密切" <if condition="$info.miqie eq 不密切">checked</if> title="不密切">
+
+    </div>
+  </div>
+    <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo yangyv miqie dahuwiowa">生活空间：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="shenghuo" value="大" title="大" <if condition="$info.shenghuo eq 大">checked</if> >
+      <input type="radio" name="shenghuo" value="中" <if condition="$info.shenghuo eq 中">checked</if>  title="中">
+<input type="radio" name="shenghuo" value="小" <if condition="$info.shenghuo eq 小">checked</if>  title="小">
+
+
+    </div>
+  </div> 
+   <div class="layui-form-item qingaide">
+  <label class="layui-form-label xiangzuo yangyv miqie dahuwiowa">被动吸烟：</label>
+    <div class="layui-input-block lingebei">
+      <input type="radio" name="xiyan" value="有" <if condition="$info.xiyan eq 有">checked</if> title="有" checked="">
+      <input type="radio" name="xiyan" value="无" <if condition="$info.xiyan eq 无">checked</if> title="无">
+
+
+
+    </div>
+  </div>
+
+    </form>
+  </div>
+  
+</div>
+
+</block>
+ 
+<block name="script">
+     <script src="/application/home/view/public/css/layui-v2.2.6/layui/layui.js"></script>
+  <script>
+  // $(".qisile").click(function(){
+  //  $(".gongxiang,.xunezexuesheng").css("display","block")
+  //  $("body").css("overflow","hidden")
+  // })
+  // $(".gongxiang").click(function(){
+  //  $(".gongxiang,.xunezexuesheng").css("display","none")
+  //  $("body").css("overflow","auto")
+  // })
+  var quanju=123
+
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#hedui'
+  });
+  laydate.render({
+    elem: '#riqi'
+  });
+
+  });
+
+</script>
+
+</block>

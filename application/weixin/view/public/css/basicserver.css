@@ -1,0 +1,24 @@
+.mui-slider{ background: #fff;}
+			.mui-control-content {}
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-group .mui-slider-item{ border-bottom: none;;}
+			.mui-control-item{ font-size: 1.2rem !important; padding: 0.3rem 0rem;}
+			.mui-scroll-wrapper,.mui-scroll{ position: static !important;}
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{ color: #FF414F;}
+	       .jieshao{ background: #fff; padding: 1rem 1rem;
+	        border-bottom: 1px solid #f6f6f6;
+	       }	
+	       .jieshao_title{
+	       	 display: flex; display: -webkit-flex;
+	       	 flex-flow:row nowrap; justify-content: flex-start;
+	       	 align-items: center;
+	       	
+	       	 font-size: 1.4rem; padding-bottom: 1rem; color: #303030;}
+	.jieshao_title span{ border-radius:10px; display: inline-block; height: 1.5rem; margin-right: 0.7rem; width:5px; background: url(../images/bj.jpg);}
+	.jieshao ul{ overflow: hidden;}
+	.jieshao ul li{ width:50%; float:left; padding: 1rem 0rem;}
+	.jieshao ul li img{ margin-left:2rem; width:2rem !important; height: auto;flex:none}
+	.jieshao ul li label{ flex:auto; margin-left: 1rem; color: dimgray; font-size: 1.2rem;}
+	.jieshao ul  .no{ text-decoration: line-through;}
+	.jieshao ul p{text-align: center; width:100%; color: #303030; font-size: 1.2rem; padding: 1rem 0rem;}
+	.jieshao_content{ color: dimgray; font-size: 1.2rem; line-height: 2rem;}
+	.mui-scroll .jieshao:last-child{ border-bottom: none;;}

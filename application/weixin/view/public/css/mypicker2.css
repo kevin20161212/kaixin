@@ -1,0 +1,10 @@
+.my_pickerwk{position: relative; height: 100%; width:100%;display: flex; display: -webkit-flex; flex-flow:row nowrap;}
+		 .my_pickerk{ height: 100% ;; overflow:hidden;flex:auto;-webkit-overflow-scrolling: touch; padding-right: 2rem;
+		
+		}
+		.my_picker_ul{ margin: 0px auto; padding: 0px 0px; margin-left: 0px;    width:130%; height: 100%;overflow-y: scroll; background: #fff; /*padding-top: 60px;*/  }
+		.my_picker_ul li{ list-style-type: none; text-align: center;; font-size: 14px;;background: #fff; line-height: 40px; height: 40px; color: gray;;}
+		.my_picker_ul li:last-child{ /*margin-bottom: 160px;*/}
+		
+		.filter{ position: absolute; height: 40px; line-height: 40px; width:100%; /*top:60px; */background: #ff7700; opacity:0.2}
+		.my_picker_ul .active{ font-size: 20px !important; color: #1f1f1f !important; font-weight: 600;}

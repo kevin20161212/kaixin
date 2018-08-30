@@ -1,0 +1,103 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_foot.css"/>
+	
+	<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=ASOBZ-U2RK6-PZQSM-ESQWD-7XO3J-TAFF3"></script>
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/xq.css"/>
+	<style type="text/css">
+			.renwu_time,.renwu_content { color: #4b4b4b; font-size: 1.2rem; line-height: 1.6rem; padding: 0.5rem 0rem; justify-content: flex-start;}
+		    .renwu_time span,.renwu_content span{ flex:none}
+		    .renwu_time div,.renwu_content div{ flex:auto; overflow: hidden; margin-left: 0.5rem;}
+		    .tj-block{ margin-top: 1rem; border-radius:5px;}
+		</style>
+</block>
+<block name="main">
+<!---->
+		<img src="{$apply.picture}" style="width:100%"/>
+		<!---->
+		<div class="xq_ops">
+			<div class="xq_ops_one flex-flow">
+				<div>{$apply.title}</div>
+				
+			</div>
+			
+		</div>
+	  
+	   
+	  <!--housetPos-->
+	   <div class="housePos">
+	   	  <div class="xq_title">房屋位置</div>
+	   	  <div class="houseMap" id="container"></div>
+	   	  <div class="houseAddress">{$apply.address}</div>
+	   </div>
+	 
+	  <!--任务详情-->
+	   <div  class="housePos">
+	   	 	<form action="{:U('weixin/manage/rwdetail')}" class="tjform">
+		   	    <div class="xq_title">任务详情</div>
+		   	    <div class="flex-flow  renwu_time">
+		   	    	<span>任务时间：</span><div>{$apply.create_time}&nbsp;{$apply.start}:00 - {$apply.end}:00</div>
+		   	    </div>
+		   	     <div class="flex-flow renwu_content">
+		   	    	<span>任务描述：</span><div>{$apply.content}</div>
+		   	    </div>
+		   	    
+		   	    <div class="flex-flow renwu_content">
+		   	    	<span><if condition="$apply.type eq 1">保洁<else if condition="$apply.type eq 2">维修</if>人员：</span>
+		   	    	<div>
+		   	    		
+		   	    		<select class="notEmpty" data-mess='<if condition="$apply.type eq 1">保洁<else if condition="$apply.type eq 2">维修</if>人员' name="uid" style="width:10rem; color: #FF414F; border: 0px solid #ddd !important; margin: 0; padding: 0; font-size: 1.2rem; height: 2rem; line-height: 2rem; text-align: center;">
+		   	    		   <option value="">点击选择<if condition="$apply.type eq 1">保洁<else if condition="$apply.type eq 2">维修</if>人员</option>
+	   	    		       <foreach name="lists" item="vo">
+	   	    		       		<option value="{$vo.uid}">{$vo.username}</option>
+	   	    		      	</foreach>
+		   	    	    </select>
+		   	        </div>
+		   	    </div>
+		   	    <input type="hidden" name="rid" value="{$apply.id}">
+		   	 </form>  
+	   </div>
+	   <div class="module">
+	   	 <div class="tj-block ajax-post" target-form="tjform" data-succ="huidiao">
+	   	 	确认分配
+	   	 </div>
+	   </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	
+	function huidiao(res){
+		if(res.status == 1){
+			layer.msg(res.msg);
+			setTimeout(function(){
+				location.href="{:U('weixin/manage/renwu')}";
+			},1500)
+		}else{
+			layer.alert(res.msg);
+		}
+	}
+
+	//地图
+	var mymap={
+		map:'',
+		markerArray:[],
+		lat:'{$apply.latitude}',//初始纬度
+		lng:'{$apply.longitude}',//初始经度
+		conId:"container",
+		jsonArr:[ /*{id:1,lat:39.914850,lng:116.403765}*/],
+		latVal:"lat",//点击地图后存放纬度INPUT的ID
+		lngVal:"lng",//点击地图后存放经度INPUT的ID
+		zoom:12//地图初始缩放比例
+	}
+	
+	
+
+
+
+
+</script>
+<script  src="/application/weixin/view/public/js/myqqmap.js"/></script>
+
+</block>

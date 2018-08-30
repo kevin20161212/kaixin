@@ -1,0 +1,48 @@
+html,body{ height: 100%;}
+		.none{ display: none; margin-top: 4.5rem;}
+		.none img{ margin-top: 30%;}
+		.fixed{
+			position:fixed; top:0px; z-index: 1; left: 0px; width:100%;
+		}
+		/*pageMain_top*/
+		.pageMain_top{background: #fff; padding: 1rem 0rem; border-bottom:1px solid #eee}
+		.pageMain_top p{ text-align: center;}
+		.pageMain_top p:first-child{ font-size: 1.0rem; color: #303030; margin-bottom: 1rem; line-height: 1.0rem;}
+	    .pageMain_top p:last-child{ font-size: 1.4rem; color: #FF414F; line-height: 1.4rem;}
+	    /*search*/
+	   .pageMain_search { background: #fff; padding: 0.7rem 1rem; border-bottom: 1px solid #eee;}
+	   .pageMain_search div{ flex:auto}
+	   .pageMain_search .sort span{ font-size: 1.2rem; color: #303030; }
+	   .pageMain_search .sort img{ width:1rem; margin-left: 0.5rem; transition: 0.5s all;-webkit-transition: 0.5s all;}
+	   .pageMain_search  .desc img{ transform:rotate(-180deg);-webkit-transform:rotate(-180deg)}
+	   .pageMain_search .search{ padding: 0.3rem 0.3rem;; flex:none; border: 1px solid #FF414F; border-radius:3px;}
+	   .pageMain_search .search img{ width:1rem}
+	   .pageMain_search .search span{ font-size: 1.2rem; color: #FF414F; margin-left: 0.5rem;}
+	   .search_msg{line-height: 2.5rem; font-size: 1.0rem;}
+	   /*list*/
+	   .pageMain_list{ background: #fff;;}
+	   .pageMain_list ul li a{ color: currentcolor; border-top: 1px solid #eee; padding: 1rem 0rem;}
+	    .pageMain_list ul li a span{ flex:auto; font-size: 1.2rem;}
+	    .pageMain_list ul li a label{ flex:none; font-size: 1.2rem; color: #FF414F;}
+	    /*搜索模板*/
+	   .select_search{top:100%;  transition:200ms all; background: rgba(0,0,0,0.3); position: fixed; z-index: 2;  left: 0px; width:100%; height: 100%;}
+		    .searchshow{ top:0px;}
+		    .select_searchk{ 
+		    	border-radius:10px;
+		    	width:70%; margin: 0 auto;
+		    	transform:translateY(-50%);-webkit-transform:translateY(-50%);
+		    	margin-top: 50%; padding: 2rem 1rem; background: #fff;}
+		    .select_searchk p{ position: relative; border-bottom: 0px solid #eee;; justify-content: flex-start; padding: 0.5rem 1rem;}
+		    .select_searchk p span{ color: #4b4b4b; font-size: 1.0rem;}
+		    .select_searchk p label{ flex:auto; text-align: center; color: #303030; font-size: 1rem; border: 1px solid #ddd; padding: 0.5rem 0;}
+		    .select_searchk p select{position: absolute; top:0px; left: 0px; width:100%;  height: 100%; opacity: 0; margin: 0; padding: 0;}
+		    .select_searchk .tj{ margin-top: 1rem ;}
+		    
+/*分页LIST*/
+.scrollmainbody ul li{ margin-bottom: 10px; background: #fff;}
+			.scrollmainbody ul li p{ border-bottom:1px solid #ddd; padding: 0.7rem; padding-left: 1rem;; font-size: 1.2rem; color: #4b4b4b;}
+		    .scrollmainbody ul li div{}
+		    .scrollmainbody ul li div p{ border: none; padding: 0.5rem;}
+		    .scrollmainbody ul li div p span{ flex:none}
+		    .scrollmainbody ul li div p label{ flex: auto; text-align: right;}
+		    .scrollmainbody ul li div p:last-child label{  color: #FF414F}

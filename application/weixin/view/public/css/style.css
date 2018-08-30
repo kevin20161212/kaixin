@@ -1,0 +1,44 @@
+
+	ul,p{ margin: 0; padding: 0; }
+	ul li{ list-style-type: none;}
+	.layui-layer-btn0{ background: url(../images/bj.jpg) !important; border: 1px solid #FF414F !important;}
+	
+/**/
+.tj{ display: block; width:10rem; background:url(../images/bj.jpg) ;text-align: center;; font-size: 1.2rem; padding: 0.7rem 2rem; margin: 0 auto;color: #fff;  border-radius:5px;}
+.tj-block{ width:100%; height: 4rem ;line-height: 4rem ; text-align: center; background: url(../images/bj.jpg); color: #fff; font-size: 1.6rem;}
+.silde_right {
+    position: fixed;
+    top: 0px;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+}
+/*行内弹性盒*/
+.flex-flow{display: flex; display: -webkit-flex; flex-flow: row nowrap; justify-content: center; align-items: center; }
+/*title   副标题类型*/
+.s_title{ height: 3rem; line-height: 3rem; font-size: 1.2rem; color: gray; text-indent: 10px;}
+/*超出省略*/
+.s_over{display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;}
+.s_over1{-webkit-line-clamp: 1;}
+.s_over2{-webkit-line-clamp: 2;}
+.s_over3{-webkit-line-clamp: 3;}
+/*无内容图片样式*/
+ .none{ height: 100%; position: relative;}
+ .none img{ position: absolute; left: 0px; right: 0px; width:150px; margin: auto; top:50%; 
+ transform:translateY(-50%); -webkit-transform:translateY(-50%);  }
+ /*左右间距*/
+ .module{ padding-left:1rem; padding-right: 1rem;}
+ .title1{ font-size: 1.8rem; height: 2rem; line-height: 2rem; padding-top: 1rem;}
+/*作者信 息 头像，名字，房源。评价*/
+.house_main{ background: #fff; margin-top: 0.5rem; padding: 1rem 1rem;}
+	    .house_main_one .mouse_main_tx{ display: block; margin: 0 auto; width:7rem ; height: 7rem; border-radius:50%;}
+	    .house_main_one p span{ font-size: 1.2rem; color: #303030;}
+	    
+	    .house_main_one p img{ width:1.2rem; margin-left: 0.5rem;}
+	    .house_main_one p:last-child{ text-align: center; color: #4b4b4b; font-size: 1.0rem;}
+	     .house_main_xx ul li{ flex:auto; margin: 1rem 0rem;}
+	      .house_main_xx ul li:first-child{ border-right:1px solid #ddd}
+	    .house_main_xx ul li span{ color: gray; font-size: 1.0rem; display:block; text-align: center;}
+	    
+	    .house_main_xx ul li label{ margin-top: 0.5rem;; font-size: 1.4rem; display:block; text-align: center;}

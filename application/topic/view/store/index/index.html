@@ -1,0 +1,157 @@
+<extend name="$_admin_public_layout"/>
+
+<block name="main">
+    
+
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/layui/css/layui.css"/>
+        <script src="__PUBLIC__/layui/layui.all.js" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/zhuzhuangtu/echarts_date.css"/>
+    <script src="__PUBLIC__/zhuzhuangtu/echarts.js"></script>
+    <script src="__PUBLIC__/zhuzhuangtu/tj_module.js"></script>
+      <div class="col-xs-12 col-sm-12 button-list clearfix" style="background-color: #ddf3f5;color: #03a2b6;margin-bottom: 20px;padding: 10px;">
+                    <div>到期时间: <span  style='color:red;'>{$daoqi_time}</span></div>
+                </div>
+       <style>
+                      body{ background:#f6f6f6; font-family: "微软雅黑";}
+                      
+                      .tj_modal{ }
+                        .tj_modal ul{ margin: 0px auto; padding: 0px 0px; overflow: hidden; ;background: #fff;}
+                        .tj_modal ul li{float:left; padding:20px 0px; border-bottom: 1px solid #eee; height: 150px;}
+                        .tj_modal ul li a{  display: inline-block; width:100%; height: 100%;
+                         display: flex ;display: -webkit-flex;
+                        } 
+                        .tj_modal ul li a  div:first-child{float:left; width:auto;flex:none; margin-left: 20%;}
+                        .tj_modal ul li a  div:first-child i{ font-size: 35px;}
+                        .tj_modal ul li a  div:last-child{ text-align: center;flex:auto;; border-right:1px solid #ddd; padding: 30px 0px;}
+                        .tj_modal ul li a  div:last-child span{ display: inline-block; width:100%; text-align: center; margin-bottom: 5px; font-size:25px}
+                        .tj_modal ul li a  div .modal_title{ color: gray; font-size: 16px !important;}
+                        .tj_modal ul li:nth-child(3n) a div:last-child{border-right:none;}
+                        
+                        .paihang ul{ margin: 0px; padding: 0px; height: 400px; font-family: "微软雅黑"; background: #fff; padding:0px 10px; overflow: hidden;;}
+                    .paihang ul li{ list-style-type: none; border-bottom: 1px solid #ddd; height: 35px; line-height: 35px;;
+                     display: flex; display: -webkit-flex;flex-flow:row nowrap;;align-items: center;
+                    }
+                    .paihang ul li span:first-child{ display: inline-block; padding:0px 30px;flex:none; text-align: center; font-size: 14px;}
+                        
+                            .paihang ul li span:last-child{ display: inline-block; padding:0px 15px;flex:auto; text-align:right; font-size: 14px;}
+                    .paihang ul li:first-child{ border-bottom: none;}
+                    .paihang ul li:first-child span{ font-size: 16px; font-weight: 600;}
+                    .paihang ul li:last-child { border-bottom: none;}
+                    </style>
+
+
+     <div class="tab-content ct-tab-content" style="height: 100%;">
+                    <!-- 首页 -->
+                       <div class="tj_module layui-row" style="padding: 15px 15px;">
+                            <div class="tj_modal layui-col-lg12 layui-col-md12 layui-col-sm12" style="margin-top: 10px;">
+                                <ul>
+                                    <li class="layui-col-lg4 layui-col-md6 layui-col-sm6 layui-col-xs6" >
+                                        <a>
+                                           <div><i class="layui-icon" style="color: cornflowerblue;">&#xe6af;</i></div>
+                                           <div>
+                                              <span>{$jscount}</span>
+                                              <span class="modal_title">总教师数</span>
+                                           </div>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-lg4 layui-col-md6 layui-col-sm6 layui-col-xs6" >
+                                        <a>
+                                           <div><i class="layui-icon" style="color: darkturquoise;">&#xe612;</i></div>
+                                           <div>
+                                              <span>{$membercount}</span>
+                                              <span class="modal_title">总会员数</span>
+                                           </div>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="layui-col-lg4 layui-col-md6 layui-col-sm6 layui-col-xs6" >
+                                        <a>
+                                           <div><i class="layui-icon" style="color: darkturquoise;">&#xe735;</i></div>
+                                           <div>
+                                              <span>{$dncount}</span>
+                                              <span class="modal_title">总会员档案数</span>
+                                           </div>
+                                        </a>
+                                    </li>
+                                    
+                                   
+                                    
+                                </ul>
+                <!--             </div>
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                        
+                     
+                            <div class="layui-col-lg4 layui-col-md4 layui-col-sm12" style=" height: 300px; margin-top: 10px;">
+                           
+                                     <div style="margin: 0px 15px; background:#fff; height:100%;margin-right:0px;">
+                                         <div class="tj_dateselect">
+                                            <div class="tj_dataselect_l"><a class="active" data-succ="aaa"  href="#" data-url="url.php"  data-type="date">质保卡使用统计</a><a href="#" data-url="url.php"  data-type="week"></a>  <a href="#"  data-url="url.php"  data-type="month"></a></div>
+                                            <div class="tj_dataselect_r" style="display: none;"><img src="/public/static/images/date.png"/><input type="text" data-url="index.php" data-type="date" date-succ="piecallback" name="test" id="gao" value="" /></div>
+                                        </div>
+                                        <div   data-data={$str} data-title="" data-type="pie" data-sort="销量" class="echarts" style="height:260px; padding-top:10px; padding-bottom:10px"></div>
+                                    </div>
+                            </div>
+                        </div> -->
+
+                       <div class="layui-row" style="padding-top: 10px ;">
+                            <div class="layui-col-lg8 layui-col-md8 layui-col-sm12" style="background: #fff; margin-bottom: 10px;">
+                              <div class="layui-col-lg10 layui-col-md10 layui-col-xs10 layui-col-xs-offset1">
+            
+                                    <div  id="main2" data-data='{$num}' data-color="green" data-title="近7天人流量统计" data-type="line" data-sort="人流量" class="echarts" style="height:400px;"></div>
+                                </div>
+                            </div>
+                           
+                            <div class="layui-col-lg4 layui-col-md4 layui-col-sm12" style=" height: 400px; ">
+                           
+                                     <div style="margin: 0px 15px; background:#fff; height:100%;margin-right:0px;">
+                                         <div class="tj_dateselect">
+                                            <div class="tj_dataselect_l"><a class="active" data-succ="aaa"  href="#" data-url="url.php"  data-type="date">感统与能力评测统计</a><a href="#" data-url="url.php"  data-type="week"></a>  <a href="#"  data-url="url.php"  data-type="month"></a></div>
+                                            <div class="tj_dataselect_r" style="display: none;"><img src="/public/static/images/date.png"/><input type="text" data-url="index.php" data-type="date" date-succ="piecallback" name="test" id="gao" value="" /></div>
+                                        </div>
+                                        <div   data-data='{$bing}' data-title="" data-type="pie" data-sort="销量" class="echarts" style="height:260px; padding-top:10px; padding-bottom:10px"></div>
+                                    </div>
+                            </div>
+                            
+                       </div>
+                    </div>
+              
+                </div>
+
+
+
+<script>
+      // var test=document.getElementsByTagName('html')[0].innerHTML; 
+      //   console.log(test); 
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--        <div class="layui-row">
+        
+       
+
+        <div class="layui-col-lg10 layui-col-md10 layui-col-xs10 layui-col-xs-offset1">
+            
+            <div  id="main2" data-data='{$num}' data-color="green" data-title="近7天人流量统计" data-type="line" data-sort="人流量" class="echarts" style="height:400px;"></div>
+        </div>
+        
+        
+        
+   </div> -->
+
+
+
+</block>
+

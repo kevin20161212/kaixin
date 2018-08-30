@@ -1,0 +1,16 @@
+html,body{ height: 100%;}
+		
+		.my_top{ background: url("../images/mybj.png") no-repeat ; background-size: 100% 13rem;}
+     .my_top_tx{ display: flex; display: -webkit-flex; padding: 4rem 1rem 2rem 1rem;;
+     flex-flow:row nowrap;justify-content: center;align-items: center;
+     }
+     .my_top_tx img{ border: 1px solid #fff; width:5rem; height: 5rem; border-radius:50%; flex:none}
+     .my_top_tx span{flex:auto; font-size: 1.6rem; color: #fff; margin-left: 1rem;}
+     
+     .my_main{; width:95%; height:auto; margin: 0px auto; background: #fff; border: 1px solid #eee ;}
+     .my_main ul{ margin: 0; padding: 1rem;}
+     .my_main ul li{ list-style-type: none; width:100%; padding: 1.5rem 0rem; border-bottom: 1px solid #f6f6f6;}
+     .my_main ul li:last-child{ border-bottom: none;}
+     .my_main ul li a{ color: #303030; display:flex; display: -webkit-flex;flex-flow:row nowrap; justify-content: center;align-items:center ;}
+     .my_main ul li a img{ width:1.5rem;flex:none}
+     .my_main ul li a span{ flex:auto; margin-left: 1rem; font-size: 1.2rem;}

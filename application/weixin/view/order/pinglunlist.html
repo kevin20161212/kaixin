@@ -1,0 +1,256 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+   	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/nav.css"/>        
+  <script type="text/javascript" src="/application/weixin/view/public/js/iscrollall.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/scroll.css"/>
+    <link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdongxq.css"/>
+    
+    <script type="text/javascript" src="/application/weixin/view/public/js/mui.zoom.js"></script>
+    <script type="text/javascript" src="/application/weixin/view/public/js/mui.previewimage.js"></script>
+   
+</block>
+
+<block name="main">
+	<style type="text/css">
+		html,body{ height: 100%;}
+		.pageMain_top{background: #fff; border-bottom: 2px solid #f6f6f6;}
+		.aver{text-align: center; padding: 2rem 1rem; }
+	   .aver p{ font-size: 1.4rem; padding-bottom:0.5rem; color: #303030;}
+	   .aver img{ width:2rem; margin-left: 0.1rem;}
+	   .fen_item ul{ margin: 0; padding: 0; overflow: hidden;}
+	   .fen_item ul li{ width:50%; float:left; margin-bottom: 0.5rem;}
+	   
+	   .fen_item ul li span{ flex:none; font-size: 1.0rem; color: #4b4b4b4;}
+	   .fen_item ul li  div{ flex:auto}
+	   .fen_item ul li  div img{width:1.5rem; margin-left: 0px;}
+	  
+	</style>
+
+
+	
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>评论</span>
+		</div>
+		<div  class="pageMain_top" >
+			<div class="aver">
+	   	  	   <p>{$data.zf}分</p>
+	   	  	   <div>
+	   	  	        
+	   	  	   </div>
+	   	    </div>
+	   	    <div class="fen_item module">
+	   	   	  <ul>
+	   	   	  	<li class="flex-flow">
+	   	   	  		<span>装潢设施：</span>
+	   	   	  		<div class="zhuanghuang">
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/><img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/><img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  		</div>
+	   	   	  	</li>
+	   	   	  	<li class="flex-flow">
+	   	   	  		<span>环境卫生：</span>
+	   	   	  		<div class="weisheng">
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/><img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/><img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  		</div>
+	   	   	  	</li>
+	   	   	  	<li class="flex-flow">
+	   	   	  		<span>服务态度：</span>
+	   	   	  		<div class="taidu">
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/><img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  		</div>
+	   	   	  	</li>
+	   	   	  		<li class="flex-flow">
+	   	   	  		<span>照片真实：</span>
+	   	   	  		<div class="zhenshi">
+	   	   	  			<img src="/application/weixin/view/public/images/order/star.png"/><img src="/application/weixin/view/public/images/order/star.png"/>
+	   	   	  		</div>
+	   	   	  	</li>
+	   	   	  </ul>
+	   	    </div>
+		</div>
+		
+		<div class="pageMain_fypj" >
+			
+           
+            <div class="pageMain_pinglun" id="scrollmain" style="display: block;">
+            
+				     <div class="one" style="padding-bottom: 6.5rem">
+				           
+				           <div class="scrollmainbody">
+				           	    
+				           	
+				           	
+				           	
+				           	
+				           	
+				           	
+				           	
+				           	
+				             <!--列表-->
+				               <!-- <div class="pingjia">
+								   	  
+								      <div class="pingjia_tx flex-flow">
+								      	 <img src="/application/weixin/view/public/images/tx1.png" class="user_tx"/>
+								      	 <div>
+								      	 	 <p style="border: none;">用户名称</p>
+								      	 	<img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/>
+								      	 </div>
+								      	 <p style="border: none;">2018.6.6</p>
+								      </div>
+								     <div class="pingjia_content">
+				                	    这里是评价内容内容这里是评价内容内容这里是评价内容内容这里是评价内容内容这里是评价内容内容
+				                     </div>
+				                    
+								</div>-->
+				             <!----> 
+				           
+				           </div>
+				          <div class="gif"><img src="/application/weixin/view/public/images/wait2.gif"></div>	          
+				     </div>
+				  
+            </div>
+		</div>
+       
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	 
+$("#scrollmain").css("height",($("body").height()-$(".pageMain_top").height()+30)+"px")
+
+
+
+
+
+var pageFun={
+	init(){
+		$(".aver div").html(pageFun.fen('{$data.zf}'))
+		$(".zhuanghuang").html(pageFun.fen('{$data.sheshi}'))
+		$(".weisheng").html(pageFun.fen('{$data.weisheng}'))
+		$(".taidu").html(pageFun.fen('{$data.taidu}'))
+		$(".zhenshi").html(pageFun.fen('{$data.zhenshi}'))
+		
+	},
+	
+	fen(f){
+		
+		var x=parseFloat(f);
+		var quan='<img   src="/application/weixin/view/public/images/xq/star.png"/>'
+		var ban='<img   src="/application/weixin/view/public/images/xq/star2.png"/>'
+		if(x==1)
+		{
+			return quan;
+		}
+		if(x<1.5)
+		{
+			return quan+ban;
+		}
+		
+		if(x<=2)
+		{
+			return quan+quan
+		}
+		if(x<=2.5)
+		{
+			return quan+quan+ban;
+		}
+		if(x<=3)
+		{
+			return quan+quan+quan;
+		}
+		if(x<=3.5)
+		{
+			return quan+quan+quan+ban;
+		}
+		if(x<=4)
+		{
+			return quan+quan+quan+quan;
+		}
+		if(x<=4.5)
+		{
+			return quan+quan+quan+quan+ban;
+		}
+		if(x<=5)
+		{
+			return quan+quan+quan+quan+quan;
+		}
+	}
+}
+pageFun.init();
+
+var page=1;
+ var mysc={
+	url:"{:U('weixin/order/pinglunlist')}",
+	page:1,
+	params:{id:{$id},p:page},
+	
+	overCB:function(res){
+		console.log(res.list)
+		
+		var str=""
+		for(var i=0;i<res.list.length;i++)
+		{
+			var imgstr=""
+			for(var y=0;y<res.list[i].imglist.length;y++)
+			{
+				var img="<div ><img src='"+res.list[i].imglist[y]+"' data-preview-src='' data-preview-group='1'/></div>"
+				
+				imgstr== "" ? imgstr=img : imgstr=imgstr+img;
+			}
+			
+			 
+			
+			
+			var o=res.list[i]
+			var x=`
+			<div class="pingjia">
+								   	  
+								      <div class="pingjia_tx flex-flow">
+								      	 <img src="`+o.member.headimgurl+`" class="user_tx"/>
+								      	 <div>
+								      	 	 <p style="border: none;">`+o.member.nickname+`</p>
+								      	 	 <div>`+pageFun.fen(o.fenzhi)+`</div>
+								      	 </div>
+								      	 <p style="border: none;">`+o.create_time+`</p>
+								      </div>
+								     <div class="pingjia_content">`+o.pinglun+`</div>
+								     <div class="pingjia_img mui-content-padded">`+imgstr+`</div>
+								</div>
+			
+			`;
+			
+			str== "" ?str=x : str=str+x;
+		}
+		var $o=$(str);
+		$o.appendTo($(".scrollmainbody"));
+		setTimeout(function(){myScroll.refresh()},500)
+		
+		page+=1;
+		mysc.params={id:5,p:page}
+		
+	},
+	moveCB:function(y){
+		  
+	},
+	none:function(){
+		$(".gif").html("<img style='width:100px; margin-top:50px; height:auto' src='/application/weixin/view/public/images/none.png'>")
+	}
+}
+
+
+
+
+</script>
+<script type="text/javascript" src="/application/weixin/view/public/js/scroll.js" defer="defer"></script>     
+
+<script>
+		mui.previewImage();
+</script>
+
+</block>

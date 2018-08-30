@@ -1,0 +1,8 @@
+		
+	.foot{  border-top:1px solid #f6f6f6; z-index: 5; background: #fff; width:100%; position: fixed; left: 0px; right: 0px; margin: 0 auto; bottom: 0;}
+    .foot ul{ margin: 0; padding: 0.3rem 0rem; overflow: hidden; width:100%}
+    .foot ul li{ width:33.3%; float:left; list-style-type: none; }
+    .foot ul li a{display: flex; display: -webkit-flex; flex-flow:column; align-items: center; justify-content: center;}
+    .foot ul li a img{ width:2rem}
+    .foot ul li a p{ font-size: 1rem; margin-top: 0.3rem;}
+    .foot ul li a .footactive{ color: #FF414F;}

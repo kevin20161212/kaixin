@@ -1,0 +1,185 @@
+<case value="yaddress">
+
+    <!--
+        如果选项的值是自定义数组(必须定义key为title的元素)需要解析，如果选项的值是常规字符串直接显示
+        此处主要是用来给option定义更多的属性，比如data-ia=1，那么option应为
+        $option = array('title' => 标题, 'data-id' => 1);
+    -->
+    <input type="hidden" id="provinceid" value="{$[type]form.value.province}" />
+    <input type="hidden" id="cityid" value="{$[type]form.value.city}" />
+    <input type="hidden" id="districtid" value="{$[type]form.value.district}" />
+    <input type="hidden" id="adressid" value="1" />
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+             <select name="province" id="seleAreaNext"  class="form-control lyui-select select inputBg"  style="width:150px;" onchange="GetProvince();getSelCity();">
+                 <option value="">请选择省</option>
+            </select>
+            <select name="city" id="seleAreaThird"  class="form-control lyui-select select inputBg" style="width:150px;" onchange="getSelCity();" >
+                <option value="">请选择市</option>
+            </select>
+            <select name="district" id="seleAreaFouth"  class="form-control lyui-select select inputBg" style="width:150px;" >
+                <option value="-1">请选择区/县</option>
+            </select>
+            <input type="text" class="form-control input text" name="address" value="{$[type]form.value.address}" style="width:30%;" placeholder="详细地址"}>
+        </div>
+    </div>
+    <script>    
+            var province=$("#provinceid").val();
+    var city=$("#cityid").val();
+    var district=$("#districtid").val();
+    var selProvince=$("#seleAreaNext")[0];
+    for (var i = selProvince.length - 1; i >= 0; i--) {
+        selProvince.options[i] = null;
+    }
+    var opt = new Option("请选择省", "-1");
+    selProvince.options.add(opt);
+        //添加省
+        $.ajax({
+            type : "post",
+            url : "{:U('admin/index/getprovince')}",
+            dataType : "json",
+            success : function(data) {
+                if (data != null && data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        var opt = new Option(data[i].province_name, data[i].province_id);
+                        selProvince.options.add(opt);
+                    }
+                    $("#seleAreaNext").val(province);
+                }
+            }
+        });
+    var address_id=$("#adressid").val();
+    if(address_id!=0){
+        //查询这个收货地址的详细地址
+        //加载市
+                var selCity = $("#seleAreaThird")[0];
+                for (var i = selCity.length - 1; i >= 0; i--) {
+                    selCity.options[i] = null;
+                }
+                var opt = new Option("请选择市", "-1");
+                selCity.options.add(opt);
+                $.ajax({
+                    type: "post",
+                    url: "{:U('admin/index/getCity')}",
+                    dataType: "json",
+                    data: { "province_id": province },
+                    success: function (data) {
+                        if (data != null && data.length > 0) {
+                            for (var i = 0; i < data.length; i++) {
+                                var opt = new Option(data[i].city_name, data[i].city_id);
+                                selCity.options.add(opt);
+                            }
+                        $("#seleAreaThird").val(city);
+                        }
+                    }
+                });
+                //加载区县
+            var selArea = $("#seleAreaFouth")[0];
+                for (var i = selArea.length - 1; i >= 0; i--) {
+                    selArea.options[i] = null;
+                }
+                var opt = new Option("请选择区/县", "-1");
+                selArea.options.add(opt);
+                $.ajax({
+                    type: "post",
+                    url: "{:U('admin/index/getDistrict')}",
+                    dataType: "json",
+                    data: { "city_id": city },
+                    success: function (data) {
+                        if (data != null && data.length > 0) {
+                            for (var i = 0; i < data.length; i++) {
+                                var opt = new Option(data[i].district_name, data[i].district_id);
+                                selArea.options.add(opt);
+                            }
+                        $("#seleAreaFouth").val(district);
+                        }
+                    }
+                });
+    }
+                    // 选择省份弹出市区
+            function GetProvince() {
+                var id = $("#seleAreaNext").find("option:selected").val();
+                var selCity = $("#seleAreaThird")[0];
+                for (var i = selCity.length - 1; i >= 0; i--) {
+                    selCity.options[i] = null;
+                }
+                var opt = new Option("请选择市", "-1");
+                selCity.options.add(opt);
+                $.ajax({
+                    type : "post",
+                    url : "{:U('admin/index/getCity')}",
+                    dataType : "json",
+                    data : {
+                        "province_id" : id
+                    },
+                    success : function(data) {
+                        if (data != null && data.length > 0) {
+                            for (var i = 0; i < data.length; i++) {
+                                var opt = new Option(data[i].city_name,data[i].city_id);
+                                selCity.options.add(opt);
+                            }
+                        }
+                    }
+                });
+            };
+            // 选择市区弹出区域
+            function getSelCity() {
+                var id = $("#seleAreaThird").find("option:selected").val();
+                var selArea = $("#seleAreaFouth")[0];
+                for (var i = selArea.length - 1; i >= 0; i--) {
+                    selArea.options[i] = null;
+                }
+                var opt = new Option("请选择区县", "-1");
+                selArea.options.add(opt);
+                $.ajax({
+                    type : "post",
+                    url : "{:U('admin/index/getDistrict')}",
+                    dataType : "json",
+                    data : {
+                        "city_id" : id
+                    },
+                    success : function(data) {
+                        if (data != null && data.length > 0) {
+                            for (var i = 0; i < data.length; i++) {
+                                var opt = new Option(data[i].district_name,data[i].district_id);
+                                selArea.options.add(opt);
+                            }
+                        }
+                    }
+                });
+            }
+
+
+
+    </script>
+</case>
+<!--  <option value=''>请选择：</option>
+                <foreach name="[type]form.options" item="option" key="option_key">
+                    <php>if(is_array($option)):</php>
+                        <option value="{$option_key}" <?php if(isset($[type]form['value']) && ($[type]form['value'] == $option_key)) echo 'selected'; ?>
+                            <foreach name="option" item="option2" key="option_key2">
+                                {$option_key2}="{$option2}"
+                            </foreach>>
+                            {$option.title}
+                        </option>
+                    <php>else:</php>
+                        <option value="{$option_key}" <?php if(isset($[type]form['value']) && ($[type]form['value'] == $option_key)) echo 'selected'; ?>>{$option}</option>
+                    <php>endif;</php>
+                </foreach> -->
+<!-- <tr>
+<td align="right" width="10%">配送区域：</td>
+<td colspan="3" align="left">
+    <select name="province" id="seleAreaNext" onchange="GetProvince();getSelCity();" class="inputBg">
+        <option value="">请选择省</option>
+    </select>
+    <select name="city" id="seleAreaThird" onchange="getSelCity();" class="inputBg">
+        <option value="">请选择市</option>
+    </select>
+    <select name="district" id="seleAreaFouth" class="inputBg">
+        <option value="-1">请选择区/县</option>
+    </select>
+    (必填)
+</td>
+</tr> -->

@@ -1,0 +1,258 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/quanList.css"/>
+<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/order.css"/>
+</block>
+
+<block name="main">
+	<style type="text/css">
+		.quan_list{ background:#eee;}
+		.quan_list ul li{ border:1px solid #eee;}
+	</style>
+	
+		<!--top-->
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>提交订单</span>
+		</div>
+		
+		<!--pageMain-->
+		<div class="pageMain">
+			<!--pageMain_top-->
+			<div class="pageMain_top">
+				<img src="{$res.picture}"/>
+				<div>{$res.title}</div>
+				<div><span>入住：{$data.start}</span>  <span>离店：{$data.end}</span> <span>{$night}晚</span></div>
+			</div>
+			<!--pageMain_data-->
+			<div class="pageMain_data">
+				<form action="{:U('weixin/order/payment')}" method="post" class="formxx">
+					<div class="flex-flow pageMain_data_list">
+						<span>居住人数</span>
+						<div class=" flex-flow" style="margin-right: 1rem;">
+							<img src="/application/weixin/view/public/images/order/jian.png" class="jian">
+							<input type="text" name="ren" id="" value="1" class="sl" />
+							<img src="/application/weixin/view/public/images/order/jia.png" class="jia"/>
+						</div>
+					</div>
+					<div class="flex-flow pageMain_data_list2">
+						<span>真实姓名</span>
+						<input class="notEmpty" data-mess="请输入真实姓名"   placeholder="请输入真实姓名" type="text" name="username" id="" value="{$member.username}" />
+					</div>
+					<div class="flex-flow pageMain_data_list2">
+						<span>手机号码</span>
+						<input class="tel" data-mess="手机号码"  placeholder="请输入手机号码" type="tel" name="mobile" id="" value="{$member.mobile}" />
+					</div>
+					
+					<div class="flex-flow pageMain_data_list2">
+						<span>身份证号</span>
+						<input data-mess="身份证号" class="card"  placeholder="请输入身份证号" type="text" name="cardid" id="" value="{$member.cardid}" />
+					</div>
+					<input type="hidden" name="xieyi" id="xieyi" class="notEmpty" data-mess="请同意《逅宅民宿订房协议》" value="" />
+					 <input type="hidden" name="coupon_id" id="coupon_id" value="" />
+					 <input type="hidden" name="night" id="night" value="{$night}" />
+					 <input type="hidden" name="room_id" id="room_id" value="{$res.id}" />
+					 <input type="hidden" name="live_time" id="live_time" value="{$live_times}" />
+					<div class="flex-flow pageMain_data_list2 search_one" data-showClass="quan_list" data-succ="bb" data-hideClass="slide_close" data-speed="300" style="justify-content: space-between;">
+						<span>优惠券<label id="quanName">请选择优惠券</label></span>
+						<img src="/application/weixin/view/public/images/yjt.png"/>
+					</div>
+				</form>
+			</div>
+			
+			
+			<div class="xieyi flex-flow">
+				<div>
+					<img src="/application/weixin/view/public/images/order/right.png"/>
+				</div>
+				<span>我已阅读《逅宅民宿订房协议》</span>
+			</div>
+		</div>
+		
+		<!--pageFoot-->
+		<div class="pageFoot flex-flow">
+			<div class="pageFoot_total">
+				<span>￥<label>{$data.total}</label></span><br>
+				<i>需支付</i>
+			</div>
+			<div class="pageFoot_tj ajax-post" target-form="formxx" data-succ="tjback">
+				提交订单
+			</div>
+			
+		</div>
+		<!--quan-->
+		<div class="quan_list silde_right">
+			<div class="pageTop">
+				<img src="/application/weixin/view/public/images/back.png" class="slide_close"/>
+				<span>我的优惠券</span>
+		    </div>
+			<ul>
+				<!-- <li class="slide_close">
+					<div class="quan_list_left">
+						<span>优惠券</span>
+						<span>￥50</span>
+						<div>
+							</a><a></a><a></a><a></a><a></a><a></a><a>
+							<a></a><a></a><a></a><a></a><a></a><a></a>
+						</div>
+					</div>
+					<div class="quan_list_right">
+						<div class="quan_list_right_top">
+							<p>新用户注册红包</p>
+							<p>可用满200</p>
+						</div>
+						<div class="quan_list_right_bottom">
+							<p>开始时间：2019-05-25 11：00</p>
+							<p>开始时间：2019-05-25 11：00</p>
+						</div>
+					</div>
+				</li> -->
+				<empty name="mycoupon">
+					
+					<div class="none slide_close">
+						<img src="/application/weixin/view/public/images/none.png">
+						<p>未发现优惠券，点我返回....</p>
+					</div>
+				</empty>
+ 				<foreach name="mycoupon" item="vo">
+					<li class="slide_close" data-id="{$vo.zz.id}" data-type="{$vo.zz.type}" data-mjtotal="{$vo.zz.mj_price}"
+						data-mjprice="{$vo.zz.mj_hui}"   data-zhekou="{$vo.zz.zhekou}" data-title="{$vo.zz.title}" >
+						<div class="quan_list_left">
+							<span>优惠券</span>
+							<if condition="$vo.zz.type eq 1">
+							<span>￥{$vo.zz.mj_hui}</span>
+							<else/>
+							<span>{$vo.zz.zhekou}折</span>
+							</if>
+							<div>
+								</a><a></a><a></a><a></a><a></a><a></a><a>
+								<a></a><a></a><a></a><a></a><a></a><a></a>
+							</div>
+						</div>
+						<div class="quan_list_right">
+							<div class="quan_list_right_top">
+								<p>{$vo.zz.title}</p>
+								<if condition="$vo.zz.type eq 1">
+									<p>消费满{$vo.zz.mj_price}元减{$vo.zz.mj_hui}元</p>
+								<else/>
+									<p>消费尊享{$vo.zz.zhekou}折</p>
+								</if>
+							</div>
+							<div class="quan_list_right_bottom">
+								<p>领取时间：{$vo.create_time|date="Y-m-d H:i",###}</p>
+								<p>到期时间：{$vo.zz.datetime|date="Y-m-d H:i",###}</p>
+							</div>
+						</div>
+					</li>
+				</foreach>
+	
+	
+			</ul>
+		</div>
+		
+		
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	mui.init()
+	var qbl=
+		{
+			sl:1,
+			//房间可容纳人数
+			roomzs:'{$res.canlive}',
+			//订单原价格（时段优惠已减，优惠券未减）
+			orderTotal:{$data.total},
+		
+		}
+     //滑动执行，
+	 function bb(){
+	 	return true
+	 }
+	 //总提交回调
+	 function  tjback(res){
+	 	
+	 	layer.alert(res.msg)
+	 }
+	 
+	 //优惠
+	  mui(".quan_list").on("tap",".slide_close",function(){
+	  	var total=qbl.orderTotal;
+	  	var id=(this.getAttribute("data-id"));
+	  	var type=this.getAttribute("data-type");
+	  	var title=this.getAttribute("data-title");
+	  	//alert(total+"****"+id+"******"+type)
+	  	if(type=="1")//满减
+	  	{
+	  		var mjtotal=this.getAttribute("data-mjtotal");
+	  		if(qbl.orderTotal>=parseFloat(mjtotal))
+	  		{
+	  			var mjprice=this.getAttribute("data-mjprice");
+	  			total=qbl.orderTotal-parseFloat(mjprice)
+	  			$("#coupon_id").val(id)
+	  			$("#quanName").text(title)
+	  		}
+	  		else{
+	  			layer.msg("您的订单金额还不足满减标准",{time:1000})
+	  		}
+	  	}
+	  	if(type=="2")//折扣
+	  	{
+	  		var zhekou=this.getAttribute("data-zhekou");
+	  		total=qbl.orderTotal*(parseFloat(zhekou)/10)
+	  		$("#quanName").text(title)
+	  		$("#coupon_id").val(id)
+	  	}
+	  	$(".pageFoot_total label").text(total)
+	  })
+	 //协议处理
+	 mui("body").on("tap",".xieyi",function(){
+	 	if($(this).hasClass("xieyiActive"))
+	 	{
+	 		$(this).removeClass("xieyiActive")
+	 		
+	 		$("#xieyi").val("")
+	 	}
+	 	else
+	 	{
+	 		$(this).addClass("xieyiActive")
+	 		
+	 		$("#xieyi").val("1")
+	 		
+	 	}
+	 })
+	 mui('body').on('tap',".pageFoot_tj",function(){
+	 	if(!xieyi){layer.alert("您未同意《逅宅民宿订房协议》")}
+	 })
+	 //数量操作
+	 $(".sl").focus(function(){
+	 	$(this).blur();
+	 })
+	 mui('.pageMain_data').on("tap",".jian",function(){
+	 	
+	 	if(qbl.sl==1){return;}
+	 	qbl.sl-=1;
+	 
+	 })
+	 mui('.pageMain_data').on("tap",".jia",function(){
+	 	if(qbl.sl==qbl.roomzs){layer.msg("此房间最多可容纳"+qbl.roomzs+"人",{time:1000});return}
+	 	qbl.sl+=1;
+	 })
+	 
+	 Object.defineProperty(qbl,"sl",{get:function()
+        {
+		 
+		   return ( ! this._sl ? 1 : this._sl)
+		},
+		set:function(val)
+	    {
+	    	
+		   this._sl=val;
+		   $(".sl").val(this._sl)
+		}
+	})
+	 
+
+</script>
+</block>

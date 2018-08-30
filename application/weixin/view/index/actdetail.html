@@ -1,0 +1,32 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	<style type="text/css">
+		html,body{ height: 100%; background: #fff;}
+		.none{ display: none;}
+		.main{ padding: 1rem 1rem;}
+		.title{ font-size: 1.8rem; padding: 1rem 0rem;;}
+		.xinxi span{ font-size: 1.0rem; color: gray; margin-right: 1rem;}
+		.content img{width:100%;}
+		
+	</style>
+</block>	
+
+<block name="main">
+	<div class="main">
+		<div class="title">{$info.title}</div>
+		<div class="xinxi flex-flow" style="justify-content: flex-start;">
+			<span>逅宅精品发布</span>
+			<span>{$info.create_time|date='Y-m-d',###}</span>
+		</div>
+		<br>
+		<div class="content">
+
+			{$info.content}
+		</div>
+	</div>
+</block>
+
+<block name="script">
+
+</block>

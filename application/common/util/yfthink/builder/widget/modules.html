@@ -1,0 +1,61 @@
+<case value="modules">
+
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+            <div class="layui-form" >
+            <div class="layui-form-item">
+                  <div class="lyui-input-inline">
+                    <input type="hidden" id="citys" name="{$[type]form.name}" value="{$[type]form.value}">
+                    <select style="width:100%;" class="form-control lyui-select select" lay-filter="city" lay-verify="required" lay-search="">
+                      <option value="">直接选择或搜索选择</option>
+                       <foreach name="[type]form.options" item="option" key="option_key">
+                        <php>if(is_array($option)):</php>
+                            <option value="{$option_key}" <?php if(isset($[type]form['value']) && ($[type]form['value'] == $option_key)) echo 'selected'; ?>
+                                <foreach name="option" item="option2" key="option_key2">
+                                    {$option_key2}="{$option2}"
+                                </foreach>>
+                                {$option.title}
+                            </option>
+                        <php>else:</php>
+                            <option value="{$option_key}" <?php if(isset($[type]form['value']) && ($[type]form['value'] == $option_key)) echo 'selected'; ?>>{$option}</option>
+                        <php>endif;</php>
+                    </foreach>
+                    </select>
+                  </div>
+         </div>
+        </div>
+
+        </div>
+    </div>
+
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+
+   var  form=layui.form;
+  
+    form.on('select(city)',function(res){
+        $('#citys').val(res.value)
+    })
+  
+  
+});
+// $("body").on("keyup",".layui-input",function(){
+//       $.ajax({
+//         url:"{:U('admin/room/getcity')}",
+//         type:"post",
+//         data:data.field,
+//         dataType:'JSON',
+//         success:function(res){
+            
+//             console.log(res)   
+//         },
+//         error:function(){
+//             layer.alert("网络异常")
+//         }
+//     })
+// })
+
+</script>
+
+</case>

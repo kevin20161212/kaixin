@@ -1,0 +1,400 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+		<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=ASOBZ-U2RK6-PZQSM-ESQWD-7XO3J-TAFF3"></script>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/mypicker.css"/>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/xq.css"/>
+		<link rel="stylesheet" href="//g.alicdn.com/de/prismplayer/2.7.0/skins/default/aliplayer-min.css" />
+        <script type="text/javascript" src="//g.alicdn.com/de/prismplayer/2.7.0/aliplayer-min.js"></script>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+        <script type="text/javascript" src="/application/weixin/view/public/js/swiper.js"></script>
+        <link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/swiper.css"/>
+</block>
+
+<block name="main">
+	<form id="xqform" method="post" action="/index.php/weixin/order/orderdetails">
+		<input type="hidden" name="room_id" id="room_id" value="{$info.id}" />
+		<input type="hidden" name="night" id="night" value="" />
+		<input type="hidden" name="live_time"  id="live_time" value="" />
+	</form>
+<!--轮播-->
+		<div id="slider" class="swiper-container">
+		    <div class="swiper-wrapper">
+		    <if condition="$info.videoid">  
+		    	  <div class="swiper-slide"><div  class="prism-player" id="J_prismPlayer" style="position: absolute"></div></div>
+		    </if>
+		    
+		      <foreach name="info.picture" item="vo">
+		      <div class="swiper-slide"><a href="#"><img src="{$vo}"></a></div>
+		  	</foreach>
+		    </div>
+		    <div class="swiper-pagination"></div>
+		  </div>
+		 <script type="text/javascript">
+			   var swiper = new Swiper('.swiper-container', {
+			      pagination: {
+			        el: '.swiper-pagination',
+			      },
+			    });
+		</script>
+		<!---->
+		<div class="xq_ops">
+			<div class="xq_ops_one flex-flow">
+				<div>{$info.title}</div>
+				<div class="flex-flow">
+					<img data-status="{$info.shoucang}" class="ajax-post2 sc" data-url="{:U('weixin/member/mycollection')}" data-params="{id:{$info.id}}" data-succ="scCallBack" src="<if condition="$info.shoucang eq 1">/application/weixin/view/public/images/xq/ysc.png<else/>/application/weixin/view/public/images/xq/sc.png</if>" />
+					<img src="/application/weixin/view/public/images/xq/fx.png"/>
+				</div>
+			</div>
+			
+			<div class="xq_ops_two flex-flow">
+				<div class="xq_ops_two_total">￥{$info.price|default='0.00'}/晚</div>
+				<div class="xq_ops_two_time" >入离日期</div>
+			</div>
+			
+			<div class="xq_ops_three">
+				<ul>
+					<li class="flex-flow">
+						<img src="/application/weixin/view/public/images/xq/fang.png">
+						<div>
+							<p>整套{$info.room}居室</p>
+							<p style="font-size:12px;">{$info.ping}平/{$info.room}室{$info.office}厅</p>
+						</div>
+					</li>
+					<li class="flex-flow">
+						<img src="/application/weixin/view/public/images/xq/ren.png">
+						<div>
+							<p>可住{$info.canlive}人</p>
+							<p style="font-size:12px;">不可加客</p>
+						</div>
+					</li>
+					<li class="flex-flow">
+						<img src="/application/weixin/view/public/images/xq/chu.png">
+						<div>
+							<p>{$info.kitchen}厨{$info.guard}独卫</p>
+							<p style="font-size:12px;">可做饭/独立卫生间</p>
+						</div>
+					</li>
+					<li class="flex-flow">
+						<img src="/application/weixin/view/public/images/xq/bed.png">
+						<div>
+							<p>共{$info.bed}张床</p>
+							<p style="font-size:12px;">双人大床x{$info.bed}</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+	   <!--亮点-->
+	   <div class="liangdian">
+	    	<div class="xq_title">房屋亮点</div>
+	    	<!--<div class="liangdian_one flex-flow">
+	    		<div>
+	    			<img src="/application/weixin/view/public/images/xq/jingdian.png"/>
+	    			<p>紧邻景点</p>
+	    			<p>近芙蓉街等4个景点</p>
+	    		</div>
+	    		
+	    		<div>
+	    			<img src="/application/weixin/view/public/images/xq/chufang.png"/>
+	    			<p>可以做饭</p>
+	    			<p>厨房设备配齐全</p>
+	    		</div>
+	    	</div>-->
+	    	<div class="liangdian_two" >
+	    		{$info.brightspot}
+	    	</div>
+	    	<div class="toxq">
+	    		<a href="{:U('weixin/index/detailinfo',array('id'=>$info['id']))}">查看详细介绍</a>
+	    	</div>	
+	    </div>
+	   <!---->
+	   <style type="text/css">
+	   	
+	   </style>
+       <div class="house_main">
+       	  <div class="house_main_one">
+       	  	<img class="mouse_main_tx" src="{$member.headimgurl}"/>
+       	  	<p class="flex-flow"><span>{$member.nickname}</span><img src="/application/weixin/view/public/images/renzheng.png"/></p>
+       	    <p>{$member.about}</p>
+       	 </div>
+       	  <div  class="house_main_xx">
+       	  	<ul class="flex-flow">
+       	  		<li><span>房源</span><label>{$member.fycount}</label></li>
+       	  		<li><span>评价</span><label>{$member.pjcount}</label></li>
+       	  	</ul>
+       	  </div>
+       	  <div class="toxq">
+	    		<a href="{:U('weixin/member/housedetail',array('id'=>$member['id']))}">查看房东主页</a>
+	    	</div>	
+       </div>
+
+	   	
+	   <!--评价-->
+	   <style type="text/css">
+	   	.pingjia_content{ color: gray; font-size: 1.0rem; line-height: 1.2; padding: 0.5rem 0rem;}
+	   </style>
+	   <if condition="$valuate">
+		   <div class="pingjia">
+		   	  <div class="aver">
+		   	  	<p>{$fenzhi}分</p>
+		   	  	<div>
+		   	  	    <img   src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/>
+	            </div>	   	  
+		   	</div>
+		      
+		   	  <foreach name="valuate" item="ko" key="so">
+			     <if condition="$so lt 3">
+			      <div class="pingjia_tx flex-flow">
+			      	 <img src="{$ko.member.headimgurl}" class="user_tx"/>
+			      	 <div>
+			      	 	 <p>{$ko.member.nickname} </p>
+			      	 	 <div data-id="{$ko.fenzhi}" class="item_fen">
+			      	 	 	<img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star2.png"/>
+			      	 	 </div>
+			      	 	 
+			      	 </div>
+			      	 <p>{$ko.create_time|date="Y-m-d",###}</p>
+			      </div>
+			      <div class="pingjia_content">
+				         {$ko.pinglun}    	    
+				  </div>
+			    </if>
+		  	</foreach>
+		      <div class="toxq">
+		    		<a href="{:U('weixin/order/pinglunlist',array('id'=>$info['id']))}">查看更多评价</a>
+		    	</div>	
+		   	</div>
+		</if>
+	   <!--housetPos-->
+	   <div class="housePos">
+	   	  <div class="xq_title">房屋位置</div>
+	   	  <div class="houseMap" id="container"></div>
+	   	  <div class="houseAddress">{$info.weizhi}</div>
+	   </div>
+	   <!--servers-->
+	   <div class="servers">
+	   	   <div class="xq_title">服务与设施</div>
+	   	   <div class="servers_con">
+	   	   	  <span class="servers_title">入驻服务</span>
+	   	   	  <ul class="live_server">
+	   	   	  	<foreach name="service" item="vo">
+		   	   	  <li>{$vo.title}</li>
+		   	   	  </foreach>
+		   	  </ul>
+	   	   </div>
+	   	   
+	   	   <div class="servers_con " style="border-top:1px solid #ddd; padding-top: 10px; padding-bottom: 10px;">
+	   	   	  <span class="servers_title">基本设施</span>
+	   	   	  <div> 
+			   	   	<foreach name="facilities" item="vo">
+			   	   	  <ul class="basic_tool">
+			   	   	  	  <p>{$vo.title}</p>
+				   	   	  <foreach name="vo.zz" item="vos">
+				   	   	  <li class="<php>if(in_array($vos['id'],$info['facilities'])){echo 'flex-flow';}else{echo 'flex-flow no';}</php>">
+				   	   	  	<div><img src="/application/weixin/view/public/images/xq/dui.png"/></div>
+				   	   	  	<div><span>{$vos.title}</span></div>
+				   	   	  </li>
+				   	   	  </foreach>
+				   	  </ul>
+				   	  </foreach>
+				   	  
+				</div>
+	   	   </div>
+	   	   <div class="toxq">
+	    		<a href="{:U('weixin/index/detailinfo',array('id'=>$info['id']))}">查看更多设施</a>
+	    	</div>	
+	   </div>
+	   <!--foot-->
+	   <div class="pageFoot flex-flow">
+	   	  	
+	   	   <div class="pageFoot_kefu flex-flow" onclick="javascript:location.href='{:U('workman/index/kefu',array('id'=>$info['id']))}'">
+	   	   	
+	   	   	  <img src="/application/weixin/view/public/images/xq/kefu.png">
+	   	   	  <span>联系客服</span>
+	   	   	 
+	   	   </div>
+	   	  
+	   	   <div class="pageFoot_total">
+	   	   	  <span>￥0</span>
+	   	   </div>
+	   	   <div class="pageFoot_buy flex-flow">
+	   	   	  <img src="/application/weixin/view/public/images/xq/dian.png"/>
+	   	   	  <span>立即预订</span>
+	   	   </div>
+	   </div>
+	 
+	   <!--日期选择-->
+	   <div class="selectTime">
+	   	   <div class="selectTimek">
+			   	   <div class="jiange" id="jiange" >
+			   	       <div class="datetime_show">
+			   	       	<span onclick="methods.qxSelectDate()">取消</span>
+			   	       	  <span>选择入住时间</span>
+			   	       	 <span onclick="methods.qdSelectDate()">确定</span>
+			   	       </div>
+			   	       <div id="mypicker"  onclick="methods.dateclick(event)"></div>
+			   	  </div>
+	   	  </div>
+	   </div>
+	  <input type="hidden" name="jsondata" id="jsondata" value='{$info.dateprice}' />
+
+</block>
+<block name="script">
+<script type="text/javascript">
+var qbl={
+	buy:false,
+}
+	//地图
+	var mymap={
+		map:'',
+		markerArray:[],
+		lat:'{$info.latitude}',//初始纬度
+		lng:'{$info.longitude}',//初始经度
+		conId:"container",
+		jsonArr:[ /*{id:1,lat:39.914850,lng:116.403765}*/],
+		latVal:"lat",//点击地图后存放纬度INPUT的ID
+		lngVal:"lng",//点击地图后存放经度INPUT的ID
+		zoom:12//地图初始缩放比例
+	}
+	//时间
+	var mypicker={
+		startD:"",
+		endD:"",
+		con:"selectTime",//父容器类名称
+		jsonData:$("#jsondata").val(),
+	}
+mui.init();
+//时间显示
+mui(".xq_ops_two").on("tap",".xq_ops_two_time",function(){
+	$(".selectTime").addClass("dateshow");
+})
+//收藏
+mui(".pageFoot").on("tap",".pageFoot_buy",function(){
+	if(methods.endD==""){
+		qbl.buy=true;
+		$(".selectTime").addClass("dateshow");
+	}
+	else{
+		layer.load();
+		$("#xqform").submit();
+	}
+})
+//收藏回调
+function scCallBack(res){
+
+	var status = $('.sc').attr('data-status');
+
+	console.log(status=="1")
+	if(res.status == 1){
+		if(status == "1"){
+			$('.sc').attr('src','/application/weixin/view/public/images/xq/sc.png')
+			$('.sc').attr('data-status','0');
+
+		}else if(status == "0"){
+			$('.sc').attr('src','/application/weixin/view/public/images/xq/ysc.png')
+			$('.sc').attr('data-status','1');
+		}
+		layer.msg(res.info)
+	}else{
+		layer.alert(res.info)
+	}
+}
+
+var pageFun={
+	init(){
+		
+		$(".aver div").html(pageFun.fen('{$fenzhi}'))
+		$(".item_fen").each(function(){
+			var x=this.getAttribute("data-id");
+			this.innerHTML=pageFun.fen(x)
+		})
+		
+	},
+	fen(f){
+		var x=parseFloat(f);
+		var quan='<img   src="/application/weixin/view/public/images/xq/star.png"/>'
+		var ban='<img   src="/application/weixin/view/public/images/xq/star2.png"/>'
+		if(x==1)
+		{
+			return quan;
+		}
+		if(x<1.5)
+		{
+			return quan+ban;
+		}
+		
+		if(x<=2)
+		{
+			return quan+quan
+		}
+		if(x<=2.5)
+		{
+			return quan+quan+ban;
+		}
+		if(x<=3)
+		{
+			return quan+quan+quan;
+		}
+		if(x<=3.5)
+		{
+			return quan+quan+quan+ban;
+		}
+		if(x<=4)
+		{
+			return quan+quan+quan+quan;
+		}
+		if(x<=4.5)
+		{
+			return quan+quan+quan+quan+ban;
+		}
+		if(x<=5)
+		{
+			return quan+quan+quan+quan+quan;
+		}
+	}
+}
+//初始化，，分数
+pageFun.init()
+// //微信分享
+// wx.config({
+//     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+//     appId: '', // 必填，企业号的唯一标识，此处填写企业号corpid
+//     timestamp: , // 必填，生成签名的时间戳
+//     nonceStr: '', // 必填，生成签名的随机串
+//     signature: '',// 必填，签名，见附录1
+//     jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+// });
+</script>
+<script>
+            var player = new Aliplayer({
+            id: 'J_prismPlayer',
+            width: '100%',
+            height:'200px',
+            autoplay: false,
+            //支持播放地址播放,此播放优先级最高
+            source : '{$info.videoid}',
+            //播放方式二：点播用户推荐
+            vid : '1e067a2831b641db90d570b6480fbc40',
+            playauth : '',
+            cover: '{$info.picture.0}',            
+            //播放方式三：仅MPS用户使用
+            vid : '1e067a2831b641db90d570b6480fbc40',
+            accId: '',
+            accSecret: '',
+            stsToken: '',
+            domainRegion: '',
+            authInfo: '',
+            //播放方式四：使用STS方式播放
+            vid : '1e067a2831b641db90d570b6480fbc40',
+            accessKeyId: '',
+            securityToken: '',
+            accessKeySecret: ''
+            },function(player){
+                console.log('播放器创建好了。')
+           });
+        </script>
+  <script src="/application/weixin/view/public/js/myqqmap.js" type="text/javascript" ></script>
+    <script src="/application/weixin/view/public/js/mypicker.js" type="text/javascript" ></script>
+</block>

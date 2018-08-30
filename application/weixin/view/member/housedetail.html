@@ -1,0 +1,296 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+   	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/nav.css"/>        
+  <script type="text/javascript" src="/application/weixin/view/public/js/iscrollall.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/scroll.css"/>
+    <link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdongxq.css"/>
+    
+    <script type="text/javascript" src="/application/weixin/view/public/js/mui.zoom.js"></script>
+    <script type="text/javascript" src="/application/weixin/view/public/js/mui.previewimage.js"></script>
+   
+</block>
+
+<block name="main">
+	
+  <a id="a"></a>
+
+	
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>评论</span>
+		</div>
+		<div class="pageMain">
+			<div class="pageMain_top">
+			    <img src="/application/weixin/view/public/images/mybj.png" class="mybj"/>
+			    <div class="pageMin_top_fd">
+			    	<img src="{$member.headimgurl}" class="pageMin_top_tx"/>
+			    	<p class="pageMin_top_fd_nc flex-flow"><span>{$member.nickname}</span><img src="/application/weixin/view/public/images/renzheng.png"/></p>
+			        <p class="pageMin_top_fd_jianjie">{$member.about}</p>
+			    </div>
+			    <div class="pageMain_top_xx">
+			    	<ul class="flex-flow">
+			    		<li>
+			    			<span>{$member.fycount}</span>
+			    			<label>房源</label>
+			    		</li>
+			    		<li>
+			    			<span>{$member.orcount}</span>
+			    			<label>接待客人</label>
+			    		</li>
+			    		<li>
+			    			<span>{$member.pjcount}</span>
+			    			<label>评价</label>
+			    		</li>
+			    	</ul>
+			    </div>
+			</div>
+		</div>
+		<!--房源和评价-->
+		<div class="pageMain_fypj" >
+			<div class="nav-top pageMain_fypj_nav" data-callback="navcallCB">
+				<ul>
+					<li class="active">房源</li>
+				    <li>评价</li>
+				</ul>
+				<label></label>
+			</div>
+			<style type="text/css">
+				
+			</style>
+            <div class="pageMain_house" onscroll="pageFun.houseScroll(event)">
+            	  <ul>
+            	  
+            	  	<foreach name="room" item="vo">
+            	  	<a href="{:U('weixin/index/detail',array('id'=>$vo['id']))}">
+	            	  	<li>
+	            	  		<img src="{$vo.picture}" class="house_tp">
+	            	  		<div class="house_xx flex-flow">
+	            	  			<div class="house_address">
+		            	  			<p>{$vo.title}</p>
+		            	  			<p><span>整套.{$vo.room}室{$vo.office}厅{$vo.kitchen}厨{$vo.guard}卫</span><label> | </label><span>可住{$vo.canlive}人</span><label> | </label><span>{$vo.city}/{$vo.district}</span></p>
+		            	  		</div>
+		            	  		<div class="house_total">
+		            	  			￥{$vo.price|default='0.00'}
+		            	  		</div>
+	            	  		</div>
+	            	  		
+	            	  	</li>
+            	  	</a>
+            	  	</foreach>
+            	  		
+            	  		
+            	  		
+            	  	<!---->
+            	  	
+            	  </ul>
+            </div>
+            <div class="pageMain_pinglun" id="scrollmain">
+            
+				     <div class="one" style="padding-bottom: 35px;">
+				           
+				           <div class="scrollmainbody">
+				             <!--列表-->
+				               <!-- <div class="pingjia">
+								   	  
+								      <div class="pingjia_tx flex-flow">
+								      	 <img src="/application/weixin/view/public/images/tx1.png" class="user_tx"/>
+								      	 <div>
+								      	 	 <p style="border: none;">用户名称</p>
+								      	 	<img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/><img src="/application/weixin/view/public/images/xq/star.png"/>
+								      	 </div>
+								      	 <p style="border: none;">2018.6.6</p>
+								      </div>
+								     <div class="pingjia_content">
+				                	    这里是评价内容内容这里是评价内容内容这里是评价内容内容这里是评价内容内容这里是评价内容内容
+				                     </div>
+				                    
+								</div>-->
+				             <!----> 
+				           
+				           </div>
+				          <div class="gif"><img src="/application/weixin/view/public/images/wait2.gif"></div>	          
+				     </div>
+				  
+            </div>
+		</div>
+       
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	 
+$(".pageMain_house").css("height",($("body").height()-$(".pageMain_top").height()-50)+"px")
+$("#scrollmain").css("height",($("body").height()-$(".pageMain_top").height()-50)+"px")
+gl.nav_top_Init("nav-top",1)
+
+$(".nav-top ul li:first-child").click()
+var pageFun={
+	houseScroll(e){
+		//if($(".pageMain_house ul a li").size()<2){return}
+		var y=(e.target.scrollTop)
+		//$("#a").text(e.target.scrollTop)
+		//console.log(e.target.scrollTop)
+		if(y>100)
+		     {
+		     	pageFun.move();
+		     }
+		     else
+		     {
+		     	pageFun.back();
+
+		     }
+	},
+	move(){
+		       $(".pageMain_fypj").addClass("aaa")
+		     	$(".aaa .pageMain_house").css("height",$("body").height()+"px").css("padding-bottom","500px")
+                $(".aaa #scrollmain").css("height",$("body").height()+"px").css("padding-bottom","500px")
+                $(".pageMain_house")[0].addEventListener("touchStart",'false',function(e){
+                	gl.toucha(e)
+                })
+                
+	},
+	back(){
+		       $(".pageMain_fypj").removeClass("aaa")
+		     	$(".pageMain_house").css("height",($("body").height()-$(".pageMain_top").height()-50)+"px")
+                $("#scrollmain").css("height",($("body").height()-$(".pageMain_top").height()-50)+"px")
+                 $(".pageMain_house")[0].removeEventListener("touchStart",'false',function(e){
+                	//gl.toucha(e)
+                })
+	},
+	fen(f){
+		
+		var x=parseFloat(f);
+		var quan='<img   src="/application/weixin/view/public/images/xq/star.png"/>'
+		var ban='<img   src="/application/weixin/view/public/images/xq/star2.png"/>'
+		if(x==1)
+		{
+			return quan;
+		}
+		if(x<1.5)
+		{
+			return quan+ban;
+		}
+		
+		if(x<=2)
+		{
+			return quan+quan
+		}
+		if(x<=2.5)
+		{
+			return quan+quan+ban;
+		}
+		if(x<=3)
+		{
+			return quan+quan+quan;
+		}
+		if(x<=3.5)
+		{
+			return quan+quan+quan+ban;
+		}
+		if(x<=4)
+		{
+			return quan+quan+quan+quan;
+		}
+		if(x<=4.5)
+		{
+			return quan+quan+quan+quan+ban;
+		}
+		if(x<=5)
+		{
+			return quan+quan+quan+quan+quan;
+		}
+	}
+}
+
+function  navcallCB(i){
+	if(i==1)
+	{
+		$(".pageMain_house").show();
+		$(".pageMain_pinglun").hide();
+	}
+	if(i==2)
+	{
+		$(".pageMain_house").hide();
+		$(".pageMain_pinglun").show();
+		myScroll.refresh()
+	}
+}
+var page=1
+ var mysc={
+	url:"{:U('weixin/member/housedetail')}",
+	page:1,
+	params:{id:{$member.id},p:page},
+	
+	overCB:function(res){
+		console.log(res.list)
+		
+		var str=""
+		for(var i=0;i<res.list.length;i++)
+		{
+			var imgstr=""
+			for(var y=0;y<res.list[i].imglist.length;y++)
+			{
+				var img="<div ><img src='"+res.list[i].imglist[y]+"' data-preview-src='' data-preview-group='1'/></div>"
+				
+				imgstr== "" ? imgstr=img : imgstr=imgstr+img;
+			}
+			
+			 
+			
+			
+			var o=res.list[i]
+			var x=`
+			<div class="pingjia">
+								   	  
+								      <div class="pingjia_tx flex-flow">
+								      	 <img src="`+o.member.headimgurl+`" class="user_tx"/>
+								      	 <div>
+								      	 	 <p style="border: none;">`+o.member.nickname+`</p>
+								      	 	 <div>`+pageFun.fen(o.fenzhi)+`</div>
+								      	 </div>
+								      	 <p style="border: none;">`+o.create_time+`</p>
+								      </div>
+								     <div class="pingjia_content">`+o.pinglun+`</div>
+								     <div class="pingjia_img mui-content-padded">`+imgstr+`</div>
+								</div>
+			
+			`;
+			
+			str== "" ?str=x : str=str+x;
+		}
+		var $o=$(str);
+		$o.appendTo($(".scrollmainbody"))
+		setTimeout(function(){myScroll.refresh()},700)
+		page+=1;
+		mysc.params={id:{$member.id},p:page}
+		
+	},
+	moveCB:function(y){
+		  if(y<-1)
+		     {
+		     	pageFun.move();
+		     }
+		     else
+		     {
+		     	pageFun.back();
+
+		     }
+	},
+	none:function(){
+		$(".gif").html("<img style='width:100px; margin-top:50px; height:auto' src='/application/weixin/view/public/images/none.png'>")
+	}
+}
+
+
+
+
+</script>
+<script type="text/javascript" src="/application/weixin/view/public/js/scroll.js" defer="defer"></script>     
+
+<script>
+		mui.previewImage();
+</script>
+
+</block>

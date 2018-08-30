@@ -1,0 +1,179 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+		<script type="text/javascript" src="/application/weixin/view/public/js/mui.picker.js"></script>
+		<script type="text/javascript" src="/application/weixin/view/public/js/mui.poppicker.js"></script>
+		<script src="/application/weixin/view/public/js/mui.dtpicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_foot.css"/>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_shouyi.css"/>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/mui.poppicker.css"/>
+		<script src="/application/weixin/view/public/js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/application/weixin/view/public/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+
+		 <script type="text/javascript" src="/application/weixin/view/public/js/iscrollall.js"></script>
+      <script type="text/javascript" src="/application/weixin/view/public/js/scroll.js" defer="defer"></script>
+      <link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/scroll.css"/>
+</block>
+<block name="main">
+<!--top-->
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>收益记录</span>
+		</div>
+		
+		<!--LIST-->
+		<div class="fixed" >
+			<div class="pageMain_top ">
+				<p>总收益</p>
+				<p>{$total|default='0.00'}元</p>
+			</div>
+			<div class="pageMain_search flex-flow module">
+				<div class="sort" onclick="pageFun.sort(this,1)"><span>时间</span><img src="/application/weixin/view/public/images/fangdong/xjt.png"/></div>
+				<div class="sort" onclick="pageFun.sort(this,2)"><span>收益</span><img src="/application/weixin/view/public/images/fangdong/xjt.png"/></div>
+				<div class="search flex-flow" onclick="pageFun.openSearch()"><img src="/application/weixin/view/public/images/fangdong/search.png"/><span>高级搜索</span></div>
+			</div>
+		</div>
+		
+	
+		
+
+		<div class="pageMain_pinglun" id="scrollmain" style="padding-top:10px; margin-top: 9rem;">
+            
+				     <div class="one" style="padding-bottom:5rem;">
+				           
+				           <div class="scrollmainbody">
+				             <!--列表-->
+				             <ul class="dfwehikfdjw">
+				             	
+				             	<!--<li >
+				             		<p>订单编号：SN458978T*895</p>
+				             		<div  class="module">
+				             				<p class="flex-flow"><span>顾客姓名：</span><label>gao</label></p>
+				             				<p class="flex-flow"><span>居住时间：</span><label>2016-05-06至2016-07-05</label></p>
+				             				<p class="flex-flow"><span>居住时长：</span><label>5晚</label></p>
+				             				<p class="flex-flow"><span>合计费用：</span><label>￥500.00</label></p>
+				             		</div>
+				             	</li> -->
+				             	
+				             	
+				             
+				             	
+				             </ul>
+				               
+				           </div>
+				          <div class="gif"><img src="/application/weixin/view/public/images/wait2.gif"></div>	          
+				     </div>
+				  
+         </div>
+		<!--search-->
+		<div class="select_search" onclick="pageFun.closeSearch(event)">
+			<div class="select_searchk" >
+			
+				<p class="flex-flow"><label class="datetime-picker picker1" data-options='{"type":"date"}' data-showdom="">选择开始时间</label></p>
+				<p class="flex-flow"><label class="datetime-picker picker2" data-options='{"type":"date"}' data-showdom="">选择结束时间</label></p>
+				
+			   
+			   <a class="tj" onclick="pageFun.searchStart()">搜索</a>
+			    <a class="tj2 ajax-post2" data-url="aaa.php" data-succ="tjback" style="display: none;"></a>
+			</div>
+		</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+
+$("#scrollmain").css("height",($("body").height()-$(".pageMain_top").height()-$(".pageMain_search").height()-2)+"px")
+function tjback(res){
+	
+}
+
+var qbl={
+	s:"",
+	e:"",
+	ssort:"",//2倒序,1正序
+	tsort:"",//2倒序,1正
+	page:1,
+	id:'{$id}',
+}
+	var pageFun={
+		searchStart(){
+			if(new Date($(".picker1").text()) > new Date($(".picker2").text()))
+			{
+				layer.alert("时间选择有误");return;
+			}
+			qbl.s=$(".picker1").text();qbl.e=$(".picker2").text();
+			//qbl.h=document.getElementsByClassName("house")[0].value;
+			//$(".tj2").attr("data-params",JSON.stringify(qbl))
+			//$(".tj2").click();
+			pageFun.ResetScroll()
+			$(".select_search").removeClass("searchshow")
+		},
+		
+		openSearch(){
+			$(".select_search").addClass("searchshow")
+		},
+		closeSearch(e){
+			var o=e.target;
+			if($(o).hasClass("select_search"))
+			{
+				$(o).removeClass("searchshow")
+				
+			}
+		},
+		sort(obj,zt){
+			if($(obj).hasClass("desc"))
+			{
+				
+				if(zt==1){qbl.ssort="1"; qbl.tsort=""}
+				if(zt==2){qbl.tsort="1"; qbl.ssort=""}
+				$(obj).removeClass("desc")
+			}
+			else
+			{
+				$(".sort").removeClass("desc")
+				if(zt==1){qbl.ssort="2";qbl.tsort=""}
+				if(zt==2){qbl.tsort="2";qbl.ssort=""}
+				$(obj).addClass("desc")
+			}
+			
+			pageFun.ResetScroll()
+			
+		},
+		ResetScroll(){
+			qbl.page=1;
+			$('.dfwehikfdjw').html("");
+			blv.isOver=false;
+			nextpage();
+		}
+		
+	}
+
+
+ var mysc={
+	url:"{:U('weixin/landlord/statdetail')}",
+	params:qbl,
+	overCB:function(res){
+		var a = '';
+		for(var i=0;i<res.list.length;i++){
+			a += '<li><p>订单编号：'+res.list[i]['order_sn']+'</p><div  class="module"><p class="flex-flow"><span>顾客姓名：</span><label>'+res.list[i]['username']+'</label></p><p class="flex-flow"><span>居住时间：</span><label>'+res.list[i]['live']+'</label></p><p class="flex-flow"><span>居住时长：</span><label>'+res.list[i]['night']+'晚</label></p><p class="flex-flow"><span>合计费用：</span><label>￥'+res.list[i]['su_total']+'</label></p></div></li>';
+		}
+		$('.dfwehikfdjw').html($('.dfwehikfdjw').html()+a);
+		qbl.page+=1;
+
+		mysc.params=qbl
+		
+		//myScroll.refresh()
+		
+	},
+	moveCB:function(y){
+		  
+	},
+	none:function(){
+		
+		var s='<div class="none" style="display:block"><img src="/application/weixin/view/public/images/none.png"/></div>'
+		$('.dfwehikfdjw').html(s)
+	}
+}
+
+</script>
+</block>

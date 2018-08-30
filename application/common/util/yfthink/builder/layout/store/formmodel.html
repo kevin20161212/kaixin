@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        {$meta_title}
+    </h4>
+</div>
+<block name="main">
+    <div class="panel-body">
+        <include file="$_formbuilder_layout" builderpath="./application/common/util/yfthink/builder" />
+    </div>
+</block>
+<block name="style">
+<style type="text/css">
+@media (min-width: 992px) {
+        .builder.formbuilder-box .form-builder.form-horizontal .left {
+            width: 14%;
+            float: left;
+        }
+        .builder.formbuilder-box .form-builder.form-horizontal .right {
+            width: 80%;
+            float: left;
+        }
+        .builder.formbuilder-box .form-builder .input, .builder.formbuilder-box .form-builder .select, .builder.formbuilder-box .form-builder .textarea, .builder.formbuilder-box .form-builder .file-box {
+                width: 100%;
+            }
+    }
+    @media (max-width: 768px) {
+        .builder.formbuilder-box {
+            padding: 0 15px;
+        }
+        .builder.formbuilder-box .builder-tabs-link {
+            margin: 0 -15px;
+        }
+        .builder.formbuilder-box .form-builder .bottom_button_list .btn {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .builder.formbuilder-box .form-builder .input, .builder.formbuilder-box .form-builder .select, .builder.formbuilder-box .form-builder .textarea, .builder.formbuilder-box .form-builder .file-box {
+                width: 100%;
+            }
+    }
+</style>
+</block>
+
+            

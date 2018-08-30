@@ -1,0 +1,122 @@
+<extend name="$_home_public_layout"/>
+
+
+<block name="style">
+       <style>
+       .modal-dialog{width:80% !important;}
+       .juzhong{display: none;}
+      .mingxing{width:100%;margin-top:4%;}
+      .mingxing td{width:16%;padding:1%;}
+      .zhuzhang{display:flex;width:14%;border-radius:10px;overflow: hidden;border:1px solid #EEE;}
+      .zhuzhang>div{width:50%; display: flex;
+    justify-content: center;
+    align-items: center;cursor:pointer;}
+   .zhuzhang>.zhezhu{background-color:#eee;padding:3% 0;}
+   .xiabaihau{ display: flex;
+    justify-content: space-between;align-items: center;margin-top:5%;}
+    .xiabaihau a{background-color:#2A70C3;color:#fff; display: flex;
+    justify-content: center;
+   align-items: center;width:10%;padding:0.5% 0;border-radius:10px;}
+     .kanyuanma{  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.xinbei{display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;}
+  .zilaip{padding-top:1%;}
+   </style>
+</block>
+
+
+
+<block name="main">
+  
+  <div id="app" style="background-color:#FFF;">
+
+<div class="beijig">
+  <img src="__HOME_CSS__/img/dati.png" class="beijgi">
+  <div class="zilaip xiamiandian">
+    <div class="xinbei"><a href="/index.php/home/pdf/getgtpdf?id={$id}" target="_blank" class="uploadimg layui-btn layui-btn-normal layui-btn-radius" style="margin-top:2%;">下载结果</a></div>
+    <div class="kanyuanma"><img src="__HOME_CSS__/img/biaotilog.png"></div>
+    
+    <table class="mingxing" border="1">
+      <tr>
+        <td>编号</td>
+        <td>{$info.title}</td>
+        <td>姓名</td>
+        <td>{$info.username}</td>
+        <td>性别</td>
+        <td>{$info.sex}</td>
+      </tr>
+      <tr>
+        <td>出生日期</td>
+        <td>{$info.riqi}</td>
+        <td>幼小</td>
+        <td>{$info.youxiao}</td>
+        <td>测量人</td>
+        <td>{$info.celiangren}</td>
+      </tr>
+      <tr>
+        <td>监护人</td>
+        <td>{$info.jianhuren}</td>
+        <td>关系</td>
+        <td>{$info.guanxi}</td>
+        <td>测量日期</td>
+        <td>{$info.create_time|date="Y-m-d H:i",###}</td>
+      </tr>
+      <tr>
+        <td>家庭住址</td>
+        <td colspan="3">{$info.lianxidizhi}</td>
+        <td>电话</td>
+        <td>{$info.lianxidianhua}</td>
+      </tr>
+    </table>
+    <div class="yuanshi"><img src="__HOME_CSS__/img/erti.png"></div>
+    <table class="mingxing" border="1">
+      <tr>
+        <td>项目</td>
+        <td>原始分</td>
+        <td>转换标准分</td>
+        <td>评量</td>
+      </tr>
+      <tr>
+        <td>大肌肉及平衡</td>
+        <td>{$results.daji.value|default='-'}</td>
+        <td>{$results.daji.fenzhi|default='-'}</td>
+        <td>{$results.daji.pingliang|default='-'}</td>
+      </tr>
+       <tr>
+        <td>触觉防御</td>
+        <td>{$results.chujue.value|default='-'}</td>
+        <td>{$results.chujue.fenzhi|default='-'}</td>
+        <td>{$results.chujue.pingliang|default='-'}</td>
+      </tr>
+      <tr>
+        <td>本体感觉</td>
+        <td>{$results.benti.value|default='-'}</td>
+        <td>{$results.benti.fenzhi|default='-'}</td>
+        <td>{$results.benti.pingliang|default='-'}</td>
+      </tr>
+       <tr>
+        <td>学习能力</td>
+        <td>{$results.xuexi.value|default='-'}</td>
+        <td>{$results.xuexi.fenzhi|default='-'}</td>
+        <td>{$results.xuexi.pingliang|default='-'}</td>
+      </tr>
+
+    </table>
+
+  </div>
+</div>
+</div>
+</block>
+
+<block name="script">
+<script>
+
+
+
+   
+</script>
+</block>

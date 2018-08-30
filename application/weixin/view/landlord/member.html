@@ -1,0 +1,68 @@
+<extend name="/public/layout"/>
+
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_grzx.css"/>
+	<link rel="stylesheet" type="text/css" href="/application/weixin/view/public/css/fangdong_foot.css"/>
+</block>
+<block name="main">
+		<div class="pageTop">
+			<img src="/application/weixin/view/public/images/back.png"/>
+			<span>个人中心</span>
+		</div>
+		
+		
+		
+		
+		
+			<div class="my" style="padding-bottom: 10rem;">
+				<div class="my_top">
+					<div class="my_top_tx" >
+						<img src="{$member.headimgurl}"/>
+						<span>{$member.nickname}</span>
+					</div>
+					<div class="my_main">
+						<ul>
+							<li><a href="{:U('weixin/member/mydata')}">
+						    	<img src="/application/weixin/view/public/images/fangdong/myzl.png">
+						    	<span>个人资料</span>
+						    </a></li>
+						    <li><a href="/index.php/weixin/index/index#/my">
+						    	<img src="/application/weixin/view/public/images/fangdong/change.png">
+						    	<span>切换用户模式</span>
+						    </a></li>
+						    <li><a href="{:U('weixin/member/explain')}">
+						    	<img src="/application/weixin/view/public/images/fangdong/xy.png">
+						    	<span>服务协议</span>
+						    </a></li>
+						    
+						</ul>
+					</div>
+				</div>
+		<!--foot-->
+		<div class="foot">
+			<ul>
+				<li>
+					<a href="{:U('weixin/landlord/myroom')}" class="">
+						<img src="/application/weixin/view/public/images/fangdong/house.png">
+						<p class="">房屋</p>
+			        </a>
+				</li>
+				<li>
+					<a href="{:U('weixin/landlord/statistics')}" class="">
+						<img src="/application/weixin/view/public/images/fangdong/shouyi.png">
+						<p class="">收益</p>
+			        </a>
+				</li>
+				<li>
+					<a href="{:U('weixin/landlord/member')}" class="">
+						<img src="/application/weixin/view/public/images/fangdong/foot4r.png">
+						<p class="footactive">我的</p>
+			        </a>
+				</li>
+				
+			</ul>
+		</div>
+</block>
+<block name="script">
+
+</block>

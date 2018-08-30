@@ -1,0 +1,78 @@
+<case value="sheshi">
+    <style>
+        .right{display:flex;}
+        .kdawi{width:33%;}
+    </style>
+    <!--
+        如果选项的值是自定义数组(必须定义key为title的元素)需要解析，如果选项的值是常规字符串直接显示
+        此处主要是用来给option定义更多的属性，比如data-ia=1，那么option应为
+        $option = array('title' => 标题, 'data-id' => 1);
+    -->
+<!-- 
+<?php
+
+    echo '<pre>';
+
+
+var_dump($[type]form);
+    echo '</pre>';
+
+
+?> -->
+     <script type="text/javascript">
+        $(function(){
+            $('.auth input[type="checkbox"]').on('change',function(){
+                //遍历选中当前权限的子权限
+                $('.'+$(this).attr('data-module-name')+' .auth'+$(this).val()).find('input').prop('checked',this.checked);
+
+                //遍历选中当前权限的父权限
+                if ($(this).is(':checked') == true) {
+                    var $fix = $(this);
+                    while ($fix.length > 0) {
+                        var $tmp = $fix.closest('div').prev('label').find('input');
+                        console.log($tmp);
+                        if ($tmp.length > 0) {
+                            $tmp.attr("checked",true);
+                            $fix = $tmp;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+                <div class="auth">
+                    <volist name="[type]form.options" id="vo1">
+                        <?php $module_name = $key; ?>
+                        <div class="{$vo1.id}">
+                            <div class="lyui-control lyui-checkbox">
+                                <label class="checkbox-label checkbox-inline">
+                                    <input type="checkbox" name="{$[type]form.name}[{$vo1.id}][]" data-module-name="{$vo1.id}" <php>if(in_array($vo1['id'],$[type]form['value'][$vo1['id']])) echo "checked";</php> value="{$vo1.id}">
+                                    <span class="lyui-control-indicator"></span>
+                                    <span> {$vo1.title}</span>
+                                </label>
+                                <div class="auth{$vo1.id}" style="padding-left: 25px;margin-top: 10px;">
+                                    <volist name="vo1.zz" id="vo2">
+                                        <label class="checkbox-label checkbox-inline">
+                                            <input type="checkbox" name="{$[type]form.name}[{$vo1.id}][]" data-module-name="{$vo1.id}" <php>if(in_array($vo2['id'],$[type]form['value'][$vo1['id']])) echo "checked";</php> value="{$vo2.id}">
+                                            <span class="lyui-control-indicator"></span>
+                                            <span> {$vo2.title}</span>
+                                        </label>
+                                      
+                                    </volist>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </volist>
+                </div>
+            </div>
+     
+    </div>
+
+</case>
