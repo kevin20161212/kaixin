@@ -26,7 +26,7 @@ class Index extends Admin {
      * @author youfai.cn <280962430@qq.com>
      */
     public function index() {
-        //dump(2112);exit;
+        dump(2112);exit;
         $keyword       = I('keyword', '', 'string');
         $condition     = array('like', '%' . $keyword . '%');
         if(!empty(I('pid'))){
