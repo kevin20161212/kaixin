@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-08-30 12:35:18
+-- Generation Time: 2018-08-31 12:16:41
 -- 服务器版本： 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -1600,7 +1600,7 @@ CREATE TABLE `yf_admin_module` (
 INSERT INTO `yf_admin_module` (`id`, `name`, `title`, `logo`, `icon`, `icon_color`, `description`, `developer`, `version`, `user_nav`, `config`, `role_config`, `admin_menu`, `role_menu`, `is_system`, `create_time`, `update_time`, `sort`, `status`) VALUES
 (1, 'Admin', '系统', '', 'fa fa-cog', '#3CA6F1', '核心系统', '山东有范网络科技有限公司', '2.0.0', '', '', NULL, '{\"1\":{\"pid\":\"0\",\"title\":\"\\u7cfb\\u7edf\",\"icon\":\"fa fa-cog\",\"level\":\"system\",\"id\":\"1\"},\"2\":{\"pid\":\"1\",\"title\":\"\\u7cfb\\u7edf\\u529f\\u80fd\",\"icon\":\"fa fa-folder-open-o\",\"id\":\"2\"},\"3\":{\"pid\":\"2\",\"title\":\"\\u7cfb\\u7edf\\u8bbe\\u7f6e\",\"icon\":\"fa fa-wrench\",\"url\":\"Admin\\/Config\\/group\",\"id\":\"3\"},\"4\":{\"pid\":\"3\",\"title\":\"\\u4fee\\u6539\\u8bbe\\u7f6e\",\"url\":\"Admin\\/Config\\/groupSave\",\"id\":\"4\"},\"5\":{\"pid\":\"2\",\"title\":\"\\u5bfc\\u822a\\u7ba1\\u7406\",\"icon\":\"fa fa-map-signs\",\"url\":\"Admin\\/Nav\\/index\",\"id\":\"5\"},\"6\":{\"pid\":\"5\",\"title\":\"\\u65b0\\u589e\",\"url\":\"Admin\\/Nav\\/add\",\"id\":\"6\"},\"7\":{\"pid\":\"5\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"Admin\\/Nav\\/edit\",\"id\":\"7\"},\"8\":{\"pid\":\"5\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Nav\\/setStatus\",\"id\":\"8\"},\"10\":{\"pid\":\"9\",\"title\":\"\\u65b0\\u589e\",\"url\":\"Admin\\/Slider\\/add\",\"id\":\"10\"},\"11\":{\"pid\":\"9\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"Admin\\/Slider\\/edit\",\"id\":\"11\"},\"12\":{\"pid\":\"9\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Slider\\/setStatus\",\"id\":\"12\"},\"13\":{\"pid\":\"2\",\"title\":\"\\u914d\\u7f6e\\u7ba1\\u7406\",\"icon\":\"fa fa-cogs\",\"url\":\"Admin\\/Config\\/index\",\"id\":\"13\"},\"14\":{\"pid\":\"13\",\"title\":\"\\u65b0\\u589e\",\"url\":\"Admin\\/Config\\/add\",\"id\":\"14\"},\"15\":{\"pid\":\"13\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"Admin\\/Config\\/edit\",\"id\":\"15\"},\"16\":{\"pid\":\"13\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Config\\/setStatus\",\"id\":\"16\"},\"17\":{\"pid\":\"2\",\"title\":\"\\u4e0a\\u4f20\\u7ba1\\u7406\",\"icon\":\"fa fa-upload\",\"url\":\"Admin\\/Upload\\/index\",\"id\":\"17\"},\"18\":{\"pid\":\"17\",\"title\":\"\\u4e0a\\u4f20\\u6587\\u4ef6\",\"url\":\"Admin\\/Upload\\/upload\",\"id\":\"18\"},\"19\":{\"pid\":\"17\",\"title\":\"\\u5220\\u9664\\u6587\\u4ef6\",\"url\":\"Admin\\/Upload\\/delete\",\"id\":\"19\"},\"20\":{\"pid\":\"17\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Upload\\/setStatus\",\"id\":\"20\"},\"21\":{\"pid\":\"17\",\"title\":\"\\u4e0b\\u8f7d\\u8fdc\\u7a0b\\u56fe\\u7247\",\"url\":\"Admin\\/Upload\\/downremoteimg\",\"id\":\"21\"},\"22\":{\"pid\":\"17\",\"title\":\"\\u6587\\u4ef6\\u6d4f\\u89c8\",\"url\":\"Admin\\/Upload\\/fileManager\",\"id\":\"22\"},\"23\":{\"pid\":\"1\",\"title\":\"\\u7cfb\\u7edf\\u6743\\u9650\",\"icon\":\"fa fa-folder-open-o\",\"id\":\"23\"},\"24\":{\"pid\":\"23\",\"title\":\"\\u7528\\u6237\\u7ba1\\u7406\",\"icon\":\"fa fa-user\",\"url\":\"Admin\\/User\\/index\",\"id\":\"24\"},\"25\":{\"pid\":\"24\",\"title\":\"\\u65b0\\u589e\",\"url\":\"Admin\\/User\\/add\",\"id\":\"25\"},\"26\":{\"pid\":\"24\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"Admin\\/User\\/edit\",\"id\":\"26\"},\"27\":{\"pid\":\"24\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/User\\/setStatus\",\"id\":\"27\"},\"28\":{\"pid\":\"23\",\"title\":\"\\u7ba1\\u7406\\u5458\\u7ba1\\u7406\",\"icon\":\"fa fa-lock\",\"url\":\"Admin\\/Access\\/index\",\"id\":\"28\"},\"29\":{\"pid\":\"28\",\"title\":\"\\u65b0\\u589e\",\"url\":\"Admin\\/Access\\/add\",\"id\":\"29\"},\"30\":{\"pid\":\"28\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"Admin\\/Access\\/edit\",\"id\":\"30\"},\"31\":{\"pid\":\"28\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Access\\/setStatus\",\"id\":\"31\"},\"32\":{\"pid\":\"23\",\"title\":\"\\u7528\\u6237\\u7ec4\\u7ba1\\u7406\",\"icon\":\"fa fa-sitemap\",\"url\":\"Admin\\/Group\\/index\",\"id\":\"32\"},\"33\":{\"pid\":\"32\",\"title\":\"\\u65b0\\u589e\",\"url\":\"Admin\\/Group\\/add\",\"id\":\"33\"},\"34\":{\"pid\":\"32\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"Admin\\/Group\\/edit\",\"id\":\"34\"},\"35\":{\"pid\":\"32\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Group\\/setStatus\",\"id\":\"35\"},\"36\":{\"pid\":\"1\",\"title\":\"\\u6269\\u5c55\\u4e2d\\u5fc3\",\"icon\":\"fa fa-folder-open-o\",\"id\":\"36\"},\"44\":{\"pid\":\"36\",\"title\":\"\\u529f\\u80fd\\u6a21\\u5757\",\"icon\":\"fa fa-th-large\",\"url\":\"Admin\\/Module\\/index\",\"id\":\"44\"},\"45\":{\"pid\":\"44\",\"title\":\"\\u5b89\\u88c5\",\"url\":\"Admin\\/Module\\/install\",\"id\":\"45\"},\"46\":{\"pid\":\"44\",\"title\":\"\\u5378\\u8f7d\",\"url\":\"Admin\\/Module\\/uninstall\",\"id\":\"46\"},\"47\":{\"pid\":\"44\",\"title\":\"\\u66f4\\u65b0\\u4fe1\\u606f\",\"url\":\"Admin\\/Module\\/updateInfo\",\"id\":\"47\"},\"48\":{\"pid\":\"44\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Module\\/setStatus\",\"id\":\"48\"},\"50\":{\"pid\":\"49\",\"title\":\"\\u5b89\\u88c5\",\"url\":\"Admin\\/Addon\\/install\",\"id\":\"50\"},\"51\":{\"pid\":\"49\",\"title\":\"\\u5378\\u8f7d\",\"url\":\"Admin\\/Addon\\/uninstall\",\"id\":\"51\"},\"52\":{\"pid\":\"49\",\"title\":\"\\u8fd0\\u884c\",\"url\":\"Admin\\/Addon\\/execute\",\"id\":\"52\"},\"53\":{\"pid\":\"49\",\"title\":\"\\u8bbe\\u7f6e\",\"url\":\"Admin\\/Addon\\/config\",\"id\":\"53\"},\"54\":{\"pid\":\"49\",\"title\":\"\\u540e\\u53f0\\u7ba1\\u7406\",\"url\":\"Admin\\/Addon\\/adminList\",\"id\":\"54\"},\"55\":{\"pid\":\"54\",\"title\":\"\\u65b0\\u589e\\u6570\\u636e\",\"url\":\"Admin\\/Addon\\/adminAdd\",\"id\":\"55\"},\"56\":{\"pid\":\"54\",\"title\":\"\\u7f16\\u8f91\\u6570\\u636e\",\"url\":\"Admin\\/Addon\\/adminEdit\",\"id\":\"56\"},\"57\":{\"pid\":\"54\",\"title\":\"\\u8bbe\\u7f6e\\u72b6\\u6001\",\"url\":\"Admin\\/Addon\\/setStatus\",\"id\":\"57\"}}', '{\"Store\":{\"1\":{\"pid\":\"0\",\"title\":\"\\u673a\\u6784\\u5e73\\u53f0\\u7ba1\\u7406\",\"icon\":\"fa fa-flask\",\"id\":\"1\"},\"2\":{\"pid\":\"1\",\"title\":\"\\u7528\\u6237\\u7ba1\\u7406\",\"icon\":\"fa fa-user\",\"id\":\"2\"},\"3\":{\"pid\":\"2\",\"title\":\"\\u673a\\u6784\\u6559\\u5e08\",\"url\":\"merchant\\/teacher\\/index\",\"icon\":\"fa fa-user\",\"id\":\"3\"},\"4\":{\"pid\":\"2\",\"title\":\"\\u7528\\u6237\\u4f1a\\u5458\",\"url\":\"merchant\\/user\\/index\",\"icon\":\"fa fa-users \",\"id\":\"4\"},\"5\":{\"pid\":\"1\",\"title\":\"\\u8bfe\\u7a0b\\u7ba1\\u7406\",\"icon\":\"fa fa-folder-open\",\"id\":\"5\"},\"6\":{\"pid\":\"5\",\"title\":\"\\u8bfe\\u7a0b\\u5217\\u8868\",\"url\":\"course\\/Index\\/index\",\"icon\":\"fa fa-graduation-cap \",\"id\":\"6\"},\"7\":{\"pid\":\"1\",\"title\":\"\\u8fd0\\u8425\\u7ba1\\u7406\",\"icon\":\"fa fa-folder-open\",\"id\":\"7\"},\"8\":{\"pid\":\"7\",\"title\":\"\\u6d3b\\u52a8\\u7248\\u5757\",\"url\":\"operate\\/active\\/block\",\"icon\":\"fa fa-life-ring \",\"id\":\"8\"},\"9\":{\"pid\":\"7\",\"title\":\"\\u4f18\\u60e0\\u5238\",\"url\":\"operate\\/coupon\\/index\",\"icon\":\"fa fa-money \",\"id\":\"9\"},\"10\":{\"pid\":\"7\",\"title\":\"\\u6d3b\\u52a8\\u4e13\\u533a\",\"url\":\"operate\\/active\\/index\",\"icon\":\"fa fa-users \",\"id\":\"10\"}}}', 1, 1438651748, 1535613458, 0, 1),
 (19, 'merchant', '用户管理', '', 'fort-awesome', '#F9B440', '用户管理', '山东有范网络科技有限公司', '1.6.2', '{\"center\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\",\"color\":\"#398CD2\"}],\"main\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\"}]}', '{\"title\":\"\",\"logo\":\"\"}', NULL, '{\"1\":{\"pid\":\"0\",\"title\":\"\\u7528\\u6237\\u7ba1\\u7406\",\"icon\":\"fa-fort-awesome\",\"id\":\"1\"},\"2\":{\"pid\":\"1\",\"title\":\"\\u7528\\u6237\\u7ba1\\u7406\",\"icon\":\"fa fa-user\",\"id\":\"2\"},\"3\":{\"pid\":\"2\",\"title\":\"\\u673a\\u6784\\u4f1a\\u5458\",\"url\":\"merchant\\/Index\\/index\",\"icon\":\"fa fa-user\",\"id\":\"3\"},\"4\":{\"pid\":\"2\",\"title\":\"\\u673a\\u6784\\u6559\\u5e08\",\"url\":\"merchant\\/teacher\\/index\",\"icon\":\"fa fa-user\",\"id\":\"4\"},\"5\":{\"pid\":\"2\",\"title\":\"\\u7528\\u6237\\u4f1a\\u5458\",\"url\":\"merchant\\/user\\/index\",\"icon\":\"fa fa-users \",\"id\":\"5\"},\"14\":{\"pid\":\"3\",\"title\":\"\\u65b0\\u589e\",\"url\":\"merchant\\/Index\\/add\",\"id\":\"14\"},\"15\":{\"pid\":\"3\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"merchant\\/Index\\/edit\",\"id\":\"15\"},\"16\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68381\",\"url\":\"merchant\\/Index\\/audit\",\"id\":\"16\"},\"17\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68382\",\"url\":\"merchant\\/Index\\/unaudit\",\"id\":\"17\"}}', NULL, 0, 1535537964, 1535537964, 0, 1),
-(20, 'course', '课程管理', '', 'fort-awesome', '#F9B440', '课程管理', '山东有范网络科技有限公司', '1.6.2', '{\"center\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\",\"color\":\"#398CD2\"}],\"main\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\"}]}', '{\"title\":{\"title\":\"\\u6a21\\u5757\\u540d\\u79f0\",\"type\":\"text\",\"value\":\"\",\"tip\":\"\\u7528\\u4e8e\\u81ea\\u5b9a\\u4e49\\u6a21\\u5757\\u540d\\u79f0\",\"is_dev\":\"1\"},\"logo\":{\"title\":\"\\u6a21\\u5757logo\",\"type\":\"picture\",\"value\":\"\",\"tip\":\"\\u7528\\u4e8e\\u81ea\\u5b9a\\u4e49\\u6a21\\u5757logo\",\"is_dev\":\"1\"}}', NULL, '{\"1\":{\"pid\":\"0\",\"title\":\"\\u8bfe\\u7a0b\\u7ba1\\u7406\",\"icon\":\"fa-book\",\"id\":\"1\"},\"2\":{\"pid\":\"1\",\"title\":\"\\u8bfe\\u7a0b\\u7ba1\\u7406\",\"icon\":\"fa fa-folder-open\",\"id\":\"2\"},\"3\":{\"pid\":\"2\",\"title\":\"\\u8bfe\\u7a0b\\u5217\\u8868\",\"url\":\"course\\/Index\\/index\",\"icon\":\"fa fa-graduation-cap \",\"id\":\"3\"},\"4\":{\"pid\":\"2\",\"title\":\"\\u8bfe\\u7a0b\\u5206\\u7c7b\",\"url\":\"course\\/index\\/cate\",\"icon\":\"fa fa-map-signs\",\"id\":\"4\"},\"14\":{\"pid\":\"3\",\"title\":\"\\u65b0\\u589e\",\"url\":\"merchant\\/Index\\/add\",\"id\":\"14\"},\"15\":{\"pid\":\"3\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"merchant\\/Index\\/edit\",\"id\":\"15\"},\"16\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68381\",\"url\":\"merchant\\/Index\\/audit\",\"id\":\"16\"},\"17\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68382\",\"url\":\"merchant\\/Index\\/unaudit\",\"id\":\"17\"}}', NULL, 0, 1535538082, 1535538449, 0, 1),
+(20, 'course', '课程管理', '', 'fort-awesome', '#F9B440', '课程管理', '山东有范网络科技有限公司', '1.6.2', '{\"center\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\",\"color\":\"#398CD2\"}],\"main\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\"}]}', '{\"title\":{\"title\":\"\\u6a21\\u5757\\u540d\\u79f0\",\"type\":\"text\",\"value\":\"\",\"tip\":\"\\u7528\\u4e8e\\u81ea\\u5b9a\\u4e49\\u6a21\\u5757\\u540d\\u79f0\",\"is_dev\":\"1\"},\"logo\":{\"title\":\"\\u6a21\\u5757logo\",\"type\":\"picture\",\"value\":\"\",\"tip\":\"\\u7528\\u4e8e\\u81ea\\u5b9a\\u4e49\\u6a21\\u5757logo\",\"is_dev\":\"1\"}}', NULL, '{\"1\":{\"pid\":\"0\",\"title\":\"\\u8bfe\\u7a0b\\u7ba1\\u7406\",\"icon\":\"fa-book\",\"id\":\"1\"},\"2\":{\"pid\":\"1\",\"title\":\"\\u8bfe\\u7a0b\\u7ba1\\u7406\",\"icon\":\"fa fa-folder-open\",\"id\":\"2\"},\"3\":{\"pid\":\"2\",\"title\":\"\\u8bfe\\u7a0b\\u5217\\u8868\",\"url\":\"course\\/Index\\/index\",\"icon\":\"fa fa-graduation-cap \",\"id\":\"3\"},\"4\":{\"pid\":\"2\",\"title\":\"\\u8bfe\\u7a0b\\u5206\\u7c7b\",\"url\":\"course\\/index\\/cate\",\"icon\":\"fa fa-map-signs\",\"id\":\"4\"},\"14\":{\"pid\":\"3\",\"title\":\"\\u65b0\\u589e\",\"url\":\"merchant\\/Index\\/add\",\"id\":\"14\"},\"15\":{\"pid\":\"3\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"merchant\\/Index\\/edit\",\"id\":\"15\"},\"16\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68381\",\"url\":\"merchant\\/Index\\/audit\",\"id\":\"16\"},\"17\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68382\",\"url\":\"merchant\\/Index\\/unaudit\",\"id\":\"17\"},\"18\":{\"pid\":\"1\",\"title\":\"\\u8bfe\\u7a0b\\u53c2\\u6570\",\"icon\":\"fa fa-folder-open\",\"id\":\"18\"},\"19\":{\"pid\":\"18\",\"title\":\"\\u8bfe\\u7a0b\\u7c7b\\u578b\",\"icon\":\"fa fa-graduation-cap\",\"url\":\"course\\/param\\/cate?type=1\",\"id\":\"19\"},\"20\":{\"pid\":\"18\",\"title\":\"\\u8bfe\\u7a0b\\u7ea7\\u522b\",\"icon\":\"fa fa-graduation-cap\",\"url\":\"course\\/param\\/cate?type=2\",\"id\":\"20\"},\"21\":{\"pid\":\"18\",\"title\":\"\\u5f00\\u8bfe\\u7c7b\\u578b\",\"icon\":\"fa fa-graduation-cap\",\"url\":\"course\\/param\\/cate?type=3\",\"id\":\"21\"}}', NULL, 0, 1535538082, 1535702191, 0, 1),
 (21, 'operate', '运营管理', '', 'fort-awesome', '#F9B440', '运营管理', '山东有范网络科技有限公司', '1.6.2', '{\"center\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\",\"color\":\"#398CD2\"}],\"main\":[{\"title\":\"\\u6d4b\\u8bd5\\u5bfc\\u822a\",\"icon\":\"fa-user\",\"url\":\"merchant\\/Index\\/index\"}]}', '{\"title\":\"\",\"logo\":\"\"}', NULL, '{\"1\":{\"pid\":\"0\",\"title\":\"\\u8fd0\\u8425\\u7ba1\\u7406\",\"icon\":\"fa-recycle\",\"id\":\"1\"},\"2\":{\"pid\":\"1\",\"title\":\"\\u8fd0\\u8425\\u7ba1\\u7406\",\"icon\":\"fa fa-folder-open\",\"id\":\"2\"},\"3\":{\"pid\":\"2\",\"title\":\"\\u6d3b\\u52a8\\u7248\\u5757\",\"url\":\"operate\\/active\\/block\",\"icon\":\"fa fa-life-ring \",\"id\":\"3\"},\"4\":{\"pid\":\"2\",\"title\":\"\\u4f18\\u60e0\\u5238\",\"url\":\"operate\\/coupon\\/index\",\"icon\":\"fa fa-money \",\"id\":\"4\"},\"5\":{\"pid\":\"2\",\"title\":\"\\u6d3b\\u52a8\\u4e13\\u533a\",\"url\":\"operate\\/active\\/index\",\"icon\":\"fa fa-users \",\"id\":\"5\"},\"14\":{\"pid\":\"3\",\"title\":\"\\u65b0\\u589e\",\"url\":\"operate\\/Index\\/add\",\"id\":\"14\"},\"15\":{\"pid\":\"3\",\"title\":\"\\u7f16\\u8f91\",\"url\":\"operate\\/Index\\/edit\",\"id\":\"15\"},\"16\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68381\",\"url\":\"operate\\/Index\\/audit\",\"id\":\"16\"},\"17\":{\"pid\":\"3\",\"title\":\"\\u5ba1\\u68382\",\"url\":\"operate\\/Index\\/unaudit\",\"id\":\"17\"}}', NULL, 0, 1535538089, 1535538089, 0, 1);
 
 -- --------------------------------------------------------
@@ -2781,6 +2781,69 @@ INSERT INTO `yf_course_category` (`id`, `group`, `pid`, `title`, `type`, `icon`,
 (6, '', 2, 'hi-pop', '', 0, 0, '1535364717', 1),
 (7, '', 2, 'breaking', '', 0, 0, '1535364751', 1),
 (8, '', 2, '机械舞', '', 0, 0, '1535364776', 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yf_course_param`
+--
+
+CREATE TABLE `yf_course_param` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '标题',
+  `type` tinyint(1) NOT NULL COMMENT '类型',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `create_time` varchar(12) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 转存表中的数据 `yf_course_param`
+--
+
+INSERT INTO `yf_course_param` (`id`, `title`, `type`, `status`, `create_time`) VALUES
+(2, '班课', 1, 1, '1535701600'),
+(3, '一对一', 1, 1, '1535702767'),
+(4, '其他', 1, 1, '1535702795'),
+(5, '初级班', 2, 1, '1535702825'),
+(6, '中级班', 2, 1, '1535702845'),
+(7, '高级班', 2, 1, '1535702874'),
+(8, '其他', 2, 1, '1535702968'),
+(9, '随到随学', 3, 1, '1535703001'),
+(10, '人满开班', 3, 1, '1535703022'),
+(11, '按时开班', 3, 1, '1535703065');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yf_couser`
+--
+
+CREATE TABLE `yf_couser` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '标题',
+  `cover` int(11) NOT NULL COMMENT '封面图',
+  `cate_id` int(11) NOT NULL COMMENT '课程类别',
+  `active_id` int(11) NOT NULL COMMENT '活动id',
+  `ex_ticket_id` int(11) NOT NULL COMMENT '体验券id',
+  `ex_ticket_num` int(11) NOT NULL COMMENT '体验券数量',
+  `method_id` int(11) NOT NULL COMMENT '授课方式',
+  `course_start_time` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '开课时间',
+  `course_add` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '教课地址',
+  `course_term` int(11) NOT NULL COMMENT '开课条件',
+  `course_grade` varchar(255) NOT NULL COMMENT '课程级别规格参数',
+  `course_cost` varchar(255) NOT NULL COMMENT '课时收费参数',
+  `teacher_id` int(11) NOT NULL COMMENT '教师id',
+  `course_tool_des` text NOT NULL COMMENT '教辅教具',
+  `course_certificate_des` text NOT NULL COMMENT '结业证书',
+  `environment_des` text NOT NULL COMMENT '教室环境',
+  `course_des` text NOT NULL COMMENT '课程介绍',
+  `result_des` text NOT NULL COMMENT '教学成果',
+  `charge_des` text NOT NULL COMMENT '收费说明',
+  `lat` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '纬度',
+  `lng` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '经度',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1:上架0下架',
+  `create_time` varchar(20) NOT NULL COMMENT '创建时间'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -52831,6 +52894,18 @@ ALTER TABLE `yf_course_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `yf_course_param`
+--
+ALTER TABLE `yf_course_param`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `yf_couser`
+--
+ALTER TABLE `yf_couser`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `yf_dish_index`
 --
 ALTER TABLE `yf_dish_index`
@@ -53278,6 +53353,18 @@ ALTER TABLE `yf_colligate_news`
 --
 ALTER TABLE `yf_course_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 使用表AUTO_INCREMENT `yf_course_param`
+--
+ALTER TABLE `yf_course_param`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- 使用表AUTO_INCREMENT `yf_couser`
+--
+ALTER TABLE `yf_couser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用表AUTO_INCREMENT `yf_dish_index`
