@@ -12,22 +12,20 @@
 // +----------------------------------------------------------------------
 
 namespace app\Course\store;
-use app\admin\controller\Admin;
+use app\store\controller\Store;
 use yfthink\Page;
-
 /**
  * 默认控制器
  * @author youfai.cn <280962430@qq.com>
  */
-class Index extends Admin {
+class Index extends Store {
     /**
      * 默认方法
      * @author youfai.cn <280962430@qq.com>
      */
     public function index() {
         // 获取列表
-        // 
-        dump(2134214);exit;
+        dump(214);exit;
         $map = array();
         $keyword         = I('keyword', '', 'string');
         $map['id|title']       = array('like', '%' . $keyword . '%');

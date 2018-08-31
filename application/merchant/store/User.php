@@ -12,14 +12,13 @@
 // +----------------------------------------------------------------------
 
 namespace app\Merchant\store;
-use app\admin\controller\Admin;
+use app\store\controller\Store;
 use yfthink\Page;
-
 /**
  * 默认控制器
  * @author youfai.cn <280962430@qq.com>
  */
-class User extends Admin {
+class User extends Store {
     /**
      * 默认方法
      * @author youfai.cn <280962430@qq.com>

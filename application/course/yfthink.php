@@ -108,5 +108,28 @@ return array(
             'title' => '审核2',
             'url'   => 'merchant/Index/unaudit',
         ),
+        '18' => array(
+            'pid'   => '1',
+            'title' => '课程参数',
+            'icon'  => 'fa fa-folder-open',
+        ),
+        '19' => array(
+            'pid'   => '18',
+            'title' => '课程类型',
+            'icon'  => 'fa fa-graduation-cap',
+            'url'   => 'course/param/cate?type=1',
+        ),
+        '20' => array(
+            'pid'   => '18',
+            'title' => '课程级别',
+            'icon'  => 'fa fa-graduation-cap',
+            'url'   => 'course/param/cate?type=2',
+        ),
+        '21' => array(
+            'pid'   => '18',
+            'title' => '开课类型',
+            'icon'  => 'fa fa-graduation-cap',
+            'url'   => 'course/param/cate?type=3',
+        ),
     )
 );

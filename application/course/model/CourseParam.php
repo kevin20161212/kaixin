@@ -11,29 +11,28 @@
 // | 法律责任的风险。如果需要取得官方授权，请联系官方http://www.youfai.cn
 // +----------------------------------------------------------------------
 
-namespace app\Cms\Model;
+namespace app\Course\Model;
 use app\common\model\Model;
 
 /**
  * 默认模型
  * @author youfai.cn <280962430@qq.com>
  */
-class CmsLink extends Model {
+class CourseParam extends Model {
     /**
      * 数据库真实表名
      * 一般为了数据库的整洁，同时又不影响Model和Controller的名称
      * 我们约定每个模块的数据表都加上相同的前缀，比如微信模块用weixin作为数据表前缀
      * @author youfai.cn <280962430@qq.com>
      */
-    protected $tableName = 'cms_link';
+    protected $tableName = 'Course_Param';
 
     /**
      * 自动验证规则
      * @author youfai.cn <280962430@qq.com>
      */
     protected $_validate = array(
-        array('title', 'require', '幻灯片标题不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
-        array('thumb', 'require', '幻灯片图片不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('title', 'require', '标题不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
     );
 
     /**
@@ -42,5 +41,6 @@ class CmsLink extends Model {
      */
     protected $_auto = array(
         array('create_time', 'time', self::MODEL_INSERT, 'function'),
+        array('status', '1', self::MODEL_INSERT),
     );
 }
