@@ -46,12 +46,12 @@ class Store extends Controller
        // dump($current_url);die;
        // dump(model('admin/Group')->checkMenuAuth());die;
         // 权限检测，首页不需要权限
-        if ($module.'/index/index' !== strtolower($current_url)) {
-            if (!model('admin/Group')->checkMenuAuth()) {
-                $this->error('权限不足！', url($module.'/Index/index'));
-            }
-            $this->assign('_admin_tabs', config('admin_tabs'));
-        }
+        // if ($module.'/index/index' !== strtolower($current_url)) {
+        //     if (!model('admin/Group')->checkMenuAuth()) {
+        //         $this->error('权限不足！', url($module.'/Index/index'));
+        //     }
+        //     $this->assign('_admin_tabs', config('admin_tabs'));
+        // }
         // dump(config('admin_tabs'));exit;
         // 获取所有导航
         $module_object = model('admin/Module');
