@@ -24,48 +24,90 @@ class Index extends Store {
      * @author youfai.cn <280962430@qq.com>
      */
     public function index() {
-        // 获取列表
-        dump(214);exit;
-        $map = array();
-        $keyword         = I('keyword', '', 'string');
-        $map['id|title']       = array('like', '%' . $keyword . '%');
-        $p = $_GET["p"] ? : 1;
-        $model_object = D("topic_category");
-        $data_list = $model_object
-                   ->page($p, C("ADMIN_PAGE_ROWS"))
-                    ->where($map)
-                   ->order("id desc")
-                   ->select();
-     
-        $page = new Page(
-           M('topic_category')->where($map)->count(),
-            C("ADMIN_PAGE_ROWS")
+         $keyword       = I('keyword', '', 'string');
+        $condition     = array('like', '%' . $keyword . '%');
+        if(!empty(I('pid'))){
+            $map['pid'] = I('pid');
+        }
+
+
+        $map['id|title'] = array(
+            $condition,
         );
-       
+     
+        $p             = !empty($_GET["p"]) ? $_GET['p'] : 1;
+        $access_object = D('Course');
+        $data_list     = $access_object
+            ->page($p, C('ADMIN_PAGE_ROWS'))
+            ->where($map)
+            ->order('id desc')
+            ->select();
+        $page = new Page(
+            $access_object->where($map)->count(),
+            C('ADMIN_PAGE_ROWS')
+        );
+        $attr['name']  = '查看';
+        $attr['title'] = '查看';
+        $attr['class'] = 'label label-primary-outline label-pill';
+        $attr['href']  = U('audit', array('id' => '__data_id__','modal'=>true));
+        $attr['data-toggle']  = 'modal';
+        $attr['data-target']  = '#myModal';
+        $attr['data-keyboard']  = 'true';
         // 使用Builder快速建立列表页面
         $builder = new \yfthink\builder\ListBuilder();
         $builder->setMetaTitle("列表")  // 设置页面标题
                 ->addTopButton("addnew")    // 添加新增按钮
-                ->setSearch("请输入ID/分类", U("index"))
+                ->addTopButton("delete",array('model'=>'course/Course'))  // 添加删除按钮
+                //->addSearchItem('pid', 'select', '分类','分类',$data)
+               //->search_form_items('pid', 'select', '分类','分类',$data)
+                //->addSearchItem('keyword', 'text', '关键字','ID/文章标题')
+                //->setTopAlert($count)
                 ->addTableColumn("id", "ID")
-                ->addTableColumn("title", "分类名称")
+                ->addTableColumn("title", "课程名")
+                ->addTableColumn("cate_id", "课程类别")
+                ->addTableColumn("method_id", "授课方式")
+                ->addTableColumn("course_term", "课程级别")
+                //->addTableColumn("course_grade", "课程级别")
                 ->addTableColumn("create_time", "创建时间", "time")
                 ->addTableColumn("right_button", "操作", "btn")
                 ->setTableDataList($data_list)     // 数据列表
                 ->setTableDataPage($page->show())  // 数据列表分页
                 ->addRightButton("edit")           // 添加编辑按钮
-                ->addRightButton("forbid")  // 添加禁用/启用按钮
-                ->addRightButton("delete")  // 添加删除按钮
+                ->addRightButton("delete",array('model'=>'course/Course'))  // 添加删除按钮
+                ->addRightButton('self',$attr)  // 添加审核按钮
                 ->display();
     }
-
+// 根据导航类型设置表单项目
+    private $extra_html = <<<EOF
+    <script type="text/javascript">
+        $(function(){
+            $('.item_course_start_time').addClass('hidden');
+            $('.item_student_num').addClass('hidden');
+            $('input[name="course_term"]').change(function() {
+                var type = $(this).val();
+                if (type == '9') {
+                    $('.item_course_start_time').addClass('hidden');
+                    $('.item_student_num').addClass('hidden');
+                }
+                if(type == '10'){
+                    $('.item_course_start_time').addClass('hidden');
+                    $('.item_student_num').removeClass('hidden');
+                }
+                if(type == '11'){
+                    $('.item_student_num').addClass('hidden');
+                    $('.item_course_start_time').removeClass('hidden');
+                } 
+            }); 
+        });
+    </script>
+EOF;
     /**
      * 新增
      * @author youfai.cn <280962430@qq.com>
      */
     public function add() {
         if (request()->isPost()) {
-            $model_object = D("topic_category");
+            $model_object = D("Course");
             $data = $model_object->create(format_data());
             if ($data) {
                 $id = $model_object->add($data);
@@ -78,12 +120,49 @@ class Index extends Store {
                 $this->error($model_object->getError());
             }
         } else {
-            
+            $merch_id = $this->merch_id;
+            $teacher = model('Merchant/app_user')->where(['merch_id'=>$merch_id,'status'=>1,'type'=>2])->select();
+            foreach ($teacher as $key => $value) {
+               $teacher_data[$value['id']] = $value['teach_name']; 
+            }
+            $cate = model('course_param')->where(['type'=>1,'status'=>1])->field('id,title')->select();
+            foreach ($cate as $key => $value) {
+              $cate_data[$value['id']] = $value['title'];
+            }
+            $me = model('course_param')->where(['type'=>2,'status'=>1])->select();
+            foreach ($me as $key => $value) {
+              $me_data[$value['id']] = $value['title'];
+            }
+            $term = model('course_param')->where(['type'=>3,'status'=>1])->select();
+            foreach ($term as $key => $value) {
+              $term_data[$value['id']] = $value['title'];
+            }
             // 使用FormBuilder快速建立表单页面
             $builder = new \yfthink\builder\FormBuilder();
             $builder->setMetaTitle("新增")  // 设置页面标题
                     ->setPostUrl(U("add"))      // 设置表单提交地址
-                    ->addFormItem("title", "text", "分类名称", "分类名称")
+                    ->addFormItem("title", "text", "课程名", "课程名")
+                    ->addFormItem("cover", "picture", "封面图", "封面图")
+                    ->addFormItem("cate_id", "select", "课程类别", "课程类别",select_list_as_tree('Course/CourseCategory',''))
+                    ->addFormItem("method_id", "radio", "授课方式", "授课方式",$cate_data)
+                    ->addFormItem("course_grade", "radio", "课程级别", "课程级别",$me_data)
+                    ->addFormItem("course_grade_age", "text", "学龄段", "学龄段")
+                    ->addFormItem("course_term", "radio", "开课条件", "课程名",$term_data)
+                    ->addFormItem("course_start_time", "date", "开课时间", "开课时间")
+                    ->addFormItem("student_num", "num", "开课人数", "开课人数")
+                    ->addFormItem("teacher_id", "select", "教师", "教师",$teacher_data)
+                    ->addFormItem("course_grade", "text", "课程规格", "课程规格")
+                    ->addFormItem("course_cost", "text", "课时收费", "课时收费")
+                    ->addFormItem("course_tool_des", "text", "教辅教具", "教辅教具")
+                    ->addFormItem("course_certificate_des", "text", "结业证书说明", "结业证书说明")
+                    ->addFormItem("environment_des", "text", "教室环境", "教室环境")
+                    ->addFormItem("course_des", "text", "课程介绍", "课程介绍")
+                    ->addFormItem("result_des", "text", "教学成果", "教学成果")
+                    ->addFormItem("charge_des", "text", "收费说明", "收费说明")
+                    ->addFormItem("lat", "text", "纬度", "纬度")
+                    ->addFormItem("lng", "text", "经度", "经度")
+                    ->addFormItem("lng123", "guige", "添加规格", "添加规格")
+                    ->setExtraHtml($this->extra_html)
                     ->display();
         }
     }

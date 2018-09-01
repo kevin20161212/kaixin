@@ -26,7 +26,7 @@ class Index extends Admin {
      * @author youfai.cn <280962430@qq.com>
      */
     public function index() {
-        dump(2112);exit;
+        //dump(2112);exit;
         $keyword       = I('keyword', '', 'string');
         $condition     = array('like', '%' . $keyword . '%');
         if(!empty(I('pid'))){
@@ -37,11 +37,9 @@ class Index extends Admin {
         $map['id|title'] = array(
             $condition,
         );
-        //dump($map);exit;
-        // 获取所有配置
      
         $p             = !empty($_GET["p"]) ? $_GET['p'] : 1;
-        $access_object = D('MerchantMember');
+        $access_object = D('Course');
         $data_list     = $access_object
             ->page($p, C('ADMIN_PAGE_ROWS'))
             ->where($map)
@@ -64,15 +62,15 @@ class Index extends Admin {
                 ->addTopButton("addnew")    // 添加新增按钮
                 ->addTopButton("delete",array('model'=>'cms/cms_article'))  // 添加删除按钮
                 //->addSearchItem('pid', 'select', '分类','分类',$data)
-                ->search_form_items('pid', 'select', '分类','分类',$data)
+               //->search_form_items('pid', 'select', '分类','分类',$data)
                 //->addSearchItem('keyword', 'text', '关键字','ID/文章标题')
                 //->setTopAlert($count)
                 ->addTableColumn("id", "ID")
-                ->addTableColumn("title", "机构名称")
-                ->addTableColumn("linkman", "联系人")
-                ->addTableColumn("contact_mobile", "联系电话")
-                ->addTableColumn("point", "积分")
-                //->addTableColumn("authen_status", "审核状态",'callback','authen_type')
+                ->addTableColumn("title", "课程名")
+                ->addTableColumn("cate_id", "课程类别")
+                ->addTableColumn("method_id", "授课方式")
+                ->addTableColumn("course_term", "课程级别")
+                //->addTableColumn("course_grade", "课程级别")
                 ->addTableColumn("create_time", "创建时间", "time")
                 ->addTableColumn("right_button", "操作", "btn")
                 ->setTableDataList($data_list)     // 数据列表
