@@ -12,31 +12,51 @@
             <button type="button" class="btn btn-success btn_group">添加规格组</button>
             </div>
             <div class="btn_group_item" style="margin-top: 10px; margin-left: 0px">
-                <div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-success btn-xs">删除</button></div>
-                <div class="group_item" style="float: left; margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-success btn-xs">删除</button></div>
-                <div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-success btn-xs">删除</button></div>
-                <div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-success btn-xs">删除</button></div>
-                <div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-success btn-xs">删除</button></div>
-                <div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-success btn-xs">删除</button></div>
+                <!-- <div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-danger btn-xs">删除</button></div> -->
 
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-success btn_group_item" style="margin-top: 40px; margin-left: 136px;">添加/刷新规格项目</button>
+            <button type="button" class="btn btn-success btn-set" style="margin-top: 40px; margin-left: 136px;">添加/刷新规格项目</button>
         </div>
+        <label class="left control-label"></label>
         <div class="right">
-            <button type="button" class="btn btn-success btn_group_item" style="margin-top: 40px; margin-left: 136px;">添加/刷新规格项目</button>
+             <div class="group_item" style="float: left; margin-right: 5px;margin-top:5px;">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>规格名</th>
+                        <th>课时数/节</th>
+                        <th>收费标准/元</th>
+                        <th>课程单价/元</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td><input type="text" class="form-control" id="name" placeholder="课时数/节"></td>
+                        <td><input type="text" class="form-control" id="name" placeholder="收费标准/元"></td>
+                        <td><input type="text" class="form-control" id="name" placeholder="课程单价/元"></td>
+                    </tr>
+                    </tbody>
+                </table>
+             </div>
         </div>
     </div>
     <script>    
         $(function(){
             $('.btn_group').click(function(event) {
-                alert(213214);
+                $('.btn_group_item').append('<div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name="guige_zu" value=""><button type="button" class="btn btn-danger btn-xs button">删除</button></div>');
             });
-            $(".btn-xs").click(function(event) {
+            $(document).on('click','.btn-xs',function(event) {
                 var node = $(this).parent();
                 $(node).remove();
                 console.log(node);
+            });
+
+            $('.btn-set').click(function(event) {
+               var child  = $('.btn_group_item').children();
+               console.log(child);
             });
         });
 
