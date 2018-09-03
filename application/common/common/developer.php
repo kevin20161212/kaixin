@@ -12,3 +12,13 @@
 // +----------------------------------------------------------------------
 
 //开发者二次开发公共函数统一写入此文件，不要修改function.php以便于系统升级。
+
+function get_cate($cate_id){
+    $title = db('course_category')->where(['id'=>$cate_id])->value('title');
+    return $title;
+}
+
+function get_method($id){
+    $title = db('course_param')->where(['id'=>$id])->value('title');
+    return $title;
+}

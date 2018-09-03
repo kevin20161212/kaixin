@@ -42,4 +42,43 @@ class Course extends Model {
     protected $_auto = array(
         array('create_time', 'time', self::MODEL_INSERT, 'function'),
     );
+
+
+    /**
+     * 存储课程信息
+     */
+    
+    public function save_data($data){
+        $guige_zu = $data['guige_zu'];
+        $keshi = $data['keshi'];
+        $cost = $data['cost'];
+        $danjia = $data['danjia'];
+        $num = $data['num'];
+        unset($data['guige_zu']);
+        unset($data['keshi']);
+        unset($data['cost']);
+        unset($data['danjia']);
+        unset($data['num']);
+        $data['high_unit_price'] = max($danjia);
+        $data['low_unit_price'] = min($danjia);
+        $data['create_time'] = time();
+        $id = db('course')->insertGetId($data);
+        foreach ($guige_zu as $key => $value) {
+           $course_grade_standard[$key]['course_id'] = $id;
+           $course_grade_standard[$key]['guige'] = $value;
+           $course_grade_standard[$key]['keshi'] = $keshi[$key];
+           $course_grade_standard[$key]['cost'] = $cost[$key];
+           $course_grade_standard[$key]['num'] = $num[$key];
+        }
+        db('course_grade_standard')->where(['id'=>$id])->delete();
+        db('course_grade_standard')->insertAll($course_grade_standard);
+        $ids = db('course_grade_standard')->where(['course_id'=>$id])->field('id')->select();
+         foreach ($ids as $key => $value) {
+            $idss[] = $value['id'];
+         }
+        $idss = implode(',',$idss);
+        db('course')->where(['id'=>$id])->update(['course_grade_standard'=>$idss]);
+       
+        return true;
+    }
 }

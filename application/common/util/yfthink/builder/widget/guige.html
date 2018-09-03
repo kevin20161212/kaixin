@@ -12,7 +12,6 @@
             <button type="button" class="btn btn-success btn_group">添加规格组</button>
             </div>
             <div class="btn_group_item" style="margin-top: 10px; margin-left: 0px">
-                <!-- <div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name='guige_zu' value=""><button type="button" class="btn btn-danger btn-xs">删除</button></div> -->
 
             </div>
         </div>
@@ -21,42 +20,71 @@
         </div>
         <label class="left control-label"></label>
         <div class="right">
-             <div class="group_item" style="float: left; margin-right: 5px;margin-top:5px;">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>规格名</th>
-                        <th>课时数/节</th>
-                        <th>收费标准/元</th>
-                        <th>课程单价/元</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td><input type="text" class="form-control" id="name" placeholder="课时数/节"></td>
-                        <td><input type="text" class="form-control" id="name" placeholder="收费标准/元"></td>
-                        <td><input type="text" class="form-control" id="name" placeholder="课程单价/元"></td>
-                    </tr>
-                    </tbody>
-                </table>
+             <div class="group_item" id="guige" style="float: left; margin-right: 5px;margin-top:5px;">
              </div>
         </div>
     </div>
     <script>    
         $(function(){
             $('.btn_group').click(function(event) {
-                $('.btn_group_item').append('<div class="group_item" style="float: left;margin-right: 5px;margin-top:5px;"><input name="guige_zu" value=""><button type="button" class="btn btn-danger btn-xs button">删除</button></div>');
+                var index = $('.guige_parent').length;
+                $('.btn_group_item').append('<div class="group_item guige_parent" style="float: left;margin-right: 5px;margin-top:5px;"><input name="guige_zu[]" value="" class="zikai"><button type="button" class="btn btn-danger btn-xs guige_del" del='+index+'>删除</button></div>');
             });
-            $(document).on('click','.btn-xs',function(event) {
+            $(document).on('click','.guige_del',function(event) {
                 var node = $(this).parent();
                 $(node).remove();
-                console.log(node);
+                var a = $(this).attr('del');
+                $(".guige_cansu").eq(a).remove();
             });
 
             $('.btn-set').click(function(event) {
-               var child  = $('.btn_group_item').children();
-               console.log(child);
+                set_guige();
+            });
+
+            function set_guige(){
+                var str = '<table class="table"><thead><tr><th>规格名</th><th>课时数/节</th><th>收费标准/元</th><th>课程单价/元</th><th>规格数量/个</th></tr></thead><tbody>';
+                for(i=0;i<$(".zikai").length;i++){
+                    var val = $(".zikai:eq("+i+")").val();
+                    if(val){
+                        str +='<tr class="guige_cansu"><td>'+val+'</td><td><input type="text" class="form-control jieshu" name="keshi[]" placeholder="课时数/节"></td><td><input type="text" class="form-control shoufei" name="cost[]" id="name" placeholder="收费标准/元"></td><td><input type="text" class="form-control danjia" name="danjia[]" id="name" readonly="readonly" placeholder="课程单价/元"></td><td><input type="text" class="form-control danjia" name="num[]" id="name" placeholder="规格数量"></td></tr>'
+                    }
+                }
+                str += '</tbody></table>';
+                $('#guige').html(str);
+            }
+
+            $(document).on('change', '.jieshu', function(event) {
+                event.preventDefault();
+                /* Act on the event */
+                var jieshu = $(this).val();
+                var shoufei = $(this).parent().next().children(":first").val();
+                shoufei = parseFloat(shoufei);
+                jieshu = parseInt(jieshu);
+                danjia = parseFloat(shoufei/jieshu).toFixed(2);
+                if(isNaN(danjia)){
+                    danjia = '0.00';
+                }
+                $(this).parent().next().next().children(":first").val(danjia);
+                // console.log(jieshu);
+                // console.log(shoufei);
+                // console.log(danjia);
+            });
+
+            $(document).on('change', '.shoufei', function(event) {
+                event.preventDefault();
+                /* Act on the event */
+                var shoufei = $(this).val();
+                var jieshu = $(this).parent().prev().children(":first").val();
+                shoufei = parseFloat(shoufei);
+                jieshu = parseInt(jieshu);
+                danjia = parseFloat(shoufei/jieshu).toFixed(2);
+                if(isNaN(danjia)){
+                    danjia = '0.00';
+                }
+                $(this).parent().next().children(":first").val(danjia);
+                console.log(jieshu);
+                console.log(shoufei);
+                console.log(danjia);
             });
         });
 

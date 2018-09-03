@@ -130,7 +130,7 @@ class FormBuilder extends Controller
      * @author <youfai@youfai.cn>
      */
     public function addFormItem($name, $type, $title, $tip, $options = array(), $extra = '', $extra_attr = '',$nav = '')
-    {
+    {   
         $item['name']           = $name;
         $item['type']           = $type;
         $item['title']          = $title;
@@ -301,7 +301,6 @@ class FormBuilder extends Controller
                 }
             }
         }
-
         $this->assign('is_modal', input('modal')); //页面标题
         $this->assign('meta_title', $this->_meta_title); //页面标题
         $this->assign('tab_nav', $this->_tab_nav); //页面Tab导航
