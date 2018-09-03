@@ -301,6 +301,7 @@ class FormBuilder extends Controller
                 }
             }
         }
+        dump($this->_form_items);//exit();
         $this->assign('is_modal', input('modal')); //页面标题
         $this->assign('meta_title', $this->_meta_title); //页面标题
         $this->assign('tab_nav', $this->_tab_nav); //页面Tab导航
