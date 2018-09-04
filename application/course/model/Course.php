@@ -49,12 +49,20 @@ class Course extends Model {
      */
     
     public function save_data($data){
+        //dump($data);exit;
+        $data['high_unit_price'] = max($data['danjia']);
+        $data['low_unit_price'] = min($data['danjia']);
+        $data['create_time'] = time();
         if($data['guigeids']){
             foreach($data['guigeids'] as $key => $value){
-                db('course_grade_standard')->where(['id'=>$value])->update(['guige'=>$data['guigename'][$key]]);
+                db('course_grade_standard')->where(['id'=>$value])->update(['guige'=>$data['guigename'][$key],'keshi'=>$data['keshi'][$key],'cost'=>$data['cost'][$key],'num'=>$data['num'][$key],'danjia'=>$data['danjia'][$key]]);
+                unset($data['guigename'][$key]);
+                unset($data['keshi'][$key]);
+                unset($data['cost'][$key]);
+                unset($data['danjia'][$key]);
+                unset($data['num'][$key]);
             }
         }
-        dump($data);exit;
         $guigename = $data['guigename'];
         $keshi = $data['keshi'];
         $cost = $data['cost'];
@@ -65,10 +73,13 @@ class Course extends Model {
         unset($data['cost']);
         unset($data['danjia']);
         unset($data['num']);
-        $data['high_unit_price'] = max($danjia);
-        $data['low_unit_price'] = min($danjia);
-        $data['create_time'] = time();
-        $id = db('course')->insertGetId($data);
+        unset($data['guigeids']);
+        if(!$data['id']){
+            $id = db('course')->insertGetId($data);
+        }else{
+            $id = $data['id'];
+            db('course')->where(['id'=>$id])->update($data);
+        }
         foreach ($guigename as $key => $value) {
             $course_grade_standard[$key]['course_id'] = $id;
             $course_grade_standard[$key]['guige'] = $value;
@@ -77,8 +88,11 @@ class Course extends Model {
             $course_grade_standard[$key]['danjia'] = $danjia[$key];
             $course_grade_standard[$key]['num'] = $num[$key];
         }
-        db('course_grade_standard')->where(['course_id'=>$id])->delete();
-        db('course_grade_standard')->insertAll($course_grade_standard);
+        //dump($course_grade_standard);exit;
+        //db('course_grade_standard')->where(['course_id'=>$id])->delete();
+        if($course_grade_standard){
+            db('course_grade_standard')->insertAll($course_grade_standard);
+        }
         $ids = db('course_grade_standard')->where(['course_id'=>$id])->field('id')->select();
          foreach ($ids as $key => $value) {
             $idss[] = $value['id'];

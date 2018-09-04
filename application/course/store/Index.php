@@ -168,18 +168,13 @@ EOF;
             //$model_object = D("course");
            // $data = $model_object->create(format_data());
             $re = model('Course')->save_data($_POST);
-            dump($re);
-            dump($data);exit;
-            if ($data) {
-                $id = $model_object->save($data);
-                if ($id !== false) {
-                    $this->success("更新成功", U("index"));
-                } else {
-                    $this->error("更新失败".$model_object->getError());
-                }
+           
+            if ($re) {
+                $this->success("更新成功", U("index"));
             } else {
-                $this->error($model_object->getError());
+                $this->error("更新失败".$model_object->getError());
             }
+        
         } else {
             // 使用FormBuilder快速建立表单页面
             $merch_id = $this->merch_id;
