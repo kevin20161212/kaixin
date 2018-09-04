@@ -16,11 +16,11 @@ class Base extends  Controller
 		}
     }
 
-    public function error($msg){
+    public function get_error($msg){
         return json(['code'=>0,'msg'=>$msg]);
     }
 
-    public function success($msg){
+    public function get_success($msg){
         return json(['code'=>1,'msg'=>$msg]);
     }
 

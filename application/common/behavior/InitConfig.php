@@ -171,10 +171,10 @@ class InitConfig
             $system_config['url_controller_layer']  = 'admin';
             $system_config['template']['view_path'] = APP_DIR . request()->module() . '/view/admin/';
         }elseif(MODULE_MARK === 'Api' && request()->module() !== '' && request()->module() !== 'api'){
-             $system_config['url_controller_layer']  = 'api';
+            $system_config['url_controller_layer']  = 'api';
             $system_config['template']['view_path'] = APP_DIR . request()->module() . '/view/api/';
         }elseif(MODULE_MARK === 'Store' && request()->module() !== '' && request()->module() !== 'store'){
-             $system_config['url_controller_layer']  = 'store';
+            $system_config['url_controller_layer']  = 'store';
             $system_config['template']['view_path'] = APP_DIR . request()->module() . '/view/store/';
         }
 
