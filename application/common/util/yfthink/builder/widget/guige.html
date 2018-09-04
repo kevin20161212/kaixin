@@ -5,6 +5,8 @@
     }
 </style>
 <case value="guige">
+    <php> // echo "<pre>";var_dump($[type]form);echo "</pre>";
+    </php>
     <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
         <label class="left control-label">{$[type]form.title}：</label>
         <div class="right">
@@ -12,7 +14,11 @@
             <button type="button" class="btn btn-success btn_group">添加规格组</button>
             </div>
             <div class="btn_group_item" style="margin-top: 10px; margin-left: 0px">
-
+             <foreach name="[type]form.options" item="option" key="option_key">
+             <php>if(is_array($option)){
+                echo '<div class="group_item guige_parent" style="float: left;margin-right: 5px;margin-top:5px;"><input name="guige_zu[]" value="'.$option["guige"].'" class="zikai"><button type="button" class="btn btn-danger btn-xs guige_del" del='+index+'>删除</button></div>';
+             }</php>
+            </foreach>
             </div>
         </div>
         <div>

@@ -49,12 +49,18 @@ class Course extends Model {
      */
     
     public function save_data($data){
-        $guige_zu = $data['guige_zu'];
+        if($data['guigeids']){
+            foreach($data['guigeids'] as $key => $value){
+                db('course_grade_standard')->where(['id'=>$value])->update(['guige'=>$data['guigename'][$key]]);
+            }
+        }
+        dump($data);exit;
+        $guigename = $data['guigename'];
         $keshi = $data['keshi'];
         $cost = $data['cost'];
         $danjia = $data['danjia'];
         $num = $data['num'];
-        unset($data['guige_zu']);
+        unset($data['guigename']);
         unset($data['keshi']);
         unset($data['cost']);
         unset($data['danjia']);
@@ -63,14 +69,15 @@ class Course extends Model {
         $data['low_unit_price'] = min($danjia);
         $data['create_time'] = time();
         $id = db('course')->insertGetId($data);
-        foreach ($guige_zu as $key => $value) {
-           $course_grade_standard[$key]['course_id'] = $id;
-           $course_grade_standard[$key]['guige'] = $value;
-           $course_grade_standard[$key]['keshi'] = $keshi[$key];
-           $course_grade_standard[$key]['cost'] = $cost[$key];
-           $course_grade_standard[$key]['num'] = $num[$key];
+        foreach ($guigename as $key => $value) {
+            $course_grade_standard[$key]['course_id'] = $id;
+            $course_grade_standard[$key]['guige'] = $value;
+            $course_grade_standard[$key]['keshi'] = $keshi[$key];
+            $course_grade_standard[$key]['cost'] = $cost[$key];
+            $course_grade_standard[$key]['danjia'] = $danjia[$key];
+            $course_grade_standard[$key]['num'] = $num[$key];
         }
-        db('course_grade_standard')->where(['id'=>$id])->delete();
+        db('course_grade_standard')->where(['course_id'=>$id])->delete();
         db('course_grade_standard')->insertAll($course_grade_standard);
         $ids = db('course_grade_standard')->where(['course_id'=>$id])->field('id')->select();
          foreach ($ids as $key => $value) {

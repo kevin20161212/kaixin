@@ -1,0 +1,76 @@
+<case value="guige1">
+    <style>
+    
+    </style>
+   <php> //echo "<pre>";var_dump($[type]form);echo "</pre>";</php>
+    <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+        <label class="left control-label">{$[type]form.title}：</label>
+        <div class="right">
+            <div>
+            <button type="button" class="btn btn-success btn_group">添加规格组</button>
+            </div>
+            <div class="btn_group_item" style="margin-top: 10px; margin-left: 0px">
+            </div>
+        </div>
+        <label class="left control-label"></label>
+        <div class="right">
+             <div class="group_item" id="guige" style="float: left; margin-right: 5px;margin-top:5px;">
+                <table class="table"><thead><tr><th>规格名</th><th>课时数/节</th><th>收费标准/元</th><th>课程单价/元</th><th>规格数量/个</th><th>操作</th></tr></thead>
+                <tbody class="guige_item">
+                    <foreach name="[type]form.options" item="option" key="option_key">
+                        <php>
+                        echo '<tr class="guige_cansu"><input type="hidden" class="form-control " name="guigeids[]" value="'.$option["id"].'"><td><input type="text" class="form-control " name="guigename[]" placeholder="规格名称" value="'.$option["guige"].'"></td><td><input type="text" class="form-control jieshu" name="keshi[]" placeholder="课时数/节" value="'.$option["keshi"].'"></td><td><input type="text" class="form-control shoufei" name="cost[]" id="name" placeholder="收费标准/元" value="'.$option["cost"].'"></td><td><input type="text" class="form-control danjia" name="danjia[]" id="name" readonly="readonly" placeholder="课程单价/元"  value="'.$option["danjia"].'"></td><td><input type="text" class="form-control danjia" name="num[]" id="name" placeholder="规格数量"value="'.$option["num"].'"></td><td class="guige_del">删除</td></tr>';
+                       </php>
+                    </foreach>   
+                </tbody>
+                </table>
+             </div>
+        </div>
+    </div>
+    <script>    
+        $(function(){
+            $('.btn_group').click(function(event) {
+                var index = $('.guige_parent').length;
+                $('.guige_item').append('<tr class="guige_cansu"><td><input type="text" class="form-control " name="guigename[]" placeholder="规格名称"></td><td><input type="text" class="form-control jieshu" name="keshi[]" placeholder="课时数/节"></td><td><input type="text" class="form-control shoufei" name="cost[]" id="name" placeholder="收费标准/元"></td><td><input type="text" class="form-control danjia" name="danjia[]" id="name" readonly="readonly" placeholder="课程单价/元"></td><td><input type="text" class="form-control danjia" name="num[]" id="name" placeholder="规格数量"></td><td class="guige_del">删除</td></tr>');
+            });
+            $(document).on('click','.guige_del',function(event) {
+                var node = $(this).parent();
+                $(node).remove();
+            });
+
+
+            $(document).on('change', '.jieshu', function(event) {
+                event.preventDefault();
+                /* Act on the event */
+                var jieshu = $(this).val();
+                var shoufei = $(this).parent().next().children(":first").val();
+                shoufei = parseFloat(shoufei);
+                jieshu = parseInt(jieshu);
+                danjia = parseFloat(shoufei/jieshu).toFixed(2);
+                if(isNaN(danjia)){
+                    danjia = '0.00';
+                }
+                $(this).parent().next().next().children(":first").val(danjia);
+            });
+
+            $(document).on('change', '.shoufei', function(event) {
+                event.preventDefault();
+                /* Act on the event */
+                var shoufei = $(this).val();
+                var jieshu = $(this).parent().prev().children(":first").val();
+                shoufei = parseFloat(shoufei);
+                jieshu = parseInt(jieshu);
+                danjia = parseFloat(shoufei/jieshu).toFixed(2);
+                if(isNaN(danjia)){
+                    danjia = '0.00';
+                }
+                $(this).parent().next().children(":first").val(danjia);
+                // console.log(jieshu);
+                // console.log(shoufei);
+                // console.log(danjia);
+            });
+        });
+
+    </script>
+</case>
+

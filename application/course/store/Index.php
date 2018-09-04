@@ -147,7 +147,7 @@ EOF;
                     ->addFormItem("teacher_id", "select", "教师", "教师",$teacher_data)
                     // ->addFormItem("course_grade", "text", "课程规格", "课程规格")
                     // ->addFormItem("course_cost", "text", "课时收费", "课时收费")
-                    ->addFormItem("lng123", "guige", "添加规格", "添加规格")
+                    ->addFormItem("lng123", "guige1", "添加规格", "添加规格")
                     ->addFormItem("course_tool_des", "kindeditor", "教辅教具", "教辅教具")
                     ->addFormItem("course_certificate_des", "kindeditor", "结业证书说明", "结业证书说明")
                     ->addFormItem("environment_des", "kindeditor", "教室环境", "教室环境")
@@ -165,8 +165,11 @@ EOF;
      */
     public function edit($id) {
         if (request()->isPost()) {
-            $model_object = D("course");
-            $data = $model_object->create(format_data());
+            //$model_object = D("course");
+           // $data = $model_object->create(format_data());
+            $re = model('Course')->save_data($_POST);
+            dump($re);
+            dump($data);exit;
             if ($data) {
                 $id = $model_object->save($data);
                 if ($id !== false) {
@@ -196,31 +199,35 @@ EOF;
             foreach ($term as $key => $value) {
               $term_data[$value['id']] = $value['title'];
             }
+
+            $data = D("course")->find($id);
+            $guige_ids = explode(',',$data['course_grade_standard']);
+            $guige = db('course_grade_standard')->where(['id'=>array('in',$guige_ids)])->select();
             $builder = new \yfthink\builder\FormBuilder();
             $builder->setMetaTitle("编辑")  // 设置页面标题
                     ->setPostUrl(U("edit"))     // 设置表单提交地址
-                    //->addFormItem("id", "hidden", "ID", "ID")
-                    // ->addFormItem("title", "text", "课程名", "课程名")
-                    // ->addFormItem("cover", "picture", "封面图", "封面图")
-                    // ->addFormItem("cate_id", "select", "课程类别", "课程类别",select_list_as_tree('Course/CourseCategory',''))
-                    // ->addFormItem("method_id", "radio", "授课方式", "授课方式",$cate_data)
-                    // ->addFormItem("course_grade", "radio", "课程级别", "课程级别",$me_data)
-                    // ->addFormItem("course_grade_age", "text", "学龄段", "学龄段")
-                    // ->addFormItem("course_term", "radio", "开课条件", "课程名",$term_data)
-                    // ->addFormItem("course_start_time", "date", "开课时间", "开课时间")
-                    // ->addFormItem("student_num", "num", "开课人数", "开课人数")
+                    ->addFormItem("id", "hidden", "ID", "ID")
+                    ->addFormItem("title", "text", "课程名", "课程名")
+                    ->addFormItem("cover", "picture", "封面图", "封面图")
+                    ->addFormItem("cate_id", "select", "课程类别", "课程类别",select_list_as_tree('Course/CourseCategory',''))
+                    ->addFormItem("method_id", "radio", "授课方式", "授课方式",$cate_data)
+                    ->addFormItem("course_grade", "radio", "课程级别", "课程级别",$me_data)
+                    ->addFormItem("course_grade_age", "text", "学龄段", "学龄段")
+                    ->addFormItem("course_term", "radio", "开课条件", "课程名",$term_data)
+                    ->addFormItem("course_start_time", "date", "开课时间", "开课时间")
+                    ->addFormItem("student_num", "num", "开课人数", "开课人数")
                     ->addFormItem("teacher_id", "select", "教师", "教师",$teacher_data)
                     // ->addFormItem("course_grade", "text", "课程规格", "课程规格")
                     // ->addFormItem("course_cost", "text", "课时收费", "课时收费")
-                    // ->addFormItem("lng123", "guige", "添加规格", "添加规格")
-                    // ->addFormItem("course_tool_des", "kindeditor", "教辅教具", "教辅教具")
-                    // ->addFormItem("course_certificate_des", "kindeditor", "结业证书说明", "结业证书说明")
-                    // ->addFormItem("environment_des", "kindeditor", "教室环境", "教室环境")
-                    // ->addFormItem("course_des", "kindeditor", "课程介绍", "课程介绍")
-                    // ->addFormItem("result_des", "kindeditor", "教学成果", "教学成果")
-                    // ->addFormItem("charge_des", "kindeditor", "收费说明", "收费说明")
+                    ->addFormItem("course_grade_standard", "guige1", "添加规格", "添加规格",$guige)
+                    ->addFormItem("course_tool_des", "kindeditor", "教辅教具", "教辅教具")
+                    ->addFormItem("course_certificate_des", "kindeditor", "结业证书说明", "结业证书说明")
+                    ->addFormItem("environment_des", "kindeditor", "教室环境", "教室环境")
+                    ->addFormItem("course_des", "kindeditor", "课程介绍", "课程介绍")
+                    ->addFormItem("result_des", "kindeditor", "教学成果", "教学成果")
+                    ->addFormItem("charge_des", "kindeditor", "收费说明", "收费说明")
                     ->setExtraHtml($this->extra_html)
-                    ->setFormData(D("course")->find($id))
+                    ->setFormData($data)
                     ->display();
         }
     }
