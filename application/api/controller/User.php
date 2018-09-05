@@ -12,6 +12,7 @@ class User extends Base{
 	 */
 	public function register(){
 		$mobile = input('mobile',0);
+		$invite_code = input('invite_code');
 		$verification_code = input('verification_code','');
 		$password = input('password','');
 		$password_again = input('password_again','');

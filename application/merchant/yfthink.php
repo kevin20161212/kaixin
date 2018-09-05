@@ -94,6 +94,12 @@ return array(
             'url'   => 'merchant/user/index',
             'icon'  => 'fa fa-users ',
         ),
+        '6' => array(
+            'pid'   => '2',
+            'title' => '用户等级',
+            'url'   => 'merchant/grade/index',
+            'icon'  => 'fa fa-users ',
+        ),
         '14' => array(
             'pid'   => '3',
             'title' => '新增',

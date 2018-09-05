@@ -85,11 +85,11 @@ class Tool extends Base{
 	public function send_code(){
 		$mobile = input('mobile');
 		if(!$mobile){
-			return $this->error('请输入手机号');
+			return $this->get_error('请输入手机号');
 		}
 		$code = model('sms')->get_code($mobile);
 		if($code == 1){
-			return $this->error('重发验证码');
+			return $this->get_error('重发验证码');
 		}else{
 			$SMS = new Ali();
             $data = $SMS->sendSms1($mobile,$code);
