@@ -11,11 +11,11 @@ class User extends Base{
 	 * @return [type] [description]
 	 */
 	public function register(){
-		$mobile = input('mobile',0);
-		$invite_code = input('invite_code');
-		$verification_code = input('verification_code','');
-		$password = input('password','');
-		$password_again = input('password_again','');
+		$mobile = $_POST['mobile'];
+		$invite_code = $_POST['invite_code'];
+		$verification_code = $_POST['verification_code'];
+		$password = $_POST['password'];
+		$password_again = $_POST['password_again'];
 		if(!is_mobile($mobile)){
 			return $this->get_error('请输入正确手机号码');
 		}
@@ -36,6 +36,7 @@ class User extends Base{
 			if($result == 2){
 				return $this->data([],4,'手机号已注册');
 			}else{
+				model('score')->invite_score($result['id'],$invite_code);
 				return $this->data($result,1,'注册成功');
 			}
 		}else{

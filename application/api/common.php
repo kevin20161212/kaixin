@@ -76,7 +76,7 @@ function is_mobile($mobile){
 	if(empty($mobile)){
 		return false;
 	}
-	return preg_match('/^1[345789]\d{9}$/', $mobile) ? true : false;
+	return preg_match('/^1[345678]{1}\d{9}$/', $mobile) ? true : false;
 }
 
 

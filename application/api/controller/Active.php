@@ -12,6 +12,8 @@ class Active extends Base{
 	 * @return [type] [description]
 	 */
 	public function block(){
+		dump(json_encode(['code'=>0,'msg'=>'请求不合法']));
+		return $this->get_error('请求不合法');
 		$data = model('active')->get_block();
 		if($data){
 			return $this->data($data,1,'获取数据成功');

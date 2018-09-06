@@ -28,7 +28,7 @@ class User extends Model
 			return 2;//该手机号已注册
 		}
 		$password = user_md5($password);
-		$id = db('app_user')->insertGetId(['user_name'=>$mobile,'nikname'=>$mobile,'mobile'=>$mobile,'password'=>$password,'status'=>1,'create_time'=>time()]);
+		$id = db('app_user')->insertGetId(['user_name'=>$mobile,'nikname'=>$mobile,'mobile'=>$mobile,'password'=>$password,'status'=>1,'create_time'=>time(),'invite_code'=>$mobile]);
 		if($id){
 			$rand = rand_string(6);
 			
